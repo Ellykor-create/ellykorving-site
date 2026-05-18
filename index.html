@@ -1273,7 +1273,16 @@ html, body { margin: 0; padding: 0; }
 
 
 
-  </style>
+  
+/* === TICKER === */
+.ticker-wrap{overflow:hidden;background:#1A1614;padding:18px 0;border-top:1px solid rgba(245,242,236,.08);border-bottom:1px solid rgba(245,242,236,.08);}
+.ticker{display:flex;gap:0;white-space:nowrap;animation:ticker 30s linear infinite;}
+.ticker span{font-family:'Raleway',sans-serif;font-size:.8rem;font-weight:300;letter-spacing:.25em;text-transform:lowercase;color:rgba(245,242,236,.45);padding:0 1.2rem;}
+.ticker-dot{color:#C04A78 !important;padding:0 !important;font-size:.6rem;vertical-align:middle;}
+.ticker:hover{animation-play-state:paused;}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+</style>
 </head>
 <body>
 
@@ -1339,28 +1348,36 @@ html, body { margin: 0; padding: 0; }
   <span class="log">Art of Living</span>
 </div>
 
-<section class="rumi-strip">
-  <div class="rumi-bottom-line"></div>
-  <div class="rumi-inner">
-    <span class="rumi-mark">"</span>
-    <p class="rumi-quote">Out beyond ideas of wrongdoing<br>and rightdoing, there is a <em>field.</em><br>I'll meet you there.</p>
-    <div class="rumi-attr">Rumi</div>
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>bewustzijn</span><span class="ticker-dot">·</span>
+    <span>identiteit</span><span class="ticker-dot">·</span>
+    <span>resonantie</span><span class="ticker-dot">·</span>
+    <span>zenuwstelsel</span><span class="ticker-dot">·</span>
+    <span>spiegel</span><span class="ticker-dot">·</span>
+    <span>positionering</span><span class="ticker-dot">·</span>
+    <span>stilte</span><span class="ticker-dot">·</span>
+    <span>waarneming</span><span class="ticker-dot">·</span>
+    <span>alignment</span><span class="ticker-dot">·</span>
+    <span>imagination</span><span class="ticker-dot">·</span>
+    <span>bewustzijn</span><span class="ticker-dot">·</span>
+    <span>identiteit</span><span class="ticker-dot">·</span>
+    <span>resonantie</span><span class="ticker-dot">·</span>
+    <span>zenuwstelsel</span><span class="ticker-dot">·</span>
+    <span>spiegel</span><span class="ticker-dot">·</span>
+    <span>positionering</span><span class="ticker-dot">·</span>
+    <span>stilte</span><span class="ticker-dot">·</span>
+    <span>waarneming</span><span class="ticker-dot">·</span>
+    <span>alignment</span><span class="ticker-dot">·</span>
+    <span>imagination</span><span class="ticker-dot">·</span>
   </div>
-</section>
+</div>
 
 <section class="fp">
   <div class="fp-img" id="fp-img"><img src="images/fp.jpg" alt="Elly Korving"></div>
   <div class="fp-inner">
-    <h2 class="reveal">ALIGNMENT</h2>
-    <p class="reveal d1">Alignment gaat niet over perfect zijn. Het gaat over leven op een manier die klopt met wie je werkelijk bent.</p>
-    <p class="reveal d2">Veel mensen leven vanuit aanpassing. Doorgaan. Voldoen aan verwachtingen. Vastzitten in patronen zonder te begrijpen waarom ze zich leeg, onrustig of afgesneden voelen.</p>
-    <p class="reveal d2">Van buiten lijkt alles op orde. Van binnen voelt het zwaar.</p>
-    <p class="reveal d2">Je lichaam merkt dat vaak eerder op dan je hoofd. Spanning. Vermoeidheid. Onrust. Twijfel. Signalen dat je leeft op automatische piloot.</p>
-    <p class="reveal d3">We zijn geconditioneerd om te overleven. Om te haasten. Te presteren. Controle te houden. Maar niet om werkelijk te voelen wat klopt.</p>
-    <p class="reveal d3">Alignment ontstaat wanneer je opnieuw leert luisteren naar jezelf. Wanneer je keuzes maakt vanuit helderheid in plaats van angst, druk of gewoonte.</p>
-    <p class="reveal d3">Dan verandert niet alleen hoe je je voelt, maar ook hoe je leeft, werkt en verbindt.</p>
-    <p class="reveal d4">Je energie wordt rustiger. Je keuzes worden helderder. Je leven voelt weer als van jou.</p>
-    <p class="reveal d5"><em>You cannot create a different reality from the same identity.</em></p>
+    <h2 class="reveal">Being a life<br>is not the same<br>as <em>living.</em></h2>
+    <p class="reveal d2">Er is een verschil tussen een leven hebben en werkelijk leven.<br>Ik help je dat verschil voelen en van daaruit bewegen.</p>
   </div>
 </section>
 

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADwklEQVR4nL2XTYgcVRDHf1Wve752dGUTNLDJRU2CXsSLePIkOQuioKBBEfQSQc/q1Vsk5uYhoIcYcclJPRgEyUH8AIkRiZKNickqJuxkze5mJzPT75WH7pntnZ2Z7Z1ZLehmZvpN1+/Vv6ree7DRlP/eFJDuF8k9EMCqszOPi8gzBgdBYmzDmHHMEEsEvajY6dWFxbN5f5J9EMBqs7uPicoRRACb0G+/pe8MFk40rzVeA3wXwAG+NrvrfYncEfPBZ94nnXm/GYA4jYIPHzUXFg8DKgDVvTOPibjvMEsyoJ12nodIRCUmCU/e/qvxlQII8rxIL+brCaIy8ZXK2bOe3EF4ASACMJODsv4wYzX8WnviKUvskMjlU0rMEBHZ3wMgDXsuUIaWY6Ye3Du2YwPEKe0bS7RvLiNO+/Na8wA5ZCG0O1T23cvDR18fH8AH4uk6l499wsLJL4mn65gPm8ZtBshNwTpJlwowzIqXpvlAaHUGOi0GAH0JJLhKKf2tQJFaEnBTFSSKRraU0QDrvjEfWP31j3RGUqBKfSCq12g3bg3Sf3sAokqy0uS3tz+g88/tLKuLySGquFoFC4OlKBaBzDSO0VK8JYCRrTjZkGCGDQnBtgB8s4Vv3sl0HQZgCELTGV4MzIg1pqTRQIhCABYMVy1z4J2XCYlPO9wQAAHakVD++HteaT/EnRjem/+c661bRLIZolgEzBCn3P3ofrolOawMFGi6wFsXHuCRK1Cp18GMN37+kFIc421ANypkkt2EtAryC3n+AlDh3Oo1OiFhJWlyfvkqIjowCwpWgZCstbhyfA6/1gKnIyUwVd795RJnZA8t8/xwc56qKxNsO51ww1uF0E648cU3tJdWC5Whq5T52hagUmaqOjW0i24jCUvc/+ZzhFYHVNlqx2RJIK6WaZz9iaUfL+CqZSyMWQWYoaWY+556Aum24q3+4j3xPXfR/LtB49vzuFplIPRIgP6FpLO0UniraD5gPuBb7ZGteyiAqBJP14t5GwiQRsCVSyPzZTOAGeIc7aVlLh//dHyAkG5qls9dRCuD9c8DbIi1OCVZvs2fp86MDZAuoYZWSmgpHhQF6wEIYR7cIXIKTypBz0uwfucmQgiB3yHrhEHdKdZ7bG90N5EmuQbPXFTgZBan9GBSnd11QiP3kvmQ34ftpBlg4jQ270+vLTSeBjQi1V+bexqvVq/vVlU53NVvpw5n0ruB+TC3RvVF0uib5MYYQG3fzCHDPSvGAbB4hxgSg0uizK1dXfys32ce9P84nm84AP0L65PBZTIOKR8AAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<meta name="theme-color" content="#1A1614">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog & Inspiratie — Elly Korving</title>
+<meta name="description" content="Blogs van Elly Korving over bewustzijn, identiteit, ademwerk, loslaten en leven vanuit resonantie. Lees volledige artikelen over stilte, de spiegel, authenticiteit en meer.">
+  <meta name="keywords" content="blog bewustzijn, stilte en rust, ademwerk, loslaten vergeving, authentiek zelf, mind kompas, leven vanuit resonantie, Elly Korving blog">
+  <meta name="author" content="Elly Korving">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.ellykorving.com/blog.html">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ellykorving.com/blog.html">
+  <meta property="og:title" content="Blog & Inspiratie | Elly Korving">
+  <meta property="og:description" content="Woorden die activeren. Blogs over bewustzijn, identiteit, ademwerk en leven vanuit resonantie.">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:site_name" content="Elly Korving">
+  <meta property="og:image" content="https://www.ellykorving.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://www.ellykorving.com/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog & Inspiratie | Elly Korving">
+  <meta name="twitter:description" content="Woorden die activeren. Blogs over bewustzijn en leven vanuit resonantie.">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Blog","name":"Blog & Inspiratie — Elly Korving","url":"https://www.ellykorving.com/blog.html","author":{"@type":"Person","name":"Elly Korving","url":"https://www.ellykorving.com"},"blogPost":[{"@type":"BlogPosting","headline":"Stilte en rust, de plek waar het echte werk gebeurt","datePublished":"2026-03-10"},{"@type":"BlogPosting","headline":"Ben jij een eendagsvlieg of een robot?","datePublished":"2026-01-14"},{"@type":"BlogPosting","headline":"Through the looking glass","datePublished":"2025-12-20"},{"@type":"BlogPosting","headline":"Adem jij vrij? Of in patronen?","datePublished":"2025-12-15"},{"@type":"BlogPosting","headline":"7 Weetjes die je leven direct terughalen naar het moment","datePublished":"2025-12-10"},{"@type":"BlogPosting","headline":"7 Integratie tips om je gedachten te herkennen","datePublished":"2025-12-09"},{"@type":"BlogPosting","headline":"Leef jij jouw authentieke zelf","datePublished":"2025-11-01"},{"@type":"BlogPosting","headline":"Loslaten is zo gemakkelijk, toch?","datePublished":"2025-09-15"},{"@type":"BlogPosting","headline":"Van FM naar DAB","datePublished":"2025-09-11"},{"@type":"BlogPosting","headline":"Gebruik je mind als kompas, niet als commandant","datePublished":"2025-09-08"}]}
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#F5F2EC;--dark:#1A1614;--mid:#201C18;
+  --pink:#C04A78;--pink-l:rgba(192,74,120,.85);
+  --gold:#8A6A3A;
+  --serif:'Cormorant Garamond',serif;--sans:'Raleway',sans-serif;
+  --mu:rgba(26,22,20,.62);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--dark);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 1.8rem;display:flex;justify-content:space-between;align-items:center;background:rgba(245,242,236,.97);backdrop-filter:blur(16px);border-bottom:.5px solid rgba(192,74,120,.25)}
+.logo{font-family:var(--serif);font-size:.85rem;font-weight:300;letter-spacing:.25em;color:var(--dark);text-transform:uppercase;text-decoration:none}
+.nav-back{display:flex;align-items:center;gap:.6rem;font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:color .3s}
+.nav-back::before{content:'←';font-size:.85rem}
+.nav-back:hover{color:var(--pink)}
+
+/* HERO */
+.page-hero{padding:8rem 1.8rem 4rem;background:var(--cream);position:relative}
+.page-hero::after{content:'';position:absolute;bottom:0;left:1.8rem;right:1.8rem;height:1px;background:linear-gradient(to right,transparent,rgba(192,74,120,.3),transparent)}
+.lbl{font-size:.5rem;letter-spacing:.32em;text-transform:uppercase;color:var(--pink);margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}
+.lbl::before{content:'';width:18px;height:1.5px;background:var(--pink)}
+.page-hero h1{font-family:var(--serif);font-size:clamp(2.2rem,8vw,4rem);font-weight:300;color:var(--dark);line-height:1.15;margin-bottom:1rem}
+.page-hero h1 em{font-style:italic;color:var(--pink)}
+.page-hero p{font-size:.8rem;line-height:2;color:var(--mu);max-width:540px}
+
+/* BLOG LIST */
+.sec-blogs{padding:3rem 0;background:var(--cream)}
+
+.blog-item{
+  border-bottom:1px solid rgba(26,22,20,.1);
+  transition:background .3s;
+  position:relative;
+}
+.blog-item::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:3px;background:var(--pink);
+  transform:scaleY(0);transform-origin:top;
+  transition:transform .4s cubic-bezier(.22,1,.36,1);
+}
+.blog-item.open::before{transform:scaleY(1)}
+
+.bi-header{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding:2rem 1.8rem;cursor:pointer;gap:1rem;
+  transition:background .3s;
+}
+.bi-header:hover{background:rgba(192,74,120,.04)}
+
+.bi-left{display:flex;gap:1.2rem;align-items:flex-start;flex:1}
+.bi-num{font-family:var(--serif);font-size:2.2rem;font-weight:300;line-height:1;opacity:.25;min-width:2.5rem}
+.bi-meta{flex:1}
+.bi-tag{font-size:.46rem;letter-spacing:.22em;text-transform:uppercase;padding:.25rem .75rem;border:.5px solid;display:inline-block;margin-bottom:.5rem}
+.bi-date{display:block;font-size:.58rem;letter-spacing:.08em;color:var(--mu);margin-bottom:.4rem}
+.bi-title{font-family:var(--serif);font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:300;color:var(--dark);line-height:1.3;margin-bottom:.5rem}
+.bi-preview{font-size:.74rem;line-height:1.8;color:var(--mu)}
+
+.bi-toggle{
+  width:32px;height:32px;border-radius:50%;
+  border:.5px solid rgba(192,74,120,.3);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:.4rem;
+  transition:all .3s;
+}
+.blog-item.open .bi-toggle{background:var(--pink);border-color:var(--pink)}
+.toggle-icon{font-size:1.2rem;color:var(--pink);transition:transform .3s,color .3s;line-height:1}
+.blog-item.open .toggle-icon{transform:rotate(45deg);color:#fff}
+
+/* BLOG BODY */
+.bi-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .6s cubic-bezier(.22,1,.36,1);
+  background:rgba(192,74,120,.03);
+}
+.blog-item.open .bi-body{max-height:2000px}
+
+.bi-quote{
+  font-family:var(--serif);font-size:clamp(1rem,3.5vw,1.3rem);
+  font-weight:300;font-style:italic;
+  color:var(--pink);line-height:1.7;
+  padding:2rem 1.8rem 1.5rem 4.5rem;
+  border-bottom:.5px solid rgba(192,74,120,.15);
+  position:relative;
+}
+.bi-quote::before{
+  content:'"';position:absolute;left:1.8rem;top:1.5rem;
+  font-family:var(--serif);font-size:3rem;color:rgba(192,74,120,.2);line-height:1;
+}
+
+.bi-content{padding:2rem 1.8rem 1.5rem 4.5rem}
+.bi-content p{font-size:.8rem;line-height:2;color:rgba(26,22,20,.78);margin-bottom:1rem}
+.bi-content p:last-child{margin-bottom:0}
+.bi-content h4{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem}
+.bi-content strong{font-weight:500;color:var(--dark)}
+.bi-content em{font-style:italic;color:var(--pink)}
+
+.bi-close{
+  display:block;margin:0 1.8rem 2rem 4.5rem;
+  background:none;border:none;cursor:pointer;
+  font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mu);font-family:var(--sans);
+  transition:color .3s;padding:.5rem 0;
+}
+.bi-close:hover{color:var(--pink)}
+
+/* CTA */
+.sec-cta{padding:4rem 1.8rem;background:var(--dark);text-align:center}
+.sec-cta h2{font-family:var(--serif);font-size:clamp(1.5rem,5vw,2.2rem);font-weight:300;color:#F5F2EC;line-height:1.3;margin-bottom:.8rem}
+.sec-cta h2 em{font-style:italic;color:#ECA0C8}
+.sec-cta p{font-size:.76rem;line-height:2;color:rgba(245,240,232,.6);margin-bottom:2rem}
+.btn{display:inline-flex;align-items:center;gap:.8rem;padding:.85rem 1.8rem;border:1px solid rgba(245,240,232,.4);color:#F5F2EC;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;background:transparent;font-family:var(--sans);transition:all .4s}
+.btn:hover{background:rgba(245,240,232,.08);border-color:rgba(245,240,232,.7)}
+.ar{display:block;width:16px;height:.5px;background:currentColor;position:relative}
+.ar::after{content:'';position:absolute;right:0;top:-3px;width:5px;height:5px;border-right:.5px solid currentColor;border-top:.5px solid currentColor;transform:rotate(45deg)}
+
+footer{padding:1.8rem;background:var(--dark);display:flex;flex-direction:column;gap:.6rem;align-items:center;text-align:center;border-top:.5px solid rgba(245,240,232,.08)}
+.fl{font-family:var(--serif);font-size:.78rem;font-weight:300;letter-spacing:.2em;color:rgba(245,240,232,.28);text-transform:uppercase}
+.fc{font-size:.48rem;color:rgba(245,240,232,.15)}
+
+@media(min-width:768px){
+  nav{padding:1.6rem 5rem}
+  .page-hero{padding:10rem 5rem 5rem}
+  .page-hero::after{left:5rem;right:5rem}
+  .bi-header{padding:2.5rem 5rem}
+  .bi-quote{padding:2.5rem 5rem 2rem 8rem}
+  .bi-quote::before{left:5rem}
+  .bi-content{padding:2rem 5rem 2rem 8rem}
+  .bi-close{margin:0 5rem 2.5rem 8rem}
+  footer{flex-direction:row;justify-content:space-between;padding:1.8rem 5rem}
+}
+
+/* Logo icoon naast naam */
+.nav-logo-icon{
+  width:20px;
+  height:20px;
+  object-fit:contain;
+  vertical-align:middle;
+  margin-right:4px;
+  opacity:.75;
+  position:relative;
+  top:-1px;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAAEgklEQVR4nO2UW2xUVRSG/7XPOTNnLm2HlpTLTFoHDLdCMUAkIJJKNBRjAUsm+KIVNaAVJTyZeMmUyItEfTAxQq2Y1mCUQkSiwQgGRapAoWhEiL0AHWiLnbZM58z9XJYPUMDYqbRo4oN/sl/OXmt/+//33gf4XwCCwaBgZjq4Y33RF3VPFTNAzKCxrCVup6jk7FkiIs51O58d73Q/RwC/82K5bSzAEXfJHBREW6ymho2rBWhSOJk+7CsoND1Oc3LGMJ3TK974asOGDXJtba0+FvhfFAwGBQB8X1+95Ej9C48Pfff5fHO8Xn/p0I6H6m5HozsHacqydesrX547s8hvWZY403r54s66/duQaT0QCASkxsZGc1TrDadAICARAH9J2dO7djWYrPcxG/3Mepg508e7d3/MU+cu2zhUe6c0SQiCOm7Gosa9ewxmzYqEO/RYNGxp0bDVf6XNYNbMfZ9/ZuV555YJQXcGZWYBQHrp1S1NnAhxPHbVSCc1jl0NsTbQyTFtgKORPpMTl/i1mq0tABRmHtNzuRGld+rCslPNTZyO95qR/i7WrnZxKt7PqcQAM8dZT0WMZLTL+OWn41w8Z+kKwsjRZr1d1dXVxABWVpStKS2Zxroh2O1SwZYOkmywO9zm2+9+mlpZ9Uo6GjfMWSXTueLBxZV8vXfUDq9HQ9tra08wJ7m781e9veN8ijljMFu89c33UpCmpr2zy/VQe0uGOcE7at9vASBkSQKyvIBsDkmWBAPIGe9xecEWSMnhpauf54fWbDK6evqMQ9/9aBYUFRhT/D5M9PoF6xnkexxeAHkWW1mNZI2UmQHAabeR09JTmDihUNzt98mHvj5o1X+yL53nlvT+C73qk2sfNhXVLQxdhyqzA3C4cK13VA5vSFJyQMKGdOx3sXFdpQlFxeBAV+ze+fOxo/6tTNXaFUrv5d8g2x2Q1TwLSGa3NxKQSACAFh2MaCwI8ZRFgZVl9iNf7hR2Z760ZlW5uv6JR9VkQhNCUhgEDA5G4gA0IgIAHm5dOQuPDdMkIopfDF0KCaH4ZElkQufP0P2LZtpsNjUnkcxI6WgIhi7B7sonEoIvdIY6AWiGaRERDQvM6rCmpkYCgM7uyNEP6urongeqjAXLN/GyR57JnG4+mPT7xumKsxCegkIopOsfNuyhH062Nd3aO2xy2SaAgAQ0mpNmLJmfK6c+agvLM22KjFQyDUUY5uubV8UWLFykf3O01XHg22NKor+jx5Ldj7W3HDo21DtKIMAAESDNnnffNoaoOtdt5eeoZBoWpEQ8wZXLS2N3+Qql2EBv9HBzW2Prz02bGbAoy/kBf3NLCUEiwDjTkWnIc1DzrCJ7OJaGlNYZiuqivQfO5Rw/cSoavhI62dqWrCfAJARHNHEbv6CgALZYUsGCisWlnmqXSy2+1BObYJomJuQiHI3p50+3GdtJO7mfr9feIfAmFMqcecXTPKsmeqTJpmFQT8To7rqCfTR4rIWvpTUibLQSN3dX6ro2bs79k6A/QYGgINyIRvybsFt1C/M/rj8Azegd8LWwl8cAAAAASUVORK5CYII=" alt="" class="nav-logo-icon"> Elly Korving</a>
+  <a href="index.html" class="nav-back">Terug naar home</a>
+</nav>
+
+<section class="page-hero">
+  <div class="lbl">Blog & Inspiratie</div>
+  <h1>Woorden die <em>activeren.</em></h1>
+  <p>Inzichten, reflecties en uitnodigingen om te kijken naar wat er al in je is. Klik op een blog om de volledige tekst te lezen.</p>
+</section>
+
+<section class="sec-blogs">
+
+    <div class="blog-item" id="blog-01">
+      <div class="bi-header" onclick="toggleBlog('01')">
+        <div class="bi-left">
+          <span class="bi-num" style="color:#8A6A3A">01</span>
+          <div class="bi-meta">
+            <span class="bi-tag" style="color:#8A6A3A;border-color:rgba(138,106,58,.12)">Stilte & aanwezigheid</span>
+            <span class="bi-date">10 maart 2026</span>
+            <h2 class="bi-title">Stilte en rust, de plek waar het echte werk gebeurt</h2>
+            <p class="bi-preview">In een tijd waarin er zoveel om ons heen gebeurt en de wereld vol deadlines zit, lijkt rust en stilte nemen bijna geen optie meer. Maar wat als stilte en rust juist datgene zijn waar het echte werk wordt gedaan?</p>
+          </div>
+        </div>
+        <div class="bi-toggle" id="toggle-01">
+          <span class="toggle-icon">+</span>
+        </div>
+      </div>
+      <div class="bi-body" id="body-01">
+        <div class="bi-quote">"Durf ik stil te worden en te luisteren naar wat er dan verschijnt?"</div>
+        <div class="bi-content">
+          <p>In een tijd waarin er zoveel om ons heen gebeurt en de wereld vol deadlines zit, lijkt rust en stilte nemen bijna geen optie meer. Het voelt ingewikkeld en moeilijk — tijd van druk, oorlog, veranderingen op gebied van werk. Onzekerheid, angst. Je hele zenuwstelsel staat aan. Ga dan maar eens rust en stilte vinden.</p>
+<p>Maar wat als stilte en rust juist datgene zijn waar het echte werk wordt gedaan?</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">Wat betekent rust en stilte eigenlijk?</h3>
+<p>Laten we eerst naar het tegenovergestelde kijken: beweging en geluid. In beweging verwerken we alles wat al bestaat. In stilte, of in stilstand, ontstaat juist wat nog niet bestond. Het is het verschil tussen uitvoeren en ontvangen.</p>
+<p>Kijk maar naar de natuur. Een zaad ontkiemt niet door harder te drukken en een wond geneest niet door er constant aan te zitten. De diepste processen — biologisch, psychologisch en spiritueel — voltrekken zich in rust.</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">Waarom stilte en rust zo essentieel zijn</h3>
+<p>Gedurende de dag nemen we enorm veel op. In rust verwerken we onbewust onze ervaringen, verbinden we patronen die je overdag hebt gemist en lossen we problemen op die in actieve concentratie vastliepen. Wetenschappers noemen dit het Default Mode Network — het netwerk dat actief is precies wanneer jij ogenschijnlijk "niets" doet.</p>
+<p>In stilte valt het lawaai van meningen, verwachtingen en reflexen weg. Wat er overblijft is iets dat dichter bij jezelf staat. Stilte is de ruimte waarin je jezelf hoort. En juist daar zit de echte kracht.</p>
+<p><em>Stilte en rust zijn geen afwezigheid. Ze zijn de aanwezigheid van een andere orde.</em></p>
+        </div>
+        <button class="bi-close" onclick="toggleBlog('01')">Sluiten ↑</button>
+      </div>
+    </div>
+
+    <div class="blog-item" id="blog-02">
+      <div class="bi-header" onclick="toggleBlog('02')">
+        <div class="bi-left">
+          <span class="bi-num" style="color:#C04A78">02</span>
+          <div class="bi-meta">
+            <span class="bi-tag" style="color:#C04A78;border-color:rgba(192,74,120,.15)">Bewustzijn</span>
+            <span class="bi-date">14 januari 2026</span>
+            <h2 class="bi-title">Ben jij een eendagsvlieg of een robot? En heb je een keuze?</h2>
+            <p class="bi-preview">We vinden een eendagsvlieg vaak zielig. Hij leeft maar één dag. Maar wat als de vraag niet is hoe lang je leeft, maar hoe aanwezig je bent?</p>
+          </div>
+        </div>
+        <div class="bi-toggle" id="toggle-02">
+          <span class="toggle-icon">+</span>
+        </div>
+      </div>
+      <div class="bi-body" id="body-02">
+        <div class="bi-quote">"Until you make the unconscious conscious, it will direct your life and you will call it fate. — Carl Jung"</div>
+        <div class="bi-content">
+          <p>We vinden een eendagsvlieg vaak zielig. Hij leeft maar één dag. Maar wat als we die gedachte eens omdraaien? Wat als de vraag niet is hoe lang je leeft, maar hoe aanwezig je bent in de tijd die je hebt?</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">De automatische piloot</h3>
+<p>Wetenschappelijk onderzoek laat zien: de mens leeft het grootste deel van de tijd op automatische piloot. 95% tot 98% van onze mentale activiteit verloopt automatisch. Slechts 2% tot 5% van onze tijd zijn we bewust aanwezig.</p>
+<p>Als we uitgaan van 5% bewustzijn over 24 uur — dat is 1 uur en 12 minuten per dag. Dat is de tijd waarin je aanwezig bent, jezelf kunt waarnemen en niet volledig wordt meegesleurd door patronen.</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">Robot of eendagsvlieg?</h3>
+<p>De robot leeft lang maar verwerkt alles automatisch. De eendagsvlieg leeft kort maar misschien volledig aanwezig. Geen van beide is het antwoord. Het gaat erom: hoeveel van jouw tijd ben jij er echt bij?</p>
+<p>Bewustzijn begint niet met grote veranderingen. Het begint met het waarnemen van je eigen automatisme. Het moment dat je jezelf betrapt op een patroon — dat is het begin van vrijheid.</p>
+<p><em>Until you make the unconscious conscious, it will direct your life and you will call it fate.</em></p>
+        </div>
+        <button class="bi-close" onclick="toggleBlog('02')">Sluiten ↑</button>
+      </div>
+    </div>
+
+    <div class="blog-item" id="blog-03">
+      <div class="bi-header" onclick="toggleBlog('03')">
+        <div class="bi-left">
+          <span class="bi-num" style="color:#8A6A3A">03</span>
+          <div class="bi-meta">
+            <span class="bi-tag" style="color:#8A6A3A;border-color:rgba(138,106,58,.12)">De spiegel</span>
+            <span class="bi-date">20 december 2025</span>
+            <h2 class="bi-title">Through the looking glass</h2>
+            <p class="bi-preview">Er is een moment waarop je stopt met meedoen aan het spel en begint te kijken naar het spel zelf. Dat moment verandert alles.</p>
+          </div>
+        </div>
+        <div class="bi-toggle" id="toggle-03">
+          <span class="toggle-icon">+</span>
+        </div>
+      </div>
+      <div class="bi-body" id="body-03">
+        <div class="bi-quote">"Going from being in the scenery to becoming the seer. — Sri Sri Ravi Shankar"</div>
+        <div class="bi-content">
+          <p>Er is een moment waarop je stopt met meedoen aan het spel en begint te kijken naar het spel zelf. Dat moment verandert alles.</p>
+<p>Through the looking glass — door de spiegel heen. Niet meer meegesleurd worden door de scène, maar de toeschouwer worden van je eigen leven. Dat is wat Sri Sri Ravi Shankar bedoelt: <em>going from being in the scenery to becoming the seer.</em></p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">Wat betekent dat in de praktijk?</h3>
+<p>Het betekent dat je leert waarnemen zonder te oordelen. Dat je je gedachten ziet als wolken die voorbijdrijven — niet als de waarheid. Dat je je emoties voelt zonder erdoor overspoeld te worden.</p>
+<p>Dit is geen passiviteit. Het is juist de krachtigste plek. Want vanuit de positie van de toeschouwer kun je kiezen. Niet reageren vanuit patroon, maar handelen vanuit bewustzijn.</p>
+<p>De spiegel laat zien wat er is — niet wat je denkt dat er is. En die klaarheid is het geschenk.</p>
+<p><em>Wat zou je zien als je door jouw eigen spiegel heen zou kijken?</em></p>
+        </div>
+        <button class="bi-close" onclick="toggleBlog('03')">Sluiten ↑</button>
+      </div>
+    </div>
+
+    <div class="blog-item" id="blog-04">
+      <div class="bi-header" onclick="toggleBlog('04')">
+        <div class="bi-left">
+          <span class="bi-num" style="color:#C04A78">04</span>
+          <div class="bi-meta">
+            <span class="bi-tag" style="color:#C04A78;border-color:rgba(192,74,120,.15)">Ademwerk</span>
+            <span class="bi-date">15 december 2025</span>
+            <h2 class="bi-title">Adem jij vrij? Of in patronen? 7 manieren om patronen in je adem te herkennen.</h2>
+            <p class="bi-preview">Je adem is het enige autonome systeem in je lichaam dat je bewust kunt aansturen. En precies daarin zit de kracht.</p>
+          </div>
+        </div>
+        <div class="bi-toggle" id="toggle-04">
+          <span class="toggle-icon">+</span>
+        </div>
+      </div>
+      <div class="bi-body" id="body-04">
+        <div class="bi-quote">"Breath is the bridge which connects life to consciousness. — Thích Nhất Hạnh"</div>
+        <div class="bi-content">
+          <p>Je adem is het enige autonome systeem in je lichaam dat je bewust kunt aansturen. Je hart klopt automatisch. Je spijsvertering werkt automatisch. Maar je adem — die kun je kiezen. En precies daarin zit de kracht.</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">7 adempatronen die je kunt herkennen</h3>
+<p><strong>1. Hoge borstademhaling</strong> — je ademt vooral in je borst. Signaal: stress, alertheid, spanning.</p>
+<p><strong>2. Ingehouden adem</strong> — je merkt dat je je adem regelmatig inhoudt. Bij concentratie, bij stress, bij verwachting.</p>
+<p><strong>3. Snelle ademhaling</strong> — meer dan 15 ademhalingen per minuut in rust. Signaal: geactiveerd zenuwstelsel.</p>
+<p><strong>4. Oppervlakkige adem</strong> — je gebruikt maar een klein deel van je longcapaciteit.</p>
+<p><strong>5. Mondademhaling</strong> — je ademt gewoonlijk door je mond in plaats van je neus.</p>
+<p><strong>6. Onregelmatige adem</strong> — wisselend ritme, geen constante flow.</p>
+<p><strong>7. Adem die stopt bij emotie</strong> — je merkt dat je ophoudt met ademen als je iets voelt.</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">Wat kun je ermee?</h3>
+<p>Elk patroon is informatie. Geen oordeel, wel bewustzijn. Als je weet hoe je ademt, weet je hoe je leeft. En dan kun je kiezen anders te ademen — en anders te leven.</p>
+        </div>
+        <button class="bi-close" onclick="toggleBlog('04')">Sluiten ↑</button>
+      </div>
+    </div>
+
+    <div class="blog-item" id="blog-05">
+      <div class="bi-header" onclick="toggleBlog('05')">
+        <div class="bi-left">
+          <span class="bi-num" style="color:#8A6A3A">05</span>
+          <div class="bi-meta">
+            <span class="bi-tag" style="color:#8A6A3A;border-color:rgba(138,106,58,.12)">Aanwezigheid</span>
+            <span class="bi-date">10 december 2025</span>
+            <h2 class="bi-title">7 Weetjes die je leven direct terughalen naar het moment.</h2>
+            <p class="bi-preview">Aanwezig zijn klinkt simpel. Maar in de praktijk zijn we zelden volledig hier. Deze 7 inzichten halen je direct terug.</p>
+          </div>
+        </div>
+        <div class="bi-toggle" id="toggle-05">
+          <span class="toggle-icon">+</span>
+        </div>
+      </div>
+      <div class="bi-body" id="body-05">
+        <div class="bi-quote">"Every emotion is connected with the breath. If you change the breath, you can change the emotion. — Sri Sri Ravi Shankar"</div>
+        <div class="bi-content">
+          <p>Aanwezig zijn klinkt simpel. Maar in de praktijk zijn we zelden volledig hier. Ons hoofd is in het verleden of in de toekomst. Zelden in dit moment, precies hier.</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">7 inzichten die je terughalen naar het moment</h3>
+<p><strong>1.</strong> Je zenuwstelsel kent geen verschil tussen een echte dreiging en een gedachte erover. Je lichaam reageert op beide hetzelfde.</p>
+<p><strong>2.</strong> Elke emotie heeft een adempatroon. Verander de adem en de emotie verandert mee.</p>
+<p><strong>3.</strong> Het brein verwerkt 11 miljoen bits informatie per seconde. Bewust verwerken we er 40 tot 50.</p>
+<p><strong>4.</strong> Aanwezigheid is een spier. Hoe meer je hem traint, hoe sterker hij wordt.</p>
+<p><strong>5.</strong> Je lichaam is altijd in het nu. Ga terug naar je lichaam om in het moment te komen.</p>
+<p><strong>6.</strong> Stilte is niet de afwezigheid van geluid maar de aanwezigheid van jezelf.</p>
+<p><strong>7.</strong> Elk moment van bewustzijn telt. Je hoeft niet 24 uur aanwezig te zijn. Begin met één moment per dag.</p>
+<p><em>Welk van deze zeven resoneerde het meest met jou?</em></p>
+        </div>
+        <button class="bi-close" onclick="toggleBlog('05')">Sluiten ↑</button>
+      </div>
+    </div>
+
+    <div class="blog-item" id="blog-06">
+      <div class="bi-header" onclick="toggleBlog('06')">
+        <div class="bi-left">
+          <span class="bi-num" style="color:#C04A78">06</span>
+          <div class="bi-meta">
+            <span class="bi-tag" style="color:#C04A78;border-color:rgba(192,74,120,.15)">Mind & patronen</span>
+            <span class="bi-date">9 december 2025</span>
+            <h2 class="bi-title">7 Integratie tips om je gedachten te herkennen, te sturen en terug te keren naar jezelf</h2>
+            <p class="bi-preview">Je hebt naar schatting 60.000 tot 80.000 gedachten per dag. Het overgrote deel is een herhaling van gisteren.</p>
+          </div>
+        </div>
+        <div class="bi-toggle" id="toggle-06">
+          <span class="toggle-icon">+</span>
+        </div>
+      </div>
+      <div class="bi-body" id="body-06">
+        <div class="bi-quote">"You can better become Master of your own mind than Master of a thousand armies."</div>
+        <div class="bi-content">
+          <p>Je hebt naar schatting 60.000 tot 80.000 gedachten per dag. Het overgrote deel is een herhaling van gisteren. En het overgrote deel van die gedachten sturen jouw emoties, beslissingen en gedrag.</p>
+<p>De vraag is niet of je gedachten hebt. De vraag is: wie is de baas?</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">7 integratie tips</h3>
+<p><strong>1. Observeer zonder te oordelen.</strong> Zie je gedachten als voorbijgaande wolken. Jij bent de lucht, niet de wolk.</p>
+<p><strong>2. Stel de vraag: is dit waar?</strong> Veel gedachten voelen als feiten maar zijn interpretaties.</p>
+<p><strong>3. Gebruik je lichaam als anker.</strong> Voel je voeten op de grond. Dat brengt je terug naar het nu.</p>
+<p><strong>4. Herken het patroon.</strong> Welke gedachten komen steeds terug? Patronen zijn geen vijanden — ze zijn informatie.</p>
+<p><strong>5. Schrijf het op.</strong> Gedachten die je opschrijft verlaten je hoofd. Op papier worden ze zichtbaar en hanteerbaar.</p>
+<p><strong>6. Kies bewust je focus.</strong> Waar jij je aandacht op richt, groeit. Dit is geen positief denken — dit is energiemanagement.</p>
+<p><strong>7. Keer terug naar adem.</strong> Elke keer dat je merkt dat je in je hoofd zit: één bewuste ademhaling. Dat is genoeg.</p>
+        </div>
+        <button class="bi-close" onclick="toggleBlog('06')">Sluiten ↑</button>
+      </div>
+    </div>
+
+    <div class="blog-item" id="blog-07">
+      <div class="bi-header" onclick="toggleBlog('07')">
+        <div class="bi-left">
+          <span class="bi-num" style="color:#8A6A3A">07</span>
+          <div class="bi-meta">
+            <span class="bi-tag" style="color:#8A6A3A;border-color:rgba(138,106,58,.12)">Authenticiteit</span>
+            <span class="bi-date">1 november 2025</span>
+            <h2 class="bi-title">Leef jij jouw authentieke zelf</h2>
+            <p class="bi-preview">Authenticiteit is niet iets wat je bereikt. Het is iets wat je steeds opnieuw kiest — laag voor laag, moment voor moment.</p>
+          </div>
+        </div>
+        <div class="bi-toggle" id="toggle-07">
+          <span class="toggle-icon">+</span>
+        </div>
+      </div>
+      <div class="bi-body" id="body-07">
+        <div class="bi-quote">"Elk OORdeel is er één naar jezelf. Durf jij eerlijk te kijken, horen, te reflecteren en te voelen?"</div>
+        <div class="bi-content">
+          <p>Authenticiteit is niet iets wat je bereikt. Het is iets wat je steeds opnieuw kiest — laag voor laag, moment voor moment.</p>
+<p>We zijn allemaal begonnen als volledig authentieke wezens. En gaandeweg leerden we wie we moesten zijn. Thuis, op school, in relaties, in onze carrière. Laag voor laag bouwden we een versie van onszelf die paste — die veilig was, die goedgekeurd werd.</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">Wat is authenticiteit echt?</h3>
+<p>Authenticiteit is niet "alles zeggen wat je denkt". Het is leven in lijn met wie je werkelijk bent. Voorbij de rollen, de verwachtingen, de aangeleerde overtuigingen.</p>
+<p>Dat klinkt simpel. En het is tegelijkertijd een van de moeilijkste dingen die er zijn — omdat het vraagt om eerlijk te kijken naar de plaatsen waar je jezelf hebt verraden.</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">Het oordeel als spiegel</h3>
+<p>Elk oordeel dat je hebt over anderen is een projectie. Wat je in de ander irriteert, is vaak iets wat je in jezelf onderdrukt. En elk oordeel dat je hebt over jezelf, is een barrière voor authenticiteit.</p>
+<p>De eerste stap: durf te kijken. Zonder oordeel. Alleen waarnemen. Wie ben ik als niemand kijkt?</p>
+<p><em>Dat is waar het echte zelf wacht.</em></p>
+        </div>
+        <button class="bi-close" onclick="toggleBlog('07')">Sluiten ↑</button>
+      </div>
+    </div>
+
+    <div class="blog-item" id="blog-08">
+      <div class="bi-header" onclick="toggleBlog('08')">
+        <div class="bi-left">
+          <span class="bi-num" style="color:#C04A78">08</span>
+          <div class="bi-meta">
+            <span class="bi-tag" style="color:#C04A78;border-color:rgba(192,74,120,.15)">Loslaten & vergeving</span>
+            <span class="bi-date">15 september 2025</span>
+            <h2 class="bi-title">Loslaten is zo gemakkelijk, toch?</h2>
+            <p class="bi-preview">Loslaten. Iedereen zegt dat je het moet doen. Niemand vertelt je hoe het echt voelt van binnen.</p>
+          </div>
+        </div>
+        <div class="bi-toggle" id="toggle-08">
+          <span class="toggle-icon">+</span>
+        </div>
+      </div>
+      <div class="bi-body" id="body-08">
+        <div class="bi-quote">"Vergeving is geen daad van zwakte. Het is de moed om je eigen hart te bevrijden. — Mahatma Gandhi"</div>
+        <div class="bi-content">
+          <p>Loslaten. Iedereen zegt dat je het moet doen. Niemand vertelt je hoe het echt voelt van binnen.</p>
+<p>Want loslaten is niet één moment. Het is een proces. Soms een lang, pijnlijk, kronkelend proces. En in die kronkels zit de echte groei.</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">Wat is loslaten eigenlijk?</h3>
+<p>Loslaten is niet vergeten. Het is niet doen alsof iets niet gebeurd is. Het is niet zwak zijn of opgeven.</p>
+<p>Loslaten is de keuze om te stoppen met vasthouden aan hoe het had moeten zijn — en te openen naar hoe het is.</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">De rol van vergeving</h3>
+<p>Vergeving is het sleutelstuk van loslaten. Maar vergeving is niet voor de ander. Vergeving is voor jou. Het is de keuze om jezelf te bevrijden van het gewicht van wrok, pijn of teleurstelling.</p>
+<p>Gandhi had gelijk: het is geen zwakte. Het vraagt moed. De moed om te kiezen voor je eigen vrijheid boven het gelijk hebben.</p>
+<p>En dan — dan ontstaat er ruimte. Ruimte voor iets nieuws. Ruimte voor jou.</p>
+<p><em>Wat zou jij loslaten als je wist dat het je zou bevrijden?</em></p>
+        </div>
+        <button class="bi-close" onclick="toggleBlog('08')">Sluiten ↑</button>
+      </div>
+    </div>
+
+    <div class="blog-item" id="blog-09">
+      <div class="bi-header" onclick="toggleBlog('09')">
+        <div class="bi-left">
+          <span class="bi-num" style="color:#8A6A3A">09</span>
+          <div class="bi-meta">
+            <span class="bi-tag" style="color:#8A6A3A;border-color:rgba(138,106,58,.12)">Bewustzijn & helderheid</span>
+            <span class="bi-date">11 september 2025</span>
+            <h2 class="bi-title">Van FM naar DAB — Waarom je bewustzijn een nieuwe decoder nodig heeft</h2>
+            <p class="bi-preview">FM-radio werkt. Maar soms is de ontvangst slecht, zit er ruis op het signaal. DAB+ is helderder, scherper, zonder ruis.</p>
+          </div>
+        </div>
+        <div class="bi-toggle" id="toggle-09">
+          <span class="toggle-icon">+</span>
+        </div>
+      </div>
+      <div class="bi-body" id="body-09">
+        <div class="bi-quote">"De zoektocht naar helderheid, zonder ruis."</div>
+        <div class="bi-content">
+          <p>FM-radio werkt. Maar soms is de ontvangst slecht, zit er ruis op het signaal, word je gestoord door wat er omheen is. DAB+ is helderder, scherper, zonder ruis. Hetzelfde signaal — een betere ontvanger.</p>
+<p>Je bewustzijn werkt precies zo.</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">Het signaal is er altijd</h3>
+<p>Jij weet wie je bent. Jij weet wat je wil. Jij weet wat goed voor je is. Het signaal is er altijd geweest. Maar de ontvangst? Die is vertroebeld door ruis. Door gedachten, patronen, aangeleerde overtuigingen, stress, verwachtingen.</p>
+<p>Het werk is niet het signaal vinden. Het werk is de decoder upgraden.</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">Hoe upgrade je jouw decoder?</h3>
+<p>Door stilte te creëren. Door patronen te herkennen. Door je zenuwstelsel tot rust te brengen. Door te leren luisteren naar de zachte stem onder het lawaai.</p>
+<p>Die stem is er altijd geweest. Die stem is jij — zonder de ruis.</p>
+<p><em>Van FM naar DAB. Van ruis naar helderheid. Van automatisme naar bewustzijn.</em></p>
+        </div>
+        <button class="bi-close" onclick="toggleBlog('09')">Sluiten ↑</button>
+      </div>
+    </div>
+
+    <div class="blog-item" id="blog-10">
+      <div class="bi-header" onclick="toggleBlog('10')">
+        <div class="bi-left">
+          <span class="bi-num" style="color:#C04A78">10</span>
+          <div class="bi-meta">
+            <span class="bi-tag" style="color:#C04A78;border-color:rgba(192,74,120,.15)">Mind & leiderschap</span>
+            <span class="bi-date">8 september 2025</span>
+            <h2 class="bi-title">Gebruik je mind als kompas, niet als commandant</h2>
+            <p class="bi-preview">Je mind is een prachtig instrument. Maar een instrument dat het commando heeft overgenomen.</p>
+          </div>
+        </div>
+        <div class="bi-toggle" id="toggle-10">
+          <span class="toggle-icon">+</span>
+        </div>
+      </div>
+      <div class="bi-body" id="body-10">
+        <div class="bi-quote">"En wie ben jij in de stroom van gedachten en kan je ook kijken ernaar?"</div>
+        <div class="bi-content">
+          <p>Je mind is een prachtig instrument. Analyserend, planmatig, oplossingsgericht. Maar ergens onderweg is dat instrument het commando gaan voeren.</p>
+<p>En nu dicteert de mind wanneer je mag rusten, of je goed genoeg bent, wat er morgen kan gebeuren, wat anderen van je denken.</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">Kompas vs commandant</h3>
+<p>Een kompas geeft richting. Het vertelt je waar noorden is — maar het loopt niet voor je uit. Het forceert niets. Het is stil en betrouwbaar aanwezig.</p>
+<p>Een commandant dicteert. Die weet het beter. Die vertrouwt het proces niet. Die heeft controle nodig.</p>
+<p>Jouw mind als kompas: informatie verzamelen, patronen herkennen, mogelijkheden zien — en dan de stilte in gaan voor de echte wijsheid.</p>
+<h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">Hoe maak je de switch?</h3>
+<p>Begin met waarnemen. Wie spreekt er nu? Is dit mijn mind of mijn weten? Is dit angst of intuïtie? Is dit controle of helderheid?</p>
+<p>Het verschil voelen kost oefening. Maar het is de meest waardevolle oefening die er is.</p>
+<p><em>Want als jij de baas bent over je mind — en niet andersom — dan leef je vanuit kracht. Vanuit resonantie. Vanuit wie je werkelijk bent.</em></p>
+        </div>
+        <button class="bi-close" onclick="toggleBlog('10')">Sluiten ↑</button>
+      </div>
+    </div>
+</section>
+
+<section class="sec-cta">
+  <h2>Klaar om niet alleen<br>een leven te hebben — maar te <em>leven?</em></h2>
+  <p>Eerlijk gesprek. Geen druk. Gewoon kijken of het resoneert.</p>
+  <a href="https://calendar.app.google/i1XXp48q3C2p34ef7" target="_blank" class="btn">Plan een gesprek <span class="ar"></span></a>
+</section>
+
+<footer>
+  <div class="fl">Elly Elizabeth Korving</div>
+  <div class="fc">© 2025 Elly Korving · Alterego B.V.</div>
+</footer>
+
+<script>
+function toggleBlog(num) {
+  const item = document.getElementById('blog-' + num);
+  const isOpen = item.classList.contains('open');
+  
+  // Sluit alle open blogs
+  document.querySelectorAll('.blog-item.open').forEach(el => {
+    el.classList.remove('open');
+  });
+  
+  // Open de geklikte als hij dicht was
+  if (!isOpen) {
+    item.classList.add('open');
+    // Scroll er naartoe
+    setTimeout(() => {
+      item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+</script>
+</body>
+</html>

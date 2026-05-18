@@ -1290,6 +1290,24 @@ html, body { margin: 0; padding: 0; }
 .aln-p{font-family:'Cormorant Garamond',serif;font-size:1.25rem;line-height:1.8;color:#1A1614;margin-bottom:1.4rem;}
 .aln-slot{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:#C04A78;margin-top:2.5rem;letter-spacing:.02em;}
 
+
+/* === RIJKE KAARTEN === */
+.pcard-rich{display:flex;flex-direction:column;padding:0;overflow:hidden;border-radius:16px;}
+.pc-rich-top{padding:1.5rem 1.5rem .5rem;text-align:center;}
+.pc-brand{font-family:'Raleway',sans-serif;font-size:.55rem;letter-spacing:.3em;opacity:.6;margin-bottom:.3rem;}
+.pc-num{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;line-height:1;}
+.pc-tag{font-family:'Raleway',sans-serif;font-size:.55rem;letter-spacing:.2em;margin-top:.3rem;}
+.pc-rich-img{width:100%;height:180px;overflow:hidden;flex-shrink:0;}
+.pc-rich-img img{width:100%;height:100%;object-fit:cover;}
+.pc-rich-body{padding:1.2rem 1.5rem;flex:1;}
+.pc-rich-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;line-height:1.3;margin-bottom:.4rem;color:#1A1614;}
+.pc-rich-sub{font-family:'Cormorant Garamond',serif;font-size:1rem;margin-bottom:.8rem;color:#1A1614;opacity:.75;}
+.pc-rich-features{display:flex;flex-direction:column;gap:.5rem;margin-bottom:.8rem;}
+.pc-feat{display:flex;gap:.6rem;align-items:flex-start;font-family:'Raleway',sans-serif;font-size:.7rem;line-height:1.5;color:#1A1614;opacity:.8;}
+.pc-feat-tag{padding:.15rem .5rem;border-radius:20px;font-size:.55rem;letter-spacing:.1em;font-weight:600;flex-shrink:0;}
+.pc-feat-icon{flex-shrink:0;font-size:.8rem;opacity:.6;}
+.pc-footer-tags{font-family:'Raleway',sans-serif;font-size:.5rem;letter-spacing:.2em;opacity:.5;margin-top:.5rem;}
+
 </style>
 </head>
 <body>
@@ -1420,48 +1438,123 @@ html, body { margin: 0; padding: 0; }
 
   <div class="cards-scroll" id="cardsScroll">
 
-    <div class="pcard reveal-scale">
-      <div class="pc-image">
-        <img src="images/card01.jpg" alt="01 The Awareness Reset">
+    <!-- KAART 01 -->
+    <div class="pcard pcard-rich reveal-scale" style="background:linear-gradient(160deg,#f5f0e8 0%,#e8e0d0 100%);">
+      <div class="pc-rich-top">
+        <div class="pc-brand">ELLY KORVING</div>
+        <div class="pc-num" style="color:#2a4a3a;">01</div>
+        <div class="pc-tag" style="color:#2a4a3a;">365 GATES OF AWARENESS</div>
+      </div>
+      <div class="pc-rich-img">
+        <img src="images/card01.jpg" alt="365 Gates of Awareness">
+      </div>
+      <div class="pc-rich-body">
+        <div class="pc-rich-title">Stap 1. Bewust worden.</div>
+        <div class="pc-rich-sub"><em>365 dagen lang. Elke dag één vraag.</em></div>
+        <div class="pc-rich-features">
+          <div class="pc-feat"><span class="pc-feat-tag" style="background:#2a4a3a;color:#f5f0e8;">GRATIS</span><span>365 dagen. Elke dag één vraag die je helpt vanuit een ander perspectief te kijken.</span></div>
+          <div class="pc-feat"><span class="pc-feat-icon">◯</span><span>Kleine vraag, grote shift. Geen lange theorieën — wel dagelijkse inzichten.</span></div>
+        </div>
+        <div class="pc-footer-tags">365 DAGEN LANG · GRATIS · ELKE DAG 1 VRAAG</div>
       </div>
       <div class="pc-btn-wrap">
-        <a href="https://110lifeandbusiness.com/checkout/the-awareness-reset" target="_blank" class="pc-btn">Direct beginnen <span class="ar"></span></a>
+        <a href="#contact" class="pc-btn" style="background:#2a4a3a;color:#f5f0e8;">Direct beginnen <span class="ar"></span></a>
       </div>
     </div>
 
-    <div class="pcard reveal-scale d1">
-      <div class="pc-image">
-        <img src="images/card02.jpg" alt="02 Entering Transformation">
+    <!-- KAART 02 -->
+    <div class="pcard pcard-rich reveal-scale d1" style="background:linear-gradient(160deg,#f0edf8 0%,#ddd5f0 100%);">
+      <div class="pc-rich-top">
+        <div class="pc-brand">ELLY KORVING</div>
+        <div class="pc-num" style="color:#3d2a7a;">02</div>
+        <div class="pc-tag" style="color:#3d2a7a;">THE AWARENESS RESET</div>
+      </div>
+      <div class="pc-rich-img">
+        <img src="images/card02.jpg" alt="The Awareness Reset">
+      </div>
+      <div class="pc-rich-body">
+        <div class="pc-rich-title">Je zenuwstelsel tot rust.</div>
+        <div class="pc-rich-sub"><em>Je kern naar boven.</em></div>
+        <div class="pc-rich-features">
+          <div class="pc-feat"><span class="pc-feat-icon">◇</span><span>12 krachtige reflectievragen die jouw jaar openen en je patronen blootleggen.</span></div>
+          <div class="pc-feat"><span class="pc-feat-icon">◇</span><span>4 overzichtelijke thema's: herkenning, emotie, verlangen en groei.</span></div>
+          <div class="pc-feat"><span class="pc-feat-icon">◇</span><span>Jouw jaaroverzicht, awareness shifts en jouw woorden.</span></div>
+        </div>
+        <div class="pc-footer-tags">THE AWARENESS RESET · JOUW RESET · JOUW NIEUWE BEGIN</div>
       </div>
       <div class="pc-btn-wrap">
-        <a href="#contact" class="pc-btn">Meer voelen <span class="ar"></span></a>
+        <a href="#contact" class="pc-btn" style="background:#3d2a7a;color:#fff;">Meer voelen <span class="ar"></span></a>
       </div>
     </div>
 
-    <div class="pcard reveal-scale d2">
-      <div class="pc-image">
-        <img src="images/card03.jpg" alt="03 Versnel je Bewustzijn met AI">
+    <!-- KAART 03 -->
+    <div class="pcard pcard-rich reveal-scale d2" style="background:linear-gradient(160deg,#fdf0f5 0%,#f0d8e8 100%);">
+      <div class="pc-rich-top">
+        <div class="pc-brand">ELLY KORVING</div>
+        <div class="pc-num" style="color:#C04A78;">03</div>
+        <div class="pc-tag" style="color:#C04A78;">ENTERING TRANSFORMATION</div>
+      </div>
+      <div class="pc-rich-img">
+        <img src="images/card03.jpg" alt="Entering Transformation">
+      </div>
+      <div class="pc-rich-body">
+        <div class="pc-rich-title">JIJ bepaalt wie je bent.</div>
+        <div class="pc-rich-features">
+          <div class="pc-feat"><span class="pc-feat-icon" style="color:#C04A78;">◯</span><span>Identiteit — Ontdek wie je werkelijk bent en vergroot je zelfbeeld vanuit bewustzijn.</span></div>
+          <div class="pc-feat"><span class="pc-feat-icon" style="color:#C04A78;">◯</span><span>Fundatie — Bouw een stevige basis van innerlijke rust, waarden en zelfleiderschap.</span></div>
+          <div class="pc-feat"><span class="pc-feat-icon" style="color:#C04A78;">◯</span><span>Resultaat — Creëer een leven dat klopt met wie je bent en wat je hier komt doen.</span></div>
+        </div>
+        <div class="pc-footer-tags">12 STAPPEN · TRANSFORMATIE · JIJ</div>
       </div>
       <div class="pc-btn-wrap">
-        <a href="#contact" class="pc-btn pc-btn-flash">Meer voelen <span class="ar"></span></a>
+        <a href="#contact" class="pc-btn" style="background:#C04A78;color:#fff;">Meer voelen <span class="ar"></span></a>
       </div>
     </div>
 
-    <div class="pcard reveal-scale d3">
-      <div class="pc-image">
-        <img src="images/card04.jpg" alt="04 Being the Laws of My Universe">
+    <!-- KAART 04 -->
+    <div class="pcard pcard-rich reveal-scale d3" style="background:linear-gradient(160deg,#e8ecf5 0%,#c8d4e8 100%);">
+      <div class="pc-rich-top">
+        <div class="pc-brand">ELLY KORVING</div>
+        <div class="pc-num" style="color:#2a3a6a;">04</div>
+        <div class="pc-tag" style="color:#2a3a6a;">VERSNEL JE BEWUSTZIJN MET AI</div>
+      </div>
+      <div class="pc-rich-img">
+        <img src="images/card04.jpg" alt="Versnel je Bewustzijn met AI">
+      </div>
+      <div class="pc-rich-body">
+        <div class="pc-rich-title">Versnel je bewustzijn met AI.</div>
+        <div class="pc-rich-sub"><em>21 dagen. Online.</em></div>
+        <div class="pc-rich-features">
+          <div class="pc-feat"><span class="pc-feat-icon" style="color:#2a3a6a;">◇</span><span>Meer helderheid, rust en richting in 21 dagen.</span></div>
+          <div class="pc-feat"><span class="pc-feat-icon" style="color:#2a3a6a;">◇</span><span>Leer hoe je het heft in handen neemt — niet door harder te werken, maar door betere vragen te stellen.</span></div>
+        </div>
+        <div class="pc-footer-tags">21 DAGEN · ONLINE</div>
       </div>
       <div class="pc-btn-wrap">
-        <a href="#contact" class="pc-btn pc-btn-flash">Meer voelen <span class="ar"></span></a>
+        <a href="#contact" class="pc-btn" style="background:#2a3a6a;color:#fff;">Meer voelen <span class="ar"></span></a>
       </div>
     </div>
 
-    <div class="pcard reveal-scale d4">
-      <div class="pc-image">
-        <img src="images/card05.jpg" alt="05 365">
+    <!-- KAART 05 -->
+    <div class="pcard pcard-rich reveal-scale d4" style="background:linear-gradient(160deg,#1a1614 0%,#2a2018 100%);">
+      <div class="pc-rich-top">
+        <div class="pc-brand" style="color:rgba(212,180,120,.7);">ELLY KORVING</div>
+        <div class="pc-num" style="color:#d4b478;">05</div>
+        <div class="pc-tag" style="color:#d4b478;">BEING THE LAWS OF MY UNIVERSE</div>
+      </div>
+      <div class="pc-rich-img">
+        <img src="images/card05.jpg" alt="Being the Laws of My Universe">
+      </div>
+      <div class="pc-rich-body" style="color:#f5f0e8;">
+        <div class="pc-rich-title" style="color:#f5f0e8;">Dit is wat je krijgt: <em style="color:#d4b478;">VERdieping</em></div>
+        <div class="pc-rich-features">
+          <div class="pc-feat" style="color:rgba(245,240,232,.75);"><span class="pc-feat-icon" style="color:#d4b478;">◈</span><span>De zeven universele wetten — niet als filosofie maar als levende krachten in jouw werk en leven.</span></div>
+          <div class="pc-feat" style="color:rgba(245,240,232,.75);"><span class="pc-feat-icon" style="color:#d4b478;">◈</span><span>Hoe je bewust vanuit de wetten begint te creëren.</span></div>
+        </div>
+        <div class="pc-footer-tags" style="color:rgba(212,180,120,.6);">LIVE TRAJECT · DIEPSTE LAAG</div>
       </div>
       <div class="pc-btn-wrap">
-        <a href="#contact" class="pc-btn">Meer voelen <span class="ar"></span></a>
+        <a href="#contact" class="pc-btn" style="background:transparent;border:1px solid #d4b478;color:#d4b478;">Meer voelen <span class="ar"></span></a>
       </div>
     </div>
 

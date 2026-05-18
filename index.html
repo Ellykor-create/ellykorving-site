@@ -438,7 +438,7 @@ nav.s .hb span { background: var(--pink); height: 2px; }
 .rumi-bg-img { position: absolute; inset: 0; z-index: 0; }
 .rumi-bg-img img {
   width: 100%; height: 100%;
-  object-fit: cover; object-position: center 30%;
+  object-fit: cover; object-position: center 60%;
   opacity: .75;
   filter: brightness(.85) contrast(1.1) saturate(.6);
 }
@@ -497,7 +497,7 @@ footer {
   .hc { padding: 0 5rem; max-width: 580px; text-align: left; }
   .rumi-strip { padding: 6rem 5rem; }
   .rumi-network { min-height: 580px; padding: 8rem 5rem !important; }
-  .rumi-bg-img img { object-position: center 25%; }
+  .rumi-bg-img img { object-position: center 60%; }
   .sec-her { padding: 6rem 5rem 7rem; }
   footer { flex-direction: row; justify-content: space-between; padding: 2rem 5rem; text-align: left; }
 }
@@ -510,7 +510,7 @@ footer {
   .hero-sub { text-align: left !important; }
   .lbl, .her-pre { font-size: max(.52rem, 9px); }
   .her-p { font-size: clamp(1.15rem, 4.5vw, 1.6rem) !important; }
-  .rumi-quote { font-size: clamp(1.2rem, 5vw, 1.6rem) !important; }
+  .rumi-quote { font-size: clamp(1.8rem, 5vw, 3rem) !important; }
 }
 
 /* ═══════════════════════════════════════
@@ -970,7 +970,7 @@ footer{padding:2.5rem 1.8rem;background:#1A1410;display:flex;flex-direction:colu
 }
 .rumi-quote{
   font-family:var(--serif);
-  font-size:clamp(1.3rem,4.5vw,1.9rem);
+  font-size:clamp(2rem,5.5vw,3.2rem);
   font-weight:300;
   font-style:italic;
   line-height:1.9;
@@ -998,7 +998,7 @@ footer{padding:2.5rem 1.8rem;background:#1A1410;display:flex;flex-direction:colu
 
 @media(min-width:768px){
   .rumi-strip{padding:6rem 5rem;align-items:center;justify-content:center}
-  .rumi-quote{font-size:clamp(1.5rem,2.2vw,2.1rem)}
+  .rumi-quote{font-size:clamp(2rem,5.5vw,3.2rem)}
 }
 
 
@@ -1100,7 +1100,7 @@ footer{padding:2.5rem 1.8rem;background:#1A1410;display:flex;flex-direction:colu
   }
   .hero-sub{font-size:clamp(1rem,4vw,1.2rem) !important;}
   .her-p{font-size:clamp(1.15rem,4.5vw,1.6rem) !important;}
-  .rumi-quote{font-size:clamp(1.2rem,5vw,1.6rem) !important;}
+  .rumi-quote{font-size:clamp(1.8rem,5vw,3rem) !important;}
   .pad-sub,.wie-sub,.bio-intro,.prd-p,.dbody,.wi-body,.lc-body{
     font-size:max(.74rem,12px) !important;
     line-height:1.85 !important;
@@ -1232,7 +1232,7 @@ nav.s .hb{opacity:1 !important;}
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center 30%;
+  object-position:center 60%;
   opacity:.75;
   filter:brightness(.85) contrast(1.1) saturate(.6);
 }
@@ -1248,7 +1248,7 @@ nav.s .hb{opacity:1 !important;}
     padding:8rem 5rem !important;
   }
   .rumi-bg-img img{
-    object-position:center 25%;
+    object-position:center 60%;
   }
 }
 
@@ -1273,7 +1273,46 @@ html, body { margin: 0; padding: 0; }
 
 
 
-  </style>
+  
+/* === TICKER === */
+.ticker-wrap{overflow:hidden;background:#1A1614;padding:18px 0;border-top:1px solid rgba(245,242,236,.08);border-bottom:1px solid rgba(245,242,236,.08);}
+.ticker{display:flex;gap:0;white-space:nowrap;animation:ticker 30s linear infinite;}
+.ticker span{font-family:'Raleway',sans-serif;font-size:.8rem;font-weight:300;letter-spacing:.25em;text-transform:lowercase;color:rgba(245,242,236,.45);padding:0 1.2rem;}
+.ticker-dot{color:#C04A78 !important;padding:0 !important;font-size:.6rem;vertical-align:middle;}
+.ticker:hover{animation-play-state:paused;}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+
+/* === ALIGNMENT SECTIE === */
+.sec-alignment{background:#F5F2EC;padding:7rem 2rem;}
+.sec-alignment .inner{max-width:720px;margin:0 auto;text-align:center;}
+.aln-pre{font-family:'Raleway',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.35em;text-transform:uppercase;color:#C04A78;margin-bottom:2.5rem;}
+.aln-p{font-family:'Cormorant Garamond',serif;font-size:1.25rem;line-height:1.8;color:#1A1614;margin-bottom:1.4rem;}
+.aln-slot{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:#C04A78;margin-top:2.5rem;letter-spacing:.02em;}
+
+
+/* === RIJKE KAARTEN === */
+.pcard-rich{display:flex;flex-direction:column;padding:0;overflow:hidden;border-radius:16px;}
+.pc-rich-top{padding:1.5rem 1.5rem .5rem;text-align:center;}
+.pc-brand{font-family:'Raleway',sans-serif;font-size:.55rem;letter-spacing:.3em;opacity:.6;margin-bottom:.3rem;}
+.pc-num{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;line-height:1;}
+.pc-tag{font-family:'Raleway',sans-serif;font-size:.55rem;letter-spacing:.2em;margin-top:.3rem;}
+.pc-rich-img{width:100%;height:180px;overflow:hidden;flex-shrink:0;}
+.pc-rich-img img{width:100%;height:100%;object-fit:cover;}
+.pc-rich-body{padding:1.2rem 1.5rem;flex:1;}
+.pc-rich-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;line-height:1.3;margin-bottom:.4rem;color:#1A1614;}
+.pc-rich-sub{font-family:'Cormorant Garamond',serif;font-size:1rem;margin-bottom:.8rem;color:#1A1614;opacity:.75;}
+.pc-rich-features{display:flex;flex-direction:column;gap:.5rem;margin-bottom:.8rem;}
+.pc-feat{display:flex;gap:.6rem;align-items:flex-start;font-family:'Raleway',sans-serif;font-size:.7rem;line-height:1.5;color:#1A1614;opacity:.8;}
+.pc-feat-tag{padding:.15rem .5rem;border-radius:20px;font-size:.55rem;letter-spacing:.1em;font-weight:600;flex-shrink:0;}
+.pc-feat-icon{flex-shrink:0;font-size:.8rem;opacity:.6;}
+.pc-footer-tags{font-family:'Raleway',sans-serif;font-size:.5rem;letter-spacing:.2em;opacity:.5;margin-top:.5rem;}
+
+
+/* === HERO SPIEGEL === */
+#hero-img { transform: scaleX(-1) !important; }
+
+</style>
 </head>
 <body>
 
@@ -1307,52 +1346,63 @@ html, body { margin: 0; padding: 0; }
 <section class="hero" style="background:#1A1614;">
   <div class="hi"><img id="hero-img" src="images/hero.jpg" alt="Elly Korving"></div>
   <div class="hc">
-    <div class="hero-eyebrow reveal d1">Harmonic Mirror</div>
+    <div class="hero-eyebrow reveal d1">HARMONIC MIRROR</div>
     <h1 id="hero-h1">Being a life<br>is not the same<br>as <em>living.</em></h1>
     <div class="hero-divider" id="hero-div"></div>
-    <p class="hero-sub reveal d3">Je bent hier om te activeren.<br>Je bent hier om te herinneren.<br><em>Ik begeleid je op die weg.</em></p>
+    <p class="hero-sub reveal d3">Je lichaam voelt wat je hoofd ontkent.<br>Je energie vertelt altijd de waarheid.<br><em>Alignment brengt je terug naar wie je werkelijk bent.</em></p>
     <a href="#wie" class="btn reveal d4">Ontdek wie ik ben <span class="ar"></span></a>
   </div>
   <div class="scroll-hint reveal d5"><div class="scroll-dot"></div>Scroll</div>
 </section>
 
-<section class="sec-her">
+<section class="sec-alignment">
   <div class="inner">
-    <div class="her-pre reveal">De spiegel</div>
-    <p class="her-p reveal d1">Er is een verschil tussen een leven hebben en werkelijk leven.</p>
-    <p class="her-p reveal d2">Je voelt het. Dat vage maar zekere weten dat er méér in je zit dan wat je nu laat zien.</p>
-    <p class="her-p reveal d3"><strong>Dat is geen inbeelding. Dat is een activering.</strong></p>
-    <p class="her-p reveal d4">Een activering van wie je was vóór de rollen. Vóór de verwachtingen. Vóór de automaat.</p>
-    <div class="her-breuk reveal d5"></div>
-    <p class="her-p reveal">Jouw zenuwstelsel weet het al.<br>Je lichaam weet het al.</p>
-    <p class="her-p reveal d1">Ik ben de spiegel die dat zichtbaar maakt. De activator die jou herinnert. Zodat je niet alleen een leven <em>hebt</em> maar werkelijk <em>leeft.</em></p>
-    <div class="her-breuk reveal d2"></div>
-    <p class="her-slot reveal d3">Being a life is not the same as <em>living.</em><br>Jij bent hier om te leven.</p>
+    <div class="aln-pre reveal">ALIGNMENT</div>
+    <p class="aln-p reveal d1">Alignment gaat niet over perfect zijn. Het gaat over leven op een manier die klopt met wie je werkelijk bent.</p>
+    <p class="aln-p reveal d2">Veel mensen leven vanuit aanpassing. Doorgaan. Voldoen aan verwachtingen. Vastzitten in patronen zonder te begrijpen waarom ze zich leeg, onrustig of afgesneden voelen.</p>
+    <p class="aln-p reveal d2">Van buiten lijkt alles op orde. Van binnen voelt het zwaar.</p>
+    <p class="aln-p reveal d3">Je lichaam merkt dat vaak eerder op dan je hoofd. Spanning. Vermoeidheid. Onrust. Twijfel. Signalen dat je leeft op automatische piloot.</p>
+    <p class="aln-p reveal d3">We zijn geconditioneerd om te overleven. Om te haasten. Te presteren. Controle te houden. Maar niet om werkelijk te voelen wat klopt.</p>
+    <p class="aln-p reveal d4">Alignment ontstaat wanneer je opnieuw leert luisteren naar jezelf. Wanneer je keuzes maakt vanuit helderheid in plaats van angst, druk of gewoonte.</p>
+    <p class="aln-p reveal d4">Dan verandert niet alleen hoe je je voelt, maar ook hoe je leeft, werkt en verbindt.</p>
+    <p class="aln-p reveal d5">Je energie wordt rustiger. Je keuzes worden helderder. Je leven voelt weer als van jou.</p>
+    <p class="aln-slot reveal d5"><em>You cannot create a different reality from the same identity.</em></p>
   </div>
 </section>
-<div class="glow-line"></div>
 
-<div class="logos">
-  <span class="log">Radio Aalsmeer</span>
-  <span class="log">110 Life &amp; Business</span>
-  <span class="log">Alterego Branding</span>
-  <span class="log">Art of Living</span>
+
+
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>bewustzijn</span><span class="ticker-dot">·</span>
+    <span>identiteit</span><span class="ticker-dot">·</span>
+    <span>resonantie</span><span class="ticker-dot">·</span>
+    <span>zenuwstelsel</span><span class="ticker-dot">·</span>
+    <span>spiegel</span><span class="ticker-dot">·</span>
+    <span>positionering</span><span class="ticker-dot">·</span>
+    <span>stilte</span><span class="ticker-dot">·</span>
+    <span>waarneming</span><span class="ticker-dot">·</span>
+    <span>alignment</span><span class="ticker-dot">·</span>
+    <span>imagination</span><span class="ticker-dot">·</span>
+    <span>bewustzijn</span><span class="ticker-dot">·</span>
+    <span>identiteit</span><span class="ticker-dot">·</span>
+    <span>resonantie</span><span class="ticker-dot">·</span>
+    <span>zenuwstelsel</span><span class="ticker-dot">·</span>
+    <span>spiegel</span><span class="ticker-dot">·</span>
+    <span>positionering</span><span class="ticker-dot">·</span>
+    <span>stilte</span><span class="ticker-dot">·</span>
+    <span>waarneming</span><span class="ticker-dot">·</span>
+    <span>alignment</span><span class="ticker-dot">·</span>
+    <span>imagination</span><span class="ticker-dot">·</span>
+  </div>
 </div>
-
-<section class="rumi-strip">
-  <div class="rumi-bottom-line"></div>
-  <div class="rumi-inner">
-    <span class="rumi-mark">"</span>
-    <p class="rumi-quote">Out beyond ideas of wrongdoing<br>and rightdoing, there is a <em>field.</em><br>I'll meet you there.</p>
-    <div class="rumi-attr">Rumi</div>
-  </div>
-</section>
 
 <section class="fp">
   <div class="fp-img" id="fp-img"><img src="images/fp.jpg" alt="Elly Korving"></div>
   <div class="fp-inner">
-    <h2 class="reveal">Being a life<br>is not the same<br>as <em>living.</em></h2>
-    <p class="reveal d2">Er is een verschil tussen een leven hebben en werkelijk leven.<br>Ik help je dat verschil voelen en van daaruit bewegen.</p>
+    <h2 class="reveal">Patronen herhalen zich<br>totdat je ze <em>ziet.</em></h2>
+    <p class="reveal d2">Je verbeeldingskracht is wat je laat kiezen<br>voor iets nieuws.</p>
   </div>
 </section>
 
@@ -1363,15 +1413,13 @@ html, body { margin: 0; padding: 0; }
     <p class="wie-sub reveal d2">Drie rollen. Één beweging. Altijd vertrekkend van binnenuit vanuit wie jij bent.</p>
   </div>
   <div class="wie-items">
-    <div class="wie-item reveal d1"><div class="wi-n">I</div><div><div class="wi-title">De Harmonic Mirror</div><div class="wi-body">Ik ben geen coach die je vertelt wat je moet doen. Ik ben de spiegel die zo helder is dat jij jezelf erin herkent. Je eigen patronen, je eigen kracht, je eigen waarheid.</div></div></div>
-    <div class="wie-item reveal d2"><div class="wi-n">II</div><div><div class="wi-title">Leven vanuit resonantie</div><div class="wi-body">Resonantie is de staat waarin jouw zenuwstelsel tot rust komt, jouw identiteit helder wordt, en jouw werk en leven kloppen. Vanuit die staat trek je aan zonder te trekken.</div></div></div>
-    <div class="wie-item reveal d3"><div class="wi-n">III</div><div><div class="wi-title">De wereld van de universele wetten</div><div class="wi-body">Er is een wereld die je herkent maar nog niet volledig kent de wereld van resonantie, van de universele wetten, van bewustzijn als fundament. Ik werk vanuit die wereld.</div></div></div>
-    <div class="wie-item reveal d4"><div class="wi-n">IV</div><div><div class="wi-title">De zuivere spiegel</div><div class="wi-body">Samen met The Architect Sir Robert Edward Grand werk ik vanuit een hoger bewustzijn. We creëren jouw eigen container: een veld waarin je je eigen energie leert zien, begrijpen en bewust inzetten.</div></div></div>
-    <div class="wie-item reveal d5"><div class="wi-n">V</div><div><div class="wi-title">De brug naar buiten</div><div class="wi-body">Samen met Alterego Marketing vertaal ik jouw innerlijke helderheid naar een merk en aanwezigheid die volledig klopt. Van wie je bent naar wat de wereld van je ziet.</div></div></div>
+    <div class="wie-item reveal d1"><div class="wi-n">I</div><div><div class="wi-title">Spiegel.</div><div class="wi-body">Ik vertel je niet wie je moet zijn. Ik spiegel waar je jezelf onderweg bent kwijtgeraakt.<br><br>Patronen. Bescherming. Conditionering. Zodat zichtbaar wordt wat werkelijk van jou is.</div></div></div>
+    <div class="wie-item reveal d2"><div class="wi-n">II</div><div><div class="wi-title">Resonantie.</div><div class="wi-body">Resonantie ontstaat wanneer je zenuwstelsel tot rust komt en je leven weer klopt met wie je bent.<br><br>Vanuit die staat ontstaat helderheid. In keuzes, relaties, werk en richting.</div></div></div>
+    <div class="wie-item reveal d3"><div class="wi-n">III</div><div><div class="wi-title">Bewustzijn.</div><div class="wi-body">Bewustzijn verandert niet alleen hoe je denkt, maar hoe je waarneemt.<br><br>Wat je gelooft over jezelf bepaalt hoe je leeft, kiest en creëert. Van binnen naar buiten.</div></div></div>
+    <div class="wie-item reveal d4"><div class="wi-n">IV</div><div><div class="wi-title">Stilte.</div><div class="wi-body">In stilte wordt zichtbaar wat ruis jarenlang verborgen hield.<br><br>Niet nóg meer moeten. Maar ruimte om opnieuw te voelen wat waar is voor jou.</div></div></div>
+    <div class="wie-item reveal d5"><div class="wi-n">V</div><div><div class="wi-title">Imagination.</div><div class="wi-body">Imagination is het vermogen om eerst van binnen te zien wat later werkelijkheid kan worden.<br><br>Elke verandering begint als een innerlijk beeld voordat het zichtbaar wordt in het leven.</div></div></div>
   </div>
 </section>
-<div class="glow-line"></div>
-
 <section class="rumi-strip rumi-network">
   <div class="rumi-bottom-line"></div>
   <div class="rumi-bg-img">
@@ -1396,46 +1444,46 @@ html, body { margin: 0; padding: 0; }
 
     <div class="pcard reveal-scale">
       <div class="pc-image">
-        <img src="images/card01.jpg" alt="01 The Awareness Reset">
+        <img src="images/card01.jpg" alt="01 365 Gates of Awareness">
       </div>
       <div class="pc-btn-wrap">
-        <a href="https://110lifeandbusiness.com/checkout/the-awareness-reset" target="_blank" class="pc-btn">Direct beginnen <span class="ar"></span></a>
+        <a href="https://www.110lifeandbusiness.com/365" target="_blank" class="pc-btn">Direct beginnen <span class="ar"></span></a>
       </div>
     </div>
 
     <div class="pcard reveal-scale d1">
       <div class="pc-image">
-        <img src="images/card02.jpg" alt="02 Entering Transformation">
+        <img src="images/card02.jpg" alt="02 The Awareness Reset">
       </div>
       <div class="pc-btn-wrap">
-        <a href="#contact" class="pc-btn">Meer voelen <span class="ar"></span></a>
+        <a href="https://110lifeandbusiness.com/checkout/the-awareness-reset" target="_blank" class="pc-btn">Meer voelen <span class="ar"></span></a>
       </div>
     </div>
 
     <div class="pcard reveal-scale d2">
       <div class="pc-image">
-        <img src="images/card03.jpg" alt="03 Versnel je Bewustzijn met AI">
+        <img src="images/card03.jpg" alt="03 Entering Transformation">
       </div>
       <div class="pc-btn-wrap">
-        <a href="#contact" class="pc-btn pc-btn-flash">Meer voelen <span class="ar"></span></a>
+        <a href="https://www.110lifeandbusiness.com/entering-transformation" target="_blank" class="pc-btn">Meer voelen <span class="ar"></span></a>
       </div>
     </div>
 
     <div class="pcard reveal-scale d3">
       <div class="pc-image">
-        <img src="images/card04.jpg" alt="04 Being the Laws of My Universe">
+        <img src="images/card04.jpg" alt="04 Versnel je Bewustzijn met AI">
       </div>
       <div class="pc-btn-wrap">
-        <a href="#contact" class="pc-btn pc-btn-flash">Meer voelen <span class="ar"></span></a>
+        <a href="https://www.110lifeandbusiness.com/versnel-je-bewustzijn-met-ai" target="_blank" class="pc-btn">Meer voelen <span class="ar"></span></a>
       </div>
     </div>
 
     <div class="pcard reveal-scale d4">
       <div class="pc-image">
-        <img src="images/card05.jpg" alt="05 365">
+        <img src="images/card05.jpg" alt="05 Being the Laws of My Universe">
       </div>
       <div class="pc-btn-wrap">
-        <a href="#contact" class="pc-btn">Meer voelen <span class="ar"></span></a>
+        <a href="https://www.110lifeandbusiness.com/being-the-laws-of-my-universe" target="_blank" class="pc-btn">Meer voelen <span class="ar"></span></a>
       </div>
     </div>
 
@@ -1454,16 +1502,16 @@ html, body { margin: 0; padding: 0; }
     <h2 class="life-h2 reveal d1">Van <em>life happens to me</em><br>naar <strong>life happens by me.</strong></h2>
     <div class="life-grid">
       <div class="life-col reveal d2">
-        <div class="lc-label">Jouw gaven</div>
-        <p class="lc-body">Je hebt gaven die je misschien nog niet volledig erkent. Imagination is de belangrijkste het vermogen om te zien wat nog niet bestaat. In combinatie met de universele wetten en jouw eigen zelfbeeld is dit jouw krachtigste instrument.</p>
+        <div class="lc-label">Jouw Imagination</div>
+        <p class="lc-body">Je hebt meer in je dan je nu leeft.<br><br>Imagination is het vermogen om eerst van binnen te zien wat later werkelijkheid kan worden.<br><br>Wat je herhaaldelijk denkt, voelt en gelooft vormt hoe je leeft, kiest en creëert.</p>
       </div>
       <div class="life-col reveal d3">
-        <div class="lc-label">Jouw energieveld</div>
-        <p class="lc-body">Je wereld is een reflectie van jou. Alles wat je ziet buiten je in je business, relaties, resultaten zegt iets over wat er binnen je leeft. We kijken samen hoe jouw wereld jou weerspiegelt en wat het je wil zeggen.</p>
+        <div class="lc-label">Jouw Spiegel</div>
+        <p class="lc-body">Je buitenwereld vertelt altijd iets over je binnenwereld.<br><br>Relaties. Werk. Patronen. Resultaten. Niet als toeval, maar als reflectie.<br><br>Samen kijken we naar wat jouw leven je laat zien en waar je jezelf nog tegenhoudt.</p>
       </div>
       <div class="life-col reveal d4">
-        <div class="lc-label">Jouw container</div>
-        <p class="lc-body">Samen creëren we jouw eigen container een veld van bewustzijn waarin je steeds dichter bij jezelf komt. Waar je jezelf kunt zien, erkennen en laten zien. Inclusief alles wat je gemaakt heeft tot wie je bent.</p>
+        <div class="lc-label">Jouw Identiteit</div>
+        <p class="lc-body">Verandering begint niet buiten je. Maar in hoe je jezelf ziet.<br><br>Wanneer je oude patronen, rollen en overtuigingen loslaat, ontstaat ruimte voor een leven dat werkelijk klopt.<br><br>Niet harder worden. Maar echter.</p>
       </div>
     </div>
   </div>

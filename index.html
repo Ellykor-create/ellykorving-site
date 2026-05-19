@@ -1405,6 +1405,24 @@ nav:not(.s) .logo { color: var(--cream); }
   opacity: .85;
 }
 
+
+/* === NAV SCROLL LOGO === */
+.nav-logo-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: opacity .4s, max-width .4s;
+  flex-shrink: 0;
+}
+nav.s .nav-logo-icon {
+  opacity: 1;
+  max-width: 40px;
+  margin-right: 6px;
+}
+
 </style>
 </head>
 <body>
@@ -1412,7 +1430,7 @@ nav:not(.s) .logo { color: var(--cream); }
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 <nav id="nav">
-  <a href="#" class="logo">Elly Korving</a>
+  <a href="#" class="logo"><img src="images/logo-cream.png" alt="Elly Korving" class="nav-logo-icon">Elly Korving</a>
   <ul class="nl">
     <li><a href="#pad">Het werk</a></li>
     <li><a href="#wie">Wie ik ben</a></li>
@@ -1739,13 +1757,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const mob = document.getElementById('mob');
   const mx = document.getElementById('mx');
   if (hb && mob) {
-    hb.addEventListener('click', () => { mob.classList.add('open'); });
-    if (mx) {
-      mx.addEventListener('click', () => { mob.classList.remove('open'); });
-    }
-    mob.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => { mob.classList.remove('open'); });
-    });
+    hb.addEventListener('click', () => mob.classList.add('open'));
+    if (mx) mx.addEventListener('click', () => mob.classList.remove('open'));
+    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mob.classList.remove('open')));
   }
 
   // ── SCROLL REVEAL

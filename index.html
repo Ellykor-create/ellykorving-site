@@ -127,13 +127,9 @@ nav.s {
 }
 nav.s .logo { color: var(--dark); }
 
-nav.s .nav-logo-icon {
-  opacity: .9;
-  transform: scale(1);
-  filter: brightness(0) invert(1);
-}
 
-.nav-logo-icon { display: block; }
+
+
 .nl { display: none; gap: 2.2rem; align-items: center; }
 .nl a {
   font-size: .56rem;
@@ -1210,7 +1206,7 @@ section, .sec-her, .sec-wie, .sec-pad, .sec-s, .sec-r, .sec-bio, .sec-cta, .sec-
 nav.s .nl a{color:rgba(26,22,20,.6) !important;}
 nav.s .nl a:hover{color:#C04A78 !important;}
 nav.s .logo{color:#1A1614 !important;}
-nav.s .nav-logo-icon{opacity:.9 !important;transform:scale(1) !important;filter:brightness(0) !important;}
+
 nav.s .ncta{
   border-color:rgba(192,74,120,.45) !important;
   color:#C04A78 !important;
@@ -1280,16 +1276,7 @@ html, body { margin: 0; padding: 0; }
 
 
 /* Logo icoon naast naam */
-.nav-logo-icon{
-  width:46px;
-  height:46px;
-  object-fit:contain;
-  vertical-align:middle;
-  margin-right:8px;
-  opacity:.92;
-  position:relative;
-  top:-1px;
-}
+
 
 
 
@@ -1349,48 +1336,16 @@ html, body { margin: 0; padding: 0; }
 
 
 
-.nav-logo-wrap {
-  width: 0;
-  overflow: hidden;
-  display: inline-flex;
-  transition: width .4s ease;
-}
-.nav-logo-wrap .nav-logo-icon {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-  flex-shrink: 0;
-  filter: brightness(0);
-  opacity: 0.85;
-}
-nav.s .nav-logo-wrap {
-  width: 44px;
-}
-nav.s .nav-logo-icon {
-  opacity: .9 !important;
-  transform: scale(1) !important;
-  filter: brightness(0) !important;
-}
+
+.nav-logo-wrap 
+nav.s 
 
 
 
-.nav-logo-wrap {
-  width: 0;
-  overflow: hidden;
-  display: inline-flex;
-  align-items: center;
-  transition: width .5s ease;
-}
-.nav-logo-icon {
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-  display: block;
-}
-nav.s .nav-logo-wrap {
-  width: 42px;
-  margin-right: 4px;
-}
+
+
+
+nav.s 
 /* Kleur: donker op crème nav, wit op donkere header */
 .logo { color: var(--dark); }
 nav:not(.s) .logo { color: var(--cream); }
@@ -1407,38 +1362,18 @@ nav:not(.s) .logo { color: var(--cream); }
 
 
 
-.nav-logo-icon {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-  opacity: 0;
-  max-width: 0;
-  overflow: hidden;
-  transition: opacity .4s, max-width .4s;
-  flex-shrink: 0;
-}
-nav.s .nav-logo-icon {
-  opacity: 1;
-  max-width: 40px;
-  margin-right: 6px;
-}
 
 
-/* === NAV LOGO === */
-.nav-logo-icon {
-  width: 0;
-  height: 36px;
-  object-fit: contain;
-  opacity: 0;
-  transition: width .4s, opacity .4s;
-  flex-shrink: 0;
-  mix-blend-mode: multiply;
-}
-nav.s .nav-logo-icon {
-  width: 36px;
-  opacity: 1;
-  margin-right: 6px;
-}
+
+
+
+
+
+
+
+/* NAV LOGO */
+.nav-logo-icon{width:0;height:34px;object-fit:contain;opacity:0;transition:width .35s,opacity .35s;flex-shrink:0;mix-blend-mode:multiply;}
+nav.s .nav-logo-icon{width:34px;opacity:1;margin-right:5px;}
 
 </style>
 </head>
@@ -1451,7 +1386,6 @@ nav.s .nav-logo-icon {
   <ul class="nl">
     <li><a href="#pad">Het werk</a></li>
     <li><a href="#wie">Wie ik ben</a></li>
-    <li><a href="#samen">Samenwerking</a></li>
     <li><a href="#reviews">Ervaringen</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="samenwerkingen.html">Samenwerkingen</a></li>
@@ -1465,7 +1399,6 @@ nav.s .nav-logo-icon {
   <img src="images/logo-black.png" alt="Elly Korving" class="mob-logo">
   <a href="#pad" class="ml">Het werk</a>
   <a href="#wie" class="ml">Wie ik ben</a>
-  <a href="#samen" class="ml">Samenwerking</a>
   <a href="#reviews" class="ml">Ervaringen</a>
   <a href="blog.html" class="ml">Blog</a>
   <a href="samenwerkingen.html" class="ml">Samenwerkingen</a>
@@ -1742,7 +1675,6 @@ nav.s .nav-logo-icon {
   <div class="fl"><img src="images/logo-footer.png" alt="Elly Korving" style="width:64px;height:64px;object-fit:contain;margin-bottom:.6rem;display:block;margin-left:auto;margin-right:auto;border-radius:8px;"><br>Elly Elizabeth Korving</div>
   <div class="fls">
     <a href="#pad">Het werk</a><a href="#verhaal">Mijn verhaal</a>
-    <a href="#samen">Samenwerking</a>
     <a href="https://www.110lifeandbusiness.com" target="_blank">110 Life & Business</a>
     <a href="samenwerkingen.html">Samenwerkingen</a>
     <a href="blog.html">Blog</a>

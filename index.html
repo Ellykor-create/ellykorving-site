@@ -133,15 +133,7 @@ nav.s .nav-logo-icon {
   filter: brightness(0) invert(1);
 }
 
-.nav-logo-icon {
-  filter: none;
-  width: 36px; height: 36px;
-  object-fit: contain;
-  opacity: 0;
-  transform: scale(0.7);
-  transition: opacity .4s, transform .4s;
-  flex-shrink: 0;
-}
+.nav-logo-icon { display: block; }
 .nl { display: none; gap: 2.2rem; align-items: center; }
 .nl a {
   font-size: .56rem;
@@ -1355,6 +1347,31 @@ html, body { margin: 0; padding: 0; }
 .rv-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center top;margin-bottom:.8rem;border:1.5px solid rgba(192,74,120,.3);}
 .rvc{display:flex;flex-direction:column;}
 
+
+/* === NAV LOGO FIX === */
+.nav-logo-wrap {
+  width: 0;
+  overflow: hidden;
+  display: inline-flex;
+  transition: width .4s ease;
+}
+.nav-logo-wrap .nav-logo-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: brightness(0);
+  opacity: 0.85;
+}
+nav.s .nav-logo-wrap {
+  width: 44px;
+}
+nav.s .nav-logo-icon {
+  opacity: .9 !important;
+  transform: scale(1) !important;
+  filter: brightness(0) !important;
+}
+
 </style>
 </head>
 <body>
@@ -1362,7 +1379,7 @@ html, body { margin: 0; padding: 0; }
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 <nav id="nav">
-  <a href="#" class="logo"><img src="images/logo-white.png" alt="Elly Korving logo" class="nav-logo-icon">Elly Korving</a>
+  <a href="#" class="logo"><span class="nav-logo-wrap"><img src="images/logo-white.png" alt="Elly Korving logo" class="nav-logo-icon"></span>Elly Korving</a>
   <ul class="nl">
     <li><a href="#pad">Het werk</a></li>
     <li><a href="#wie">Wie ik ben</a></li>

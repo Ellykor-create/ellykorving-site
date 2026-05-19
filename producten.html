@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Het Werk — Elly Korving</title>
+  <meta name="description" content="Alle programma's, trajecten en begeleiding van Elly Korving. Van bewustzijn tot identiteit en branding.">
+  <link rel="icon" type="image/png" href="images/logo-black.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --dark: #1A1614;
+      --cream: #F5F2EC;
+      --cream2: #EDE8DF;
+      --pink: #C04A78;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Raleway', system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--dark); font-family: var(--sans); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 2rem;
+      background: rgba(245,242,236,.96);
+      backdrop-filter: blur(12px);
+      border-bottom: .5px solid rgba(26,22,20,.08);
+    }
+    .nav-logo { font-family: var(--sans); font-size: .65rem; font-weight: 400; letter-spacing: .28em; text-transform: uppercase; color: var(--dark); text-decoration: none; }
+    .nav-back { font-family: var(--sans); font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--dark); text-decoration: none; opacity: .6; transition: opacity .3s; display: flex; align-items: center; gap: .5rem; }
+    .nav-back:hover { opacity: 1; }
+    .nav-back::before { content: '←'; }
+
+    /* HERO */
+    .page-hero {
+      padding: 10rem 2rem 5rem;
+      text-align: center;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(192,74,120,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ph-label { font-family: var(--sans); font-size: .58rem; letter-spacing: .4em; text-transform: uppercase; color: var(--pink); margin-bottom: 1.2rem; }
+    .ph-title { font-family: var(--serif); font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 300; color: var(--cream); line-height: 1.1; margin-bottom: 1.2rem; }
+    .ph-title em { color: var(--pink); font-style: italic; }
+    .ph-sub { font-family: var(--serif); font-size: clamp(1rem, 2.5vw, 1.4rem); font-weight: 300; font-style: italic; color: rgba(245,242,236,.6); max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+    /* SECTION HEADERS */
+    .sec-header {
+      padding: 5rem 2rem 2.5rem;
+      text-align: center;
+    }
+    .sec-label { font-family: var(--sans); font-size: .58rem; letter-spacing: .38em; text-transform: uppercase; color: var(--pink); margin-bottom: .8rem; }
+    .sec-title { font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; color: var(--dark); line-height: 1.2; }
+    .sec-title em { color: var(--pink); font-style: italic; }
+
+    /* PRODUCTS GRID */
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+      padding: 0 0 5rem;
+    }
+
+    .product-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      background: var(--cream);
+      border-top: .5px solid rgba(26,22,20,.08);
+      transition: background .3s;
+    }
+    .product-card:hover { background: #f0ebe0; }
+
+    @media(min-width: 768px) {
+      .product-card { grid-template-columns: 1fr 1fr; }
+      .product-card:nth-child(even) .prod-img { order: 2; }
+      .product-card:nth-child(even) .prod-content { order: 1; }
+    }
+
+    .prod-img {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      position: relative;
+    }
+    .prod-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform .6s;
+    }
+    .product-card:hover .prod-img img { transform: scale(1.03); }
+
+    .prod-img-placeholder {
+      width: 100%; height: 100%;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .prod-num-big {
+      font-family: var(--serif);
+      font-size: 8rem;
+      font-weight: 300;
+      line-height: 1;
+      opacity: .12;
+    }
+
+    .prod-content {
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .prod-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .prod-num {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: rgba(26,22,20,.2);
+      line-height: 1;
+    }
+    .prod-tags {
+      display: flex;
+      gap: .4rem;
+      flex-wrap: wrap;
+    }
+    .prod-tag {
+      font-family: var(--sans);
+      font-size: .45rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--pink);
+      border: .5px solid rgba(192,74,120,.3);
+      padding: .2rem .55rem;
+      border-radius: 20px;
+    }
+
+    .prod-title {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: .8rem;
+      color: var(--dark);
+    }
+
+    .prod-subtitle {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--pink);
+      margin-bottom: 1.2rem;
+    }
+
+    .prod-desc {
+      font-family: var(--serif);
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(26,22,20,.7);
+      margin-bottom: 1.5rem;
+    }
+
+    .prod-details {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      margin-bottom: 2rem;
+    }
+    .prod-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      font-family: var(--sans);
+      font-size: .62rem;
+      color: rgba(26,22,20,.6);
+      letter-spacing: .05em;
+    }
+    .prod-detail::before { content: '—'; color: var(--pink); flex-shrink: 0; }
+
+    .prod-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      font-family: var(--sans);
+      font-size: .55rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      border-bottom: .5px solid var(--dark);
+      padding-bottom: .3rem;
+      transition: gap .3s, color .3s, border-color .3s;
+      width: fit-content;
+    }
+    .prod-btn:hover { color: var(--pink); border-color: var(--pink); gap: 1.2rem; }
+
+    /* DARK PRODUCTS */
+    .product-card.dark { background: var(--dark); }
+    .product-card.dark:hover { background: #231f1c; }
+    .product-card.dark .prod-title { color: var(--cream); }
+    .product-card.dark .prod-desc { color: rgba(245,242,236,.65); }
+    .product-card.dark .prod-detail { color: rgba(245,242,236,.5); }
+    .product-card.dark .prod-btn { color: var(--cream); border-color: rgba(245,242,236,.4); }
+    .product-card.dark .prod-btn:hover { color: var(--pink); border-color: var(--pink); }
+    .product-card.dark .prod-num { color: rgba(245,242,236,.15); }
+    .product-card.dark .prod-num-big { color: var(--cream); }
+
+    /* GROUP + 1ON1 SECTION */
+    .personal-section {
+      background: #1A1614;
+      padding: 6rem 2rem;
+    }
+    .personal-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    @media(min-width: 768px) {
+      .personal-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    .pers-card {
+      border: .5px solid rgba(245,242,236,.1);
+      border-radius: 4px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      transition: border-color .3s;
+    }
+    .pers-card:hover { border-color: rgba(192,74,120,.4); }
+
+    .pers-num { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; color: rgba(192,74,120,.3); line-height: 1; }
+    .pers-title { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 300; color: var(--cream); line-height: 1.2; }
+    .pers-title em { color: var(--pink); font-style: italic; }
+    .pers-sub { font-family: var(--serif); font-size: 1rem; font-style: italic; color: rgba(245,242,236,.5); }
+    .pers-desc { font-family: var(--serif); font-size: 1rem; line-height: 1.85; color: rgba(245,242,236,.65); }
+
+    .pers-includes {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      border-top: .5px solid rgba(245,242,236,.08);
+      padding-top: 1.2rem;
+    }
+    .pers-include {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      font-family: var(--sans);
+      font-size: .6rem;
+      color: rgba(245,242,236,.55);
+      letter-spacing: .05em;
+    }
+    .pers-include::before { content: '✓'; color: var(--pink); flex-shrink: 0; }
+
+    .pers-price {
+      font-family: var(--sans);
+      font-size: .55rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(192,74,120,.7);
+      margin-top: auto;
+    }
+
+    .pers-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      background: transparent;
+      border: .5px solid rgba(192,74,120,.5);
+      color: var(--cream);
+      font-family: var(--sans);
+      font-size: .55rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: .9rem 1.8rem;
+      border-radius: 2px;
+      transition: all .3s;
+      width: fit-content;
+    }
+    .pers-btn:hover { background: var(--pink); border-color: var(--pink); gap: 1.1rem; }
+
+    /* CTA BOTTOM */
+    .cta-bottom {
+      padding: 6rem 2rem;
+      text-align: center;
+      background: var(--cream2);
+    }
+    .cta-title { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 300; line-height: 1.2; margin-bottom: .8rem; }
+    .cta-title em { color: var(--pink); font-style: italic; }
+    .cta-sub { font-family: var(--serif); font-size: 1.1rem; font-style: italic; color: rgba(26,22,20,.55); margin-bottom: 2.5rem; }
+    .btn-dark { display: inline-flex; align-items: center; gap: .8rem; background: var(--dark); color: var(--cream); font-family: var(--sans); font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; text-decoration: none; padding: 1.1rem 2.5rem; border-radius: 2px; transition: background .3s, gap .3s; }
+    .btn-dark:hover { background: var(--pink); gap: 1.2rem; }
+
+    /* FOOTER */
+    footer { background: #1A1410; padding: 2rem; text-align: center; }
+    footer img { width: 44px; height: 44px; object-fit: contain; margin-bottom: .5rem; opacity: .7; }
+    .fc { font-family: var(--sans); font-size: .45rem; letter-spacing: .15em; color: rgba(245,240,232,.35); margin-top: .5rem; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.on { opacity: 1; transform: none; }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+
+    @media(min-width: 768px) {
+      nav { padding: 1.2rem 5rem; }
+      .page-hero { padding: 10rem 5rem 6rem; }
+      .prod-content { padding: 4rem 3.5rem; }
+      .sec-header { padding: 6rem 5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Elly Korving</a>
+  <a href="index.html" class="nav-back">Terug naar home</a>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="ph-label reveal">Het Werk</div>
+  <h1 class="ph-title reveal d1">Vijf ingangen.<br><em>Twee trajecten.</em></h1>
+  <p class="ph-sub reveal d2">Alles begint bij bewustzijn. Van een dagelijkse vraag tot een volledig begeleid traject — jij kiest waar je begint.</p>
+</section>
+
+<!-- SECTION: ZELFSTANDIGE PROGRAMMA'S -->
+<div class="sec-header">
+  <div class="sec-label reveal">Programma's</div>
+  <h2 class="sec-title reveal d1">Zelfstandig starten.<br><em>Op jouw tempo.</em></h2>
+</div>
+
+<div class="products-grid">
+
+  <!-- 01 -->
+  <div class="product-card reveal">
+    <div class="prod-img">
+      <img src="images/card01.jpg" alt="365 Gates of Awareness">
+    </div>
+    <div class="prod-content">
+      <div class="prod-eyebrow">
+        <div class="prod-num">01</div>
+        <div class="prod-tags">
+          <span class="prod-tag">Bewustzijn</span>
+          <span class="prod-tag">Gratis</span>
+          <span class="prod-tag">365 dagen</span>
+        </div>
+      </div>
+      <h2 class="prod-title">365 Gates of Awareness</h2>
+      <p class="prod-subtitle">Stap 1. Bewust worden.</p>
+      <p class="prod-desc">Elke dag één vraag die je uitnodigt anders naar jezelf te kijken. Klein genoeg om vandaag te beginnen. Krachtig genoeg om je leven te veranderen.</p>
+      <div class="prod-details">
+        <div class="prod-detail">365 dagen lang — elke dag één vraag</div>
+        <div class="prod-detail">Online — volledig gratis</div>
+        <div class="prod-detail">Geen verplichtingen, geen betaalgegevens</div>
+      </div>
+      <a href="365.html" class="prod-btn">Meer ontdekken <span>→</span></a>
+    </div>
+  </div>
+
+  <!-- 02 -->
+  <div class="product-card dark reveal">
+    <div class="prod-img" style="background:#2a2420;">
+      <div class="prod-img-placeholder">
+        <div class="prod-num-big" style="color:rgba(245,242,236,.08);">02</div>
+      </div>
+      <img src="images/card02.jpg" alt="The Awareness Reset" style="position:absolute;inset:0;">
+    </div>
+    <div class="prod-content">
+      <div class="prod-eyebrow">
+        <div class="prod-num">02</div>
+        <div class="prod-tags">
+          <span class="prod-tag">Reset</span>
+          <span class="prod-tag">Zenuwstelsel</span>
+        </div>
+      </div>
+      <h2 class="prod-title">The Awareness Reset</h2>
+      <p class="prod-subtitle">Je zenuwstelsel tot rust. Je kern naar boven.</p>
+      <p class="prod-desc">Een mini-programma dat je helpt jouw jaar te openen vanuit helderheid. Twaalf krachtige reflectievragen, vier thema's, jouw jaaroverzicht en awareness shifts.</p>
+      <div class="prod-details">
+        <div class="prod-detail">12 reflectievragen over herkenning, emotie, verlangen en groei</div>
+        <div class="prod-detail">Jouw jaaroverzicht en awareness shifts</div>
+        <div class="prod-detail">Klein genoeg om vandaag af te ronden</div>
+      </div>
+      <a href="https://110lifeandbusiness.com/checkout/the-awareness-reset" target="_blank" class="prod-btn">Meer voelen <span>→</span></a>
+    </div>
+  </div>
+
+  <!-- 03 -->
+  <div class="product-card reveal">
+    <div class="prod-img">
+      <img src="images/card03.jpg" alt="Entering Transformation">
+    </div>
+    <div class="prod-content">
+      <div class="prod-eyebrow">
+        <div class="prod-num">03</div>
+        <div class="prod-tags">
+          <span class="prod-tag">Identiteit</span>
+          <span class="prod-tag">Transformatie</span>
+          <span class="prod-tag">12 stappen</span>
+        </div>
+      </div>
+      <h2 class="prod-title">Entering Transformation</h2>
+      <p class="prod-subtitle">JIJ bepaalt wie je bent.</p>
+      <p class="prod-desc">In 12 stappen transformeer je jouw bewustzijn, versterk je je identiteit, bouw je een fundatie en creëer je duurzame resultaten.</p>
+      <div class="prod-details">
+        <div class="prod-detail">Identiteit — wie je werkelijk bent</div>
+        <div class="prod-detail">Fundatie — innerlijke rust, waarden en zelfleiderschap</div>
+        <div class="prod-detail">Resultaat — een leven dat klopt</div>
+      </div>
+      <a href="https://www.110lifeandbusiness.com/entering-transformation" target="_blank" class="prod-btn">Meer voelen <span>→</span></a>
+    </div>
+  </div>
+
+  <!-- 04 -->
+  <div class="product-card dark reveal">
+    <div class="prod-img" style="background:#1e2028;position:relative;">
+      <img src="images/card04.jpg" alt="Versnel je Bewustzijn met AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;">
+    </div>
+    <div class="prod-content">
+      <div class="prod-eyebrow">
+        <div class="prod-num">04</div>
+        <div class="prod-tags">
+          <span class="prod-tag">AI</span>
+          <span class="prod-tag">21 dagen</span>
+          <span class="prod-tag">Online</span>
+        </div>
+      </div>
+      <h2 class="prod-title">Versnel je Bewustzijn met AI</h2>
+      <p class="prod-subtitle">Technologie als spiegel voor je groei.</p>
+      <p class="prod-desc">In 21 dagen leer je hoe je AI inzet als instrument voor bewustzijnsontwikkeling. Meer helderheid, rust en richting — door betere vragen te stellen.</p>
+      <div class="prod-details">
+        <div class="prod-detail">21 dagen online programma</div>
+        <div class="prod-detail">AI als persoonlijk bewustzijnsinstrument</div>
+        <div class="prod-detail">Meer helderheid, rust en richting</div>
+      </div>
+      <a href="https://www.110lifeandbusiness.com/versnel-je-bewustzijn-met-ai" target="_blank" class="prod-btn">Meer voelen <span>→</span></a>
+    </div>
+  </div>
+
+  <!-- 05 -->
+  <div class="product-card reveal">
+    <div class="prod-img">
+      <img src="images/card05.jpg" alt="Being the Laws of My Universe">
+    </div>
+    <div class="prod-content">
+      <div class="prod-eyebrow">
+        <div class="prod-num">05</div>
+        <div class="prod-tags">
+          <span class="prod-tag">Universele wetten</span>
+          <span class="prod-tag">Live traject</span>
+          <span class="prod-tag">Diepste laag</span>
+        </div>
+      </div>
+      <h2 class="prod-title">Being the Laws of My Universe</h2>
+      <p class="prod-subtitle">Dit is wat je krijgt: VERdieping.</p>
+      <p class="prod-desc">De zeven universele wetten — niet als filosofie maar als levende krachten in jouw werk en leven. Hoe je bewust vanuit de wetten begint te creëren.</p>
+      <div class="prod-details">
+        <div class="prod-detail">Live traject — diepste laag</div>
+        <div class="prod-detail">De 7 universele wetten in praktijk</div>
+        <div class="prod-detail">Bewust creëren vanuit wie je bent</div>
+      </div>
+      <a href="https://www.110lifeandbusiness.com/being-the-laws-of-my-universe" target="_blank" class="prod-btn">Meer voelen <span>→</span></a>
+    </div>
+  </div>
+
+</div>
+
+<!-- SECTION: PERSOONLIJKE BEGELEIDING -->
+<section class="personal-section">
+  <div style="text-align:center;margin-bottom:4rem;">
+    <div class="sec-label reveal" style="color:rgba(192,74,120,.7);">Persoonlijke begeleiding</div>
+    <h2 class="sec-title reveal d1" style="color:var(--cream);">Samen werken.<br><em>Diep gaan.</em></h2>
+  </div>
+
+  <div class="personal-inner">
+
+    <!-- 06 GROEPSCOACHING -->
+    <div class="pers-card reveal d1">
+      <div class="pers-num">06</div>
+      <h2 class="pers-title">Groeps&shy;coaching</h2>
+      <p class="pers-sub">Community · Mentorship · Live Sessies</p>
+      <p class="pers-desc">Een levende community voor mensen die vanuit bewustzijn willen leven en ondernemen. Wekelijks samen optrekken, leren van elkaar en groeien vanuit wie je werkelijk bent — op het snijvlak van identiteit, spiritualiteit en branding.</p>
+
+      <div class="pers-includes">
+        <div class="pers-include">Wekelijkse online mentorship call — 1 uur</div>
+        <div class="pers-include">Ma, wo, vr — 15 min wake-up sessie voor alignment</div>
+        <div class="pers-include">1x per kwartaal live mastermind</div>
+        <div class="pers-include">Toegang tot alle programma's van 110 Life & Business</div>
+        <div class="pers-include">Branding en identiteit vanuit Alterego</div>
+        <div class="pers-include">Bewustzijn, spiritualiteit én ondernemerschap</div>
+      </div>
+
+      <div class="pers-price">Investering op aanvraag</div>
+      <a href="#contact" class="pers-btn">Interesse? Neem contact op <span>→</span></a>
+    </div>
+
+    <!-- 07 EEN OP EEN -->
+    <div class="pers-card reveal d2">
+      <div class="pers-num">07</div>
+      <h2 class="pers-title">Één op één<br><em>begeleiding</em></h2>
+      <p class="pers-sub">6 of 12 maanden · Volledig traject</p>
+      <p class="pers-desc">Het meest persoonlijke en volledige traject dat ik aanbied. We doorlopen samen alle stappen — van bewustzijn en identiteit tot branding en resultaten. Jij krijgt alles wat ik in huis heb, volledig op maat.</p>
+
+      <div class="pers-includes">
+        <div class="pers-include">Traject van 6 of 12 maanden</div>
+        <div class="pers-include">4 weken vrijblijvende proefperiode</div>
+        <div class="pers-include">Toegang tot alle programma's en materialen</div>
+        <div class="pers-include">Persoonlijke begeleiding op bewustzijn, identiteit en branding</div>
+        <div class="pers-include">Samen kijken hoe jij je verder kunt ontwikkelen</div>
+        <div class="pers-include">Regelmatige één-op-één sessies</div>
+      </div>
+
+      <div class="pers-price">Starten met een vrijblijvend gesprek</div>
+      <a href="#contact" class="pers-btn">Plan een gesprek <span>→</span></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-bottom" id="contact">
+  <div class="sec-label reveal">Klaar om te beginnen?</div>
+  <h2 class="cta-title reveal d1">Weet je niet waar<br><em>je moet starten?</em></h2>
+  <p class="cta-sub reveal d2">Laten we even praten. Ik help je het juiste programma vinden.</p>
+  <a href="index.html#contact" class="btn-dark reveal d3">Plan een gesprek <span>→</span></a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="images/logo-footer.png" alt="Elly Korving">
+  <div class="fc">© 2025 Elly Korving · Alterego B.V.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('on'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

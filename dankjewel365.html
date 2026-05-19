@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welkom bij 365 Gates of Awareness – Elly Korving</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brown:  #1A1614;
+      --cream:  #F5F2EC;
+      --pink:   #C04A78;
+      --gold:   #B89A6A;
+      --cream2: #EDE8DF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--brown);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── HERO met foto ─────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px 100px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/365-header.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      z-index: 0;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,7,5,0.52) 0%,
+        rgba(10,7,5,0.42) 50%,
+        rgba(10,7,5,0.75) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .eyebrow {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(54px, 9vw, 96px);
+      font-weight: 300;
+      line-height: 1.0;
+      color: #fff;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.5s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-divider {
+      width: 56px;
+      height: 1px;
+      background: var(--gold);
+      margin: 24px auto;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.7s forwards;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.85s forwards;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 1s ease 1.5s forwards;
+    }
+
+    .scroll-cue span {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(184,154,106,0.65);
+    }
+
+    .scroll-arrow {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, rgba(184,154,106,0.7), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ─── WELKOM ────────────────────────────────────────── */
+    .section-welcome {
+      padding: 100px 24px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .label {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .section-welcome h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 5vw, 50px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 32px;
+      color: var(--brown);
+    }
+
+    .section-welcome h2 em {
+      font-style: italic;
+      color: var(--pink);
+    }
+
+    .section-welcome p {
+      font-size: 16px;
+      line-height: 1.9;
+      color: rgba(26,22,20,0.72);
+      margin-bottom: 20px;
+    }
+
+    .section-welcome p strong {
+      font-weight: 500;
+      color: var(--brown);
+    }
+
+    .italic-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-style: italic;
+      color: rgba(26,22,20,0.5);
+      line-height: 1.65;
+      margin-top: 12px;
+    }
+
+    /* ─── GATE 1 ────────────────────────────────────────── */
+    .gate-section {
+      background: var(--cream2);
+      padding: 90px 24px 0;
+      text-align: center;
+    }
+
+    .gate-inner {
+      max-width: 620px;
+      margin: 0 auto;
+      padding-bottom: 0;
+    }
+
+    .gate-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4.5vw, 42px);
+      font-weight: 400;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+
+    .gate-sub {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(26,22,20,0.38);
+      margin-bottom: 48px;
+    }
+
+    .gate-ritual {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      margin-bottom: 48px;
+    }
+
+    .ritual-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(26,22,20,0.08);
+    }
+
+    .ritual-step:last-child { border-bottom: none; }
+
+    .step-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 9px;
+      flex-shrink: 0;
+    }
+
+    .ritual-step p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(26,22,20,0.68);
+    }
+
+    .ritual-step p strong {
+      color: var(--brown);
+      font-weight: 500;
+    }
+
+    /* vraag box */
+    .gate-question-box {
+      background: var(--brown);
+      padding: 52px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gate-question-box::before {
+      content: '';
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 180px; height: 180px;
+      border: 1px solid rgba(184,154,106,0.1);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .gate-question-box::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 140px; height: 140px;
+      border: 1px solid rgba(184,154,106,0.08);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .q-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(184,154,106,0.55);
+      margin-bottom: 22px;
+      display: block;
+    }
+
+    .gate-question-box blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 3.5vw, 28px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── GEOMETRY FOTO ─────────────────────────────────── */
+    .geometry-section {
+      width: 100%;
+      height: 480px;
+      overflow: hidden;
+      position: relative;
+      display: block;
+    }
+
+    .geometry-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    /* fade overlays */
+    .geometry-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 100px;
+      background: linear-gradient(to bottom, var(--brown), transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .geometry-section::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 100px;
+      background: linear-gradient(to top, var(--cream2), transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ─── 12 THEMA'S ────────────────────────────────────── */
+    .themas-section {
+      background: var(--cream2);
+      padding: 20px 24px 90px;
+    }
+
+    .themas-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .themas-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .themas-header .label { color: var(--gold); }
+
+    .themas-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4.5vw, 44px);
+      font-weight: 400;
+      color: var(--brown);
+      line-height: 1.2;
+    }
+
+    .themas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1px;
+      background: rgba(26,22,20,0.08);
+      border: 1px solid rgba(26,22,20,0.08);
+    }
+
+    .thema-item {
+      background: var(--cream2);
+      padding: 26px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: background 0.2s ease;
+    }
+
+    .thema-item:hover { background: var(--cream); }
+
+    .thema-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 300;
+      color: rgba(184,154,106,0.45);
+      line-height: 1;
+      min-width: 26px;
+    }
+
+    .thema-text {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: rgba(26,22,20,0.75);
+      line-height: 1.4;
+      padding-top: 5px;
+    }
+
+    .thema-special {
+      grid-column: 1 / -1;
+      background: var(--brown);
+      padding: 22px;
+      text-align: center;
+    }
+
+    .thema-special .thema-text {
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    /* ─── VOLGENDE STAPPEN ──────────────────────────────── */
+    .nextsteps-section {
+      padding: 90px 24px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .nextsteps-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 5vw, 46px);
+      font-weight: 400;
+      color: var(--brown);
+      margin-bottom: 52px;
+    }
+
+    .steps-list {
+      text-align: left;
+      margin-bottom: 60px;
+    }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      align-items: stretch;
+      border-bottom: 1px solid rgba(26,22,20,0.08);
+    }
+
+    .step-row:last-child { border-bottom: none; }
+
+    .step-row .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      font-weight: 300;
+      color: rgba(184,154,106,0.22);
+      padding: 22px 0;
+      line-height: 1;
+    }
+
+    .step-row .content {
+      padding: 22px 0 22px 22px;
+      border-left: 1px solid rgba(26,22,20,0.08);
+    }
+
+    .step-row .content h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--brown);
+      margin-bottom: 5px;
+    }
+
+    .step-row .content p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(26,22,20,0.58);
+    }
+
+    /* ─── CTA ───────────────────────────────────────────── */
+    .cta-section {
+      background: var(--brown);
+      padding: 90px 24px;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 5vw, 48px);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 18px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-section p {
+      font-size: 15px;
+      color: rgba(245,242,236,0.5);
+      margin-bottom: 40px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.85;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--pink);
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 44px;
+      transition: background 0.25s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: #a83d67;
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid rgba(245,242,236,0.22);
+      color: rgba(245,242,236,0.6);
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      margin-left: 14px;
+      transition: border-color 0.25s, color 0.25s;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(245,242,236,0.55);
+      color: var(--cream);
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid rgba(26,22,20,0.1);
+      padding: 40px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    footer .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--brown);
+    }
+
+    footer .footer-sub {
+      font-size: 11px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(26,22,20,0.38);
+    }
+
+    footer a {
+      font-size: 12px;
+      color: var(--pink);
+      text-decoration: none;
+    }
+
+    /* ─── ANIMATIES ─────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50%       { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .gate-question-box { padding: 36px 24px; }
+      .btn-ghost { margin-left: 0; margin-top: 12px; display: block; }
+      .step-row { grid-template-columns: 44px 1fr; }
+      .geometry-section { height: 280px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HERO met foto ════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+      <p class="eyebrow">365 Gates of Awareness</p>
+      <h1 class="hero-title">
+        Welkom.<br /><em>Je bent er.</em>
+      </h1>
+      <div class="hero-divider"></div>
+      <p class="hero-subtitle">
+        Luister… en je zult je herinneren wie je was,<br />
+        voordat de wereld je vertelde wie je moest zijn.
+      </p>
+    </div>
+
+    <div class="scroll-cue">
+      <span>Lees verder</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+
+  <!-- ═══ WELKOM BERICHT ════════════════════════════════════ -->
+  <section class="section-welcome">
+    <span class="label reveal">Jouw bevestiging</span>
+    <h2 class="reveal">Wat mooi dat je <em>ja</em> hebt gezegd.</h2>
+    <p class="reveal">
+      Vanaf morgen ontvang je elke ochtend één vraag — een <strong>Gate</strong> — die jouw perspectief opent, je innerlijke bewustzijn activeert en je helpt om op een andere manier naar jezelf en je leven te kijken.
+    </p>
+    <p class="reveal">
+      Deze vragen zijn geen gewone vragen. Ze zijn ontworpen om je denkpatronen te verschuiven, je bewustzijn te verruimen, nieuwe mogelijkheden zichtbaar te maken en je terug te brengen naar wie jij écht bent.
+    </p>
+    <p class="italic-note reveal">
+      Elke Gate opent een ander perspectief. Een shift.<br />Een kleine verschuiving die grote impact kan hebben.
+    </p>
+  </section>
+
+
+  <!-- ═══ GATE 1 ════════════════════════════════════════════ -->
+  <section class="gate-section">
+    <div class="gate-inner">
+      <span class="label reveal">Jouw cadeau · Alvast vandaag</span>
+      <h2 class="reveal">Gate 1 – Bewuste Waarneming</h2>
+      <p class="gate-sub reveal">Je eerste shift begint nu</p>
+
+      <div class="gate-ritual reveal">
+        <div class="ritual-step">
+          <div class="step-dot"></div>
+          <p>Neem <strong>60 seconden</strong> voor jezelf.</p>
+        </div>
+        <div class="ritual-step">
+          <div class="step-dot"></div>
+          <p>Word je bewust van je <strong>ademhaling</strong>. Adem één keer rustig in en uit.</p>
+        </div>
+        <div class="ritual-step">
+          <div class="step-dot"></div>
+          <p><strong>Lees</strong> de vraag rustig. Kijk naar de vorm. Voel wat er van binnen beweegt.</p>
+        </div>
+        <div class="ritual-step">
+          <div class="step-dot"></div>
+          <p>Je hoeft niets op te lossen. <strong>Alleen bewust te worden.</strong></p>
+        </div>
+      </div>
+
+      <div class="gate-question-box reveal">
+        <span class="q-label">De vraag van vandaag</span>
+        <blockquote>
+          "Waar reageer ik vandaag vanuit automatische patronen in plaats van bewuste keuze?"
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ GEOMETRY FOTO direct onder de vraag ═════════════ -->
+  <div class="geometry-section">
+    <img src="images/365-geometry.jpg" alt="Sacred Geometry – Gate 1" loading="lazy" />
+  </div>
+
+
+  <!-- ═══ 12 THEMA'S ════════════════════════════════════════ -->
+  <section class="themas-section">
+    <div class="themas-inner">
+      <div class="themas-header">
+        <span class="label reveal">Het komende jaar</span>
+        <h2 class="reveal">12 maanden · 12 thema's · 365 Gates</h2>
+      </div>
+
+      <div class="themas-grid reveal">
+        <div class="thema-item"><span class="thema-num">01</span><span class="thema-text">Bewust Denken</span></div>
+        <div class="thema-item"><span class="thema-num">02</span><span class="thema-text">Emoties &amp; Schaduw</span></div>
+        <div class="thema-item"><span class="thema-num">03</span><span class="thema-text">Wereld als Spiegel &amp; AI als Spiegel</span></div>
+        <div class="thema-item"><span class="thema-num">04</span><span class="thema-text">Identiteit &amp; Zelfherinnering</span></div>
+        <div class="thema-item"><span class="thema-num">05</span><span class="thema-text">Intentie &amp; Visie</span></div>
+        <div class="thema-item"><span class="thema-num">06</span><span class="thema-text">Energie &amp; Flow</span></div>
+        <div class="thema-item"><span class="thema-num">07</span><span class="thema-text">Verbinding &amp; Intimiteit</span></div>
+        <div class="thema-item"><span class="thema-num">08</span><span class="thema-text">Rust &amp; Stabiliteit</span></div>
+        <div class="thema-item"><span class="thema-num">09</span><span class="thema-text">Focus &amp; Actie</span></div>
+        <div class="thema-item"><span class="thema-num">10</span><span class="thema-text">Overvloed &amp; Waardigheid</span></div>
+        <div class="thema-item"><span class="thema-num">11</span><span class="thema-text">Intuïtie &amp; Innerlijk Weten</span></div>
+        <div class="thema-item"><span class="thema-num">12</span><span class="thema-text">Creatie &amp; Manifestatie</span></div>
+        <div class="thema-special"><span class="thema-text">✦ &nbsp; Golden Gates — Afronding &amp; Integratie &nbsp; ✦</span></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ VOLGENDE STAPPEN ══════════════════════════════════ -->
+  <section class="nextsteps-section">
+    <span class="label reveal">Volgende stappen</span>
+    <h2 class="reveal">Zo werkt het vanaf hier</h2>
+
+    <div class="steps-list">
+      <div class="step-row reveal">
+        <span class="num">1</span>
+        <div class="content">
+          <h4>Controleer je inbox</h4>
+          <p>Je ontvangt vandaag de welkomstmail met de introductie PDF en Gate 1 — jouw cadeau om direct mee te starten.</p>
+        </div>
+      </div>
+      <div class="step-row reveal">
+        <span class="num">2</span>
+        <div class="content">
+          <h4>Elke ochtend: 1 minuut</h4>
+          <p>Vanaf morgen ontvang je iedere ochtend één Gate — één vraag. Lees, voel, laat zakken. Meer is niet nodig.</p>
+        </div>
+      </div>
+      <div class="step-row reveal">
+        <span class="num">3</span>
+        <div class="content">
+          <h4>Vertrouw het proces</h4>
+          <p>Je hoeft niets te forceren. Vraag na vraag, perspectief na perspectief, ontvouwt jouw bewustzijn zich vanzelf.</p>
+        </div>
+      </div>
+      <div class="step-row reveal">
+        <span class="num">4</span>
+        <div class="content">
+          <h4>Wil je meer verdieping?</h4>
+          <p>Boek een discovery call en ontdek hoe de SZINN Alignment Methode jou nog verder kan begeleiden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ CTA ═══════════════════════════════════════════════ -->
+  <section class="cta-section">
+    <span class="label reveal" style="color: var(--gold);">Elly Elizabeth Korving</span>
+    <h2 class="reveal">Dankjewel dat je dit pad kiest.</h2>
+    <p class="reveal">
+      Je eerste stap is gezet. De rest ontvouwt vanzelf —<br />
+      vraag na vraag, perspectief na perspectief.
+    </p>
+    <div class="reveal">
+      <a href="https://ellykorving.com" class="btn-primary">Terug naar de website</a>
+      <a href="https://ellykorving.com/365" class="btn-ghost">Over 365 Gates</a>
+    </div>
+  </section>
+
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════ -->
+  <footer>
+    <span class="footer-name">Elly Elizabeth Korving</span>
+    <span class="footer-sub">Life Coach · Business Coach · Spiritual Guide</span>
+    <a href="https://ellykorving.com">ellykorving.com</a>
+  </footer>
+
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 55);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

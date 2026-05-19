@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>365 Gates of Awareness — Elly Korving</title>
+  <meta name="description" content="Elke dag één vraag. 365 dagen lang. Gratis bewustzijnsprogramma van Elly Korving.">
+  <link rel="icon" type="image/png" href="images/logo-black.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --dark: #1A1614;
+      --cream: #F5F2EC;
+      --cream2: #EDE8DF;
+      --gold: #9A7C3F;
+      --gold-light: #C4A35A;
+      --green-dark: #1E3A2F;
+      --pink: #C04A78;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Raleway', system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    /* === NAV === */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      background: rgba(245,242,236,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: .5px solid rgba(26,22,20,.08);
+    }
+    .nav-logo {
+      font-family: var(--sans);
+      font-size: .65rem;
+      font-weight: 400;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+    }
+    .nav-back {
+      font-family: var(--sans);
+      font-size: .58rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      opacity: .6;
+      transition: opacity .3s;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .nav-back:hover { opacity: 1; }
+    .nav-back::before { content: '←'; }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #f0ebe0 0%, #e8e0d0 60%, #ddd5c8 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(154,124,63,.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 80% 100%, rgba(154,124,63,.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 680px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-brand {
+      font-family: var(--sans);
+      font-size: .58rem;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-num {
+      font-family: var(--serif);
+      font-size: clamp(7rem, 20vw, 12rem);
+      font-weight: 300;
+      line-height: .85;
+      color: var(--green-dark);
+      margin-bottom: .5rem;
+      letter-spacing: -.02em;
+    }
+
+    .hero-tag {
+      font-family: var(--sans);
+      font-size: .6rem;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 3rem;
+    }
+
+    .hero-symbol {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 3rem;
+      position: relative;
+    }
+
+    .hero-symbol img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--green-dark);
+      margin-bottom: .6rem;
+    }
+
+    .hero-sub {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-divider::before, .hero-divider::after {
+      content: '';
+      width: 60px;
+      height: .5px;
+      background: var(--gold);
+      opacity: .4;
+    }
+    .hero-divider span {
+      color: var(--gold);
+      font-size: .6rem;
+    }
+
+    /* === FEATURE CARDS === */
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .feat-card {
+      background: rgba(255,255,255,.5);
+      border: .5px solid rgba(154,124,63,.2);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .feat-badge {
+      background: var(--green-dark);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: .5rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      padding: .3rem .7rem;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .feat-icon {
+      width: 36px;
+      height: 36px;
+      border: .5px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      font-size: .9rem;
+    }
+
+    .feat-content {}
+    .feat-title {
+      font-family: var(--sans);
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--green-dark);
+      margin-bottom: .3rem;
+    }
+    .feat-text {
+      font-family: var(--serif);
+      font-size: .95rem;
+      line-height: 1.7;
+      color: rgba(26,22,20,.75);
+    }
+
+    .feat-icon-right {
+      margin-left: auto;
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: .5px solid var(--gold);
+      border-radius: 4px;
+      color: var(--gold);
+    }
+
+    /* === CTA BUTTON === */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .8rem;
+      background: var(--green-dark);
+      color: var(--cream);
+      font-family: var(--sans);
+      font-size: .6rem;
+      font-weight: 500;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1.1rem 2.5rem;
+      border-radius: 2px;
+      transition: background .3s, gap .3s;
+    }
+    .btn-primary:hover {
+      background: #2a4a3a;
+      gap: 1.2rem;
+    }
+
+    /* === FOOTER STRIP === */
+    .footer-strip {
+      background: var(--cream2);
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      border-top: .5px solid rgba(154,124,63,.2);
+    }
+    .footer-strip span {
+      font-family: var(--sans);
+      font-size: .5rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .7;
+    }
+    .footer-strip .dot {
+      width: 3px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: .4;
+    }
+
+    /* === HOW IT WORKS === */
+    .how {
+      padding: 6rem 2rem;
+      background: var(--cream);
+      text-align: center;
+    }
+    .how-label {
+      font-family: var(--sans);
+      font-size: .58rem;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 1rem;
+    }
+    .how-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      color: var(--dark);
+      margin-bottom: 3.5rem;
+      line-height: 1.2;
+    }
+    .how-title em { color: var(--pink); font-style: italic; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      text-align: left;
+      padding: 1.5rem;
+      background: rgba(245,242,236,.6);
+      border: .5px solid rgba(26,22,20,.08);
+      border-radius: 4px;
+    }
+    .step-num {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: rgba(154,124,63,.3);
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 50px;
+    }
+    .step-title {
+      font-family: var(--sans);
+      font-size: .6rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: .4rem;
+    }
+    .step-text {
+      font-family: var(--serif);
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(26,22,20,.72);
+    }
+
+    /* === VOOR WIE === */
+    .voor-wie {
+      padding: 5rem 2rem;
+      background: var(--green-dark);
+      color: var(--cream);
+    }
+    .voor-wie-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .vw-label {
+      font-family: var(--sans);
+      font-size: .58rem;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: rgba(196,163,90,.7);
+      margin-bottom: 1rem;
+    }
+    .vw-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.25;
+      margin-bottom: 2rem;
+    }
+    .vw-title em { color: var(--gold-light); font-style: italic; }
+    .vw-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+    }
+    .vw-list li {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: rgba(245,242,236,.8);
+      display: flex;
+      align-items: flex-start;
+      gap: .7rem;
+    }
+    .vw-list li::before {
+      content: '✓';
+      color: var(--gold-light);
+      font-size: .8rem;
+      flex-shrink: 0;
+      margin-top: .2rem;
+    }
+
+    .wat-oplevert {
+      background: rgba(255,255,255,.05);
+      border: .5px solid rgba(196,163,90,.2);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+    .wo-title {
+      font-family: var(--sans);
+      font-size: .6rem;
+      font-weight: 500;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.2rem;
+    }
+    .wo-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+    .wo-list li {
+      font-family: var(--serif);
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(245,242,236,.75);
+      display: flex;
+      align-items: flex-start;
+      gap: .7rem;
+    }
+    .wo-list li::before {
+      content: '→';
+      color: var(--gold-light);
+      font-size: .75rem;
+      flex-shrink: 0;
+      margin-top: .2rem;
+    }
+
+    /* === QUOTE === */
+    .quote-section {
+      padding: 6rem 2rem;
+      background: var(--cream2);
+      text-align: center;
+    }
+    .big-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 4vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--dark);
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+    }
+    .big-quote em { color: var(--pink); font-style: normal; }
+    .quote-attr {
+      font-family: var(--sans);
+      font-size: .55rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: rgba(26,22,20,.4);
+    }
+
+    /* === CTA SECTION === */
+    .cta-section {
+      padding: 6rem 2rem;
+      background: var(--cream);
+      text-align: center;
+    }
+    .cta-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.25;
+      margin-bottom: .6rem;
+    }
+    .cta-sub {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+    .cta-tags {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .cta-tag {
+      font-family: var(--sans);
+      font-size: .5rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(26,22,20,.4);
+    }
+
+    /* === FOOTER === */
+    footer {
+      background: #1A1410;
+      padding: 2rem;
+      text-align: center;
+    }
+    footer img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      margin-bottom: .5rem;
+      opacity: .7;
+    }
+    .fc {
+      font-family: var(--sans);
+      font-size: .45rem;
+      letter-spacing: .15em;
+      color: rgba(245,240,232,.35);
+      margin-top: .5rem;
+    }
+
+    /* === REVEAL ANIMATIONS === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.on {
+      opacity: 1;
+      transform: none;
+    }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+    .d4 { transition-delay: .4s; }
+
+    /* === DESKTOP === */
+    @media(min-width: 768px) {
+      .features { flex-direction: row; }
+      .feat-card { flex: 1; }
+      .steps { grid-template-columns: 1fr 1fr 1fr; }
+      .voor-wie-inner { grid-template-columns: 1fr 1fr; }
+      nav { padding: 1.2rem 5rem; }
+      .hero { padding: 8rem 5rem 5rem; }
+      .how { padding: 8rem 5rem; }
+      .voor-wie { padding: 7rem 5rem; }
+      .quote-section { padding: 7rem 5rem; }
+      .cta-section { padding: 8rem 5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Elly Korving</a>
+  <a href="index.html" class="nav-back">Terug naar home</a>
+</nav>
+
+<!-- HERO SECTIE -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-brand reveal">Elly Korving</div>
+    <div class="hero-num reveal d1">01</div>
+    <div class="hero-tag reveal d1">365 Gates of Awareness</div>
+
+    <div class="hero-symbol reveal d2">
+      <img src="images/card01.jpg" alt="365 Gates of Awareness">
+    </div>
+
+    <h1 class="hero-title reveal d2">Stap 1. Bewust worden.</h1>
+    <p class="hero-sub reveal d3">365 dagen lang. Elke dag één vraag.</p>
+
+    <div class="hero-divider reveal d3"><span>✦</span></div>
+
+    <div class="features reveal d3">
+      <div class="feat-card">
+        <div>
+          <span class="feat-badge">GRATIS</span>
+        </div>
+        <div class="feat-content">
+          <div class="feat-title">365 Dagen. Elke dag. Één vraag.</div>
+          <p class="feat-text">Ontvang elke dag een vraag die je helpt vanuit een ander perspectief te kijken. 365 dagen lang. Helemaal gratis.</p>
+        </div>
+        <div class="feat-icon-right">📅</div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">♡</div>
+        <div class="feat-content">
+          <div class="feat-title">Kleine vraag, grote shift.</div>
+          <p class="feat-text">Geen lange theorieën, geen overwhelm. Wel dagelijkse inzichten die je helpen om met meer helderheid, rust en liefde naar jezelf te kijken.</p>
+        </div>
+        <div class="feat-icon-right">☀</div>
+      </div>
+    </div>
+
+    <a href="https://www.110lifeandbusiness.com/365" target="_blank" class="btn-primary reveal d4">
+      Direct beginnen <span>→</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER STRIP -->
+<div class="footer-strip">
+  <span>365 Dagen Lang</span>
+  <div class="dot"></div>
+  <span>Gratis</span>
+  <div class="dot"></div>
+  <span>Elke dag 1 vraag</span>
+</div>
+
+<!-- HOE WERKT HET === -->
+<section class="how">
+  <div class="how-label reveal">Hoe het werkt</div>
+  <h2 class="how-title reveal d1">Eén vraag per dag.<br><em>Dat is alles.</em></h2>
+
+  <div class="steps">
+    <div class="step reveal d1">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">Schrijf je in</div>
+        <p class="step-text">Je registreert je eenmalig gratis. Geen betaalgegevens, geen verplichtingen.</p>
+      </div>
+    </div>
+    <div class="step reveal d2">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">Ontvang je vraag</div>
+        <p class="step-text">Elke dag ontvang je één gerichte vraag die je uitnodigt anders naar jezelf te kijken.</p>
+      </div>
+    </div>
+    <div class="step reveal d3">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">Voel de shift</div>
+        <p class="step-text">Kleine vragen creëren grote bewustwording. Dag na dag. Zonder druk of haast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOOR WIE + WAT LEVERT HET OP -->
+<section class="voor-wie">
+  <div class="voor-wie-inner">
+    <div>
+      <div class="vw-label reveal">Voor wie is dit?</div>
+      <h2 class="vw-title reveal d1">Voor iedereen die<br><em>bewuster wil leven.</em></h2>
+      <ul class="vw-list">
+        <li class="reveal d1">Bewust wil leven</li>
+        <li class="reveal d2">Richting wil voelen</li>
+        <li class="reveal d2">Minder ruis en meer helderheid zoekt</li>
+        <li class="reveal d3">Het jaar niet zomaar voorbij wil laten gaan</li>
+        <li class="reveal d3">Bewuste keuzes wil maken</li>
+        <li class="reveal d4">Wil begrijpen waarom patronen terugkomen</li>
+        <li class="reveal d4">Zijn of haar nieuwe jaar intentioneel wil openen</li>
+      </ul>
+    </div>
+
+    <div class="wat-oplevert reveal d2">
+      <div class="wo-title">Wat levert het je op?</div>
+      <ul class="wo-list">
+        <li>Rust in je hoofd</li>
+        <li>Helderheid over jezelf</li>
+        <li>Inzicht in patronen en keuzes</li>
+        <li>Een nieuw perspectief op je eigen groei</li>
+        <li>Een reset van je bewustzijn</li>
+        <li>Meer ruimte, meer focus en meer zelfleiderschap</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <p class="big-quote reveal">
+    "Het is klein genoeg om vandaag nog af te ronden,<br>
+    maar krachtig genoeg om je hele leven <em>te beïnvloeden.</em>"
+  </p>
+  <div class="quote-attr reveal d1">— Elly Korving</div>
+</section>
+
+<!-- CTA SECTIE -->
+<section class="cta-section">
+  <div class="how-label reveal">Begin vandaag</div>
+  <h2 class="cta-title reveal d1">365 dagen bewustzijn.<br>Helemaal gratis.</h2>
+  <p class="cta-sub reveal d2">Elke dag één vraag. Niets meer. Niets minder.</p>
+
+  <a href="https://www.110lifeandbusiness.com/365" target="_blank" class="btn-primary reveal d3">
+    Start nu — het is gratis <span>→</span>
+  </a>
+
+  <div class="cta-tags reveal d4">
+    <span class="cta-tag">365 Dagen Lang</span>
+    <span class="cta-tag">·</span>
+    <span class="cta-tag">Gratis</span>
+    <span class="cta-tag">·</span>
+    <span class="cta-tag">Elke dag 1 vraag</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="images/logo-footer.png" alt="Elly Korving">
+  <div class="fc">© 2025 Elly Korving · Alterego B.V.</div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('on');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

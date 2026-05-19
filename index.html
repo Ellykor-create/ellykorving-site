@@ -1372,6 +1372,39 @@ nav.s .nav-logo-icon {
   filter: brightness(0) !important;
 }
 
+
+/* === NAV SVG LOGO === */
+.nav-logo-wrap {
+  width: 0;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  transition: width .5s ease;
+}
+.nav-logo-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: block;
+}
+nav.s .nav-logo-wrap {
+  width: 42px;
+  margin-right: 4px;
+}
+/* Kleur: donker op crème nav, wit op donkere header */
+.logo { color: var(--dark); }
+nav:not(.s) .logo { color: var(--cream); }
+
+
+/* === MOB LOGO === */
+.mob-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+  opacity: .85;
+}
+
 </style>
 </head>
 <body>
@@ -1379,7 +1412,7 @@ nav.s .nav-logo-icon {
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 <nav id="nav">
-  <a href="#" class="logo">Elly Korving</a>
+  <a href="#" class="logo"><span class="nav-logo-wrap"><img src="images/logo-black.png" alt="logo" class="nav-logo-icon"></span>Elly Korving</a>
   <ul class="nl">
     <li><a href="#pad">Het werk</a></li>
     <li><a href="#wie">Wie ik ben</a></li>
@@ -1394,6 +1427,7 @@ nav.s .nav-logo-icon {
 
 <div class="mob" id="mob">
   <button class="mx" id="mx">✕</button>
+  <img src="images/logo-black.png" alt="Elly Korving" class="mob-logo">
   <a href="#pad" class="ml">Het werk</a>
   <a href="#wie" class="ml">Wie ik ben</a>
   <a href="#samen" class="ml">Samenwerking</a>
@@ -1705,10 +1739,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const mob = document.getElementById('mob');
   const mx = document.getElementById('mx');
   if (hb && mob) {
-    hb.addEventListener('click', () => mob.classList.add('open'));
-    if (mx) mx.addEventListener('click', () => mob.classList.remove('open'));
+    hb.addEventListener('click', () => { mob.classList.add('open'); hb.classList.add('open'); });
+    if (mx) mx.addEventListener('click', () => { mob.classList.remove('open'); hb.classList.remove('open'); });
     mob.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => mob.classList.remove('open'));
+      a.addEventListener('click', () => { mob.classList.remove('open'); hb.classList.remove('open'); });
+    });
+    // Sluit bij klik buiten menu
+    document.addEventListener('click', (e) => {
+      if (mob.classList.contains('open') && !mob.contains(e.target) && !hb.contains(e.target)) {
+        mob.classList.remove('open');
+        hb.classList.remove('open');
+      }
     });
   }
 

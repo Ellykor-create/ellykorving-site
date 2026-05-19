@@ -1348,7 +1348,7 @@ html, body { margin: 0; padding: 0; }
 .rvc{display:flex;flex-direction:column;}
 
 
-/* === NAV LOGO FIX === */
+
 .nav-logo-wrap {
   width: 0;
   overflow: hidden;
@@ -1373,7 +1373,7 @@ nav.s .nav-logo-icon {
 }
 
 
-/* === NAV SVG LOGO === */
+
 .nav-logo-wrap {
   width: 0;
   overflow: hidden;
@@ -1406,7 +1406,7 @@ nav:not(.s) .logo { color: var(--cream); }
 }
 
 
-/* === NAV SCROLL LOGO === */
+
 .nav-logo-icon {
   width: 36px;
   height: 36px;
@@ -1420,6 +1420,23 @@ nav:not(.s) .logo { color: var(--cream); }
 nav.s .nav-logo-icon {
   opacity: 1;
   max-width: 40px;
+  margin-right: 6px;
+}
+
+
+/* === NAV LOGO === */
+.nav-logo-icon {
+  width: 0;
+  height: 36px;
+  object-fit: contain;
+  opacity: 0;
+  transition: width .4s, opacity .4s;
+  flex-shrink: 0;
+  mix-blend-mode: multiply;
+}
+nav.s .nav-logo-icon {
+  width: 36px;
+  opacity: 1;
   margin-right: 6px;
 }
 
@@ -1444,7 +1461,7 @@ nav.s .nav-logo-icon {
 </nav>
 
 <div class="mob" id="mob">
-  <button class="mx" id="mx">✕</button>
+  <button class="mx" id="mx" onclick="document.getElementById('mob').classList.remove('open')">✕</button>
   <img src="images/logo-black.png" alt="Elly Korving" class="mob-logo">
   <a href="#pad" class="ml">Het werk</a>
   <a href="#wie" class="ml">Wie ik ben</a>
@@ -1757,9 +1774,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const mob = document.getElementById('mob');
   const mx = document.getElementById('mx');
   if (hb && mob) {
-    hb.addEventListener('click', () => mob.classList.add('open'));
-    if (mx) mx.addEventListener('click', () => mob.classList.remove('open'));
-    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mob.classList.remove('open')));
+    hb.addEventListener('click', function() { mob.classList.add('open'); });
+    if (mx) mx.addEventListener('click', function() { mob.classList.remove('open'); });
+    mob.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() { mob.classList.remove('open'); });
+    });
   }
 
   // ── SCROLL REVEAL

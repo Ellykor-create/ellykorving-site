@@ -1375,6 +1375,78 @@ nav:not(.s) .logo { color: var(--cream); }
 .nav-logo-icon{width:0;height:34px;object-fit:contain;opacity:0;transition:width .35s,opacity .35s;flex-shrink:0;mix-blend-mode:multiply;}
 nav.s .nav-logo-icon{width:34px;opacity:1;margin-right:5px;}
 
+
+/* === NAV DROPDOWN === */
+.nav-dropdown { position: relative; list-style: none; }
+.nav-dropdown-trigger { display: flex; align-items: center; gap: .3rem; cursor: pointer; }
+.nav-arrow { font-size: .55rem; transition: transform .3s; display: inline-block; }
+.nav-dropdown:hover .nav-arrow { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 1.2rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 8px 48px rgba(26,22,20,.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s, transform .25s;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 620px;
+  z-index: 200;
+  border-top: 2px solid var(--s);
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+.ndm-inner { display: grid; grid-template-columns: 1fr 1fr; }
+.ndm-col { padding: 1.5rem; }
+.ndm-col-dark { background: #1A1614; border-radius: 0 6px 6px 0; display: flex; flex-direction: column; }
+.ndm-label {
+  font-family: var(--sans); font-size: .5rem; font-weight: 600;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: rgba(26,22,20,.35); margin-bottom: 1rem;
+  padding-bottom: .6rem; border-bottom: .5px solid rgba(26,22,20,.08);
+}
+.ndm-col-dark .ndm-label { color: rgba(245,242,236,.3); border-bottom-color: rgba(245,242,236,.08); }
+.ndm-item {
+  display: flex; align-items: flex-start; gap: .8rem;
+  padding: .6rem .5rem; border-radius: 4px;
+  text-decoration: none; transition: background .2s;
+  margin-bottom: .2rem;
+}
+.ndm-item:hover { background: rgba(26,22,20,.04); }
+.ndm-item-light:hover { background: rgba(245,242,236,.06); }
+.ndm-num {
+  font-family: var(--serif); font-size: 1.1rem; font-weight: 300;
+  color: rgba(26,22,20,.2); line-height: 1; flex-shrink: 0; min-width: 22px;
+}
+.ndm-item-light .ndm-num { color: rgba(245,242,236,.2); }
+.ndm-text { display: flex; flex-direction: column; gap: .15rem; }
+.ndm-text strong {
+  font-family: var(--sans); font-size: .65rem; font-weight: 500;
+  color: var(--dark); letter-spacing: .02em;
+}
+.ndm-item-light .ndm-text strong { color: var(--cream); }
+.ndm-text em {
+  font-family: var(--sans); font-size: .55rem; font-style: normal;
+  color: rgba(26,22,20,.45); letter-spacing: .05em;
+}
+.ndm-item-light .ndm-text em { color: rgba(245,242,236,.4); }
+.ndm-cta { margin-top: auto; padding-top: 1.2rem; }
+.ndm-cta-btn {
+  display: inline-flex; align-items: center;
+  background: var(--s); color: #fff;
+  font-family: var(--sans); font-size: .55rem; font-weight: 500;
+  letter-spacing: .15em; text-transform: uppercase; text-decoration: none;
+  padding: .7rem 1.2rem; border-radius: 2px;
+  transition: background .3s;
+}
+.ndm-cta-btn:hover { background: #a03560; }
+
 </style>
 </head>
 <body>
@@ -1384,7 +1456,50 @@ nav.s .nav-logo-icon{width:34px;opacity:1;margin-right:5px;}
 <nav id="nav">
   <a href="#" class="logo"><img src="images/logo-cream.png" alt="Elly Korving" class="nav-logo-icon">Elly Korving</a>
   <ul class="nl">
-    <li><a href="producten.html">Het werk</a></li>
+    <li class="nav-dropdown">
+      <a href="producten.html" class="nav-dropdown-trigger">Het werk <span class="nav-arrow">▾</span></a>
+      <div class="nav-dropdown-menu">
+        <div class="ndm-inner">
+          <div class="ndm-col">
+            <div class="ndm-label">Zelfstandig starten</div>
+            <a href="365.html" class="ndm-item">
+              <span class="ndm-num">01</span>
+              <span class="ndm-text"><strong>365 Gates of Awareness</strong><em>Gratis · Elke dag één vraag</em></span>
+            </a>
+            <a href="https://110lifeandbusiness.com/checkout/the-awareness-reset" target="_blank" class="ndm-item">
+              <span class="ndm-num">02</span>
+              <span class="ndm-text"><strong>The Awareness Reset</strong><em>Je zenuwstelsel tot rust</em></span>
+            </a>
+            <a href="https://www.110lifeandbusiness.com/entering-transformation" target="_blank" class="ndm-item">
+              <span class="ndm-num">03</span>
+              <span class="ndm-text"><strong>Entering Transformation</strong><em>12 stappen · Identiteit</em></span>
+            </a>
+            <a href="https://www.110lifeandbusiness.com/versnel-je-bewustzijn-met-ai" target="_blank" class="ndm-item">
+              <span class="ndm-num">04</span>
+              <span class="ndm-text"><strong>Versnel je Bewustzijn met AI</strong><em>21 dagen · Online</em></span>
+            </a>
+            <a href="https://www.110lifeandbusiness.com/being-the-laws-of-my-universe" target="_blank" class="ndm-item">
+              <span class="ndm-num">05</span>
+              <span class="ndm-text"><strong>Being the Laws of My Universe</strong><em>Live traject · Diepste laag</em></span>
+            </a>
+          </div>
+          <div class="ndm-col ndm-col-dark">
+            <div class="ndm-label">Persoonlijke begeleiding</div>
+            <a href="producten.html#contact" class="ndm-item ndm-item-light">
+              <span class="ndm-num">06</span>
+              <span class="ndm-text"><strong>Groepscoaching</strong><em>Wekelijks · Community · Mastermind</em></span>
+            </a>
+            <a href="producten.html#contact" class="ndm-item ndm-item-light">
+              <span class="ndm-num">07</span>
+              <span class="ndm-text"><strong>Één op één begeleiding</strong><em>6 of 12 maanden · Volledig traject</em></span>
+            </a>
+            <div class="ndm-cta">
+              <a href="https://calendar.app.google/i1XXp48q3C2p34ef7" target="_blank" class="ndm-cta-btn">Plan een gesprek →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
     <li><a href="#wie">Wie ik ben</a></li>
     <li><a href="#reviews">Ervaringen</a></li>
     <li><a href="blog.html">Blog</a></li>

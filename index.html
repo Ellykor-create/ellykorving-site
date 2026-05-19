@@ -733,9 +733,9 @@ nav.s{background:rgba(245,242,236,.97);backdrop-filter:blur(20px);padding:1rem 1
 .wk-h2 em{font-style:italic;color:var(--sl)}
 
 /* ── VERHAAL ── */
-.sec-v{padding:4rem 1.8rem 5rem;background:#1A1614}
+.sec-v{padding:4rem 1.8rem 5rem;background:#2E2824}
 .sec-v h2{font-family:var(--serif);font-size:clamp(1.7rem,6.5vw,2.6rem);font-weight:300;color:#F5F2EC;line-height:1.28;margin-bottom:2rem}
-.sec-v p{font-size:.82rem;line-height:2;color:rgba(245,240,232,.82);margin-bottom:.9rem}
+.sec-v p{font-size:1rem;line-height:1.9;color:rgba(245,240,232,.95);margin-bottom:.9rem;font-family:'Cormorant Garamond',serif;}
 .sec-v strong{font-weight:400;color:#F5F2EC}
 .sec-v em{font-style:italic;color:#ECA0C8}
 .sig{font-family:var(--serif);font-size:1rem;font-weight:300;font-style:italic;color:rgba(245,240,232,.42);margin-top:2rem}
@@ -890,20 +890,21 @@ footer{padding:2.5rem 1.8rem;background:#1A1410;display:flex;flex-direction:colu
   padding:.2rem 0 .5rem;
 }
 .pc-btn{
-  display:inline-flex;align-items:center;gap:.7rem;
-  padding:.7rem 1.6rem;
-  border:.5px solid rgba(192,74,120,.4);
-  color:var(--sl);
-  font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;
+  display:inline-flex;align-items:center;justify-content:center;gap:.7rem;
+  padding:.85rem 1.8rem;
+  border:none;
+  color:#F5F2EC;
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
   text-decoration:none;font-family:var(--sans);
-  background:transparent;
+  background:#1A1614;
+  border-radius:2px;
   transition:all .4s;
   white-space:nowrap;
+  width:100%;
 }
 .pc-btn:hover{
-  background:rgba(192,74,120,.08);
-  border-color:var(--s);
-  color:var(--s);
+  background:#C04A78;
+  color:#fff;
   gap:1.1rem;
 }
 .pc-btn-flash{
@@ -929,15 +930,15 @@ footer{padding:2.5rem 1.8rem;background:#1A1410;display:flex;flex-direction:colu
 
 @media(min-width:768px){
   .cards-scroll{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:1.4rem;
-    overflow:visible;
+    display:flex;
+    gap:2rem;
+    overflow-x:auto;
     padding:0 5rem 3rem;
-    align-items:start;
+    align-items:stretch;
+    scroll-snap-type:x mandatory;
   }
-  .pcard{flex:none;max-width:none}
-  .cards-dots{display:none}
+  .pcard{flex:0 0 320px;width:320px;}
+  .cards-dots{display:flex}
 }
 
   .pcard .pc-num{font-size:3.2rem}
@@ -1172,8 +1173,8 @@ section, .sec-her, .sec-wie, .sec-pad, .sec-v, .sec-s, .sec-r, .sec-bio, .sec-ct
   color: #ECA0C8 !important;
   border-bottom-color: rgba(236,160,200,.7) !important;
 }
-/* Kaart knoppen pc-btn */
-.pc-btn {
+/* Kaart knoppen pc-btn - overschreven hierboven */
+.pc-btn-extra {
   background: rgba(192,74,120,.12) !important;
   border-color: rgba(192,74,120,.45) !important;
   color: rgba(236,160,200,.9) !important;
@@ -1326,6 +1327,10 @@ html, body { margin: 0; padding: 0; }
 
 /* === HERO SPIEGEL === */
 #hero-img { transform: scaleX(-1) !important; }
+
+
+/* === GEO GLITTER === */
+#geo-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.45;}
 
 </style>
 </head>

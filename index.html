@@ -1412,7 +1412,7 @@ nav:not(.s) .logo { color: var(--cream); }
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 <nav id="nav">
-  <a href="#" class="logo"><span class="nav-logo-wrap"><img src="images/logo-black.png" alt="logo" class="nav-logo-icon"></span>Elly Korving</a>
+  <a href="#" class="logo">Elly Korving</a>
   <ul class="nl">
     <li><a href="#pad">Het werk</a></li>
     <li><a href="#wie">Wie ik ben</a></li>
@@ -1739,17 +1739,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const mob = document.getElementById('mob');
   const mx = document.getElementById('mx');
   if (hb && mob) {
-    hb.addEventListener('click', () => { mob.classList.add('open'); hb.classList.add('open'); });
-    if (mx) mx.addEventListener('click', () => { mob.classList.remove('open'); hb.classList.remove('open'); });
+    hb.addEventListener('click', () => { mob.classList.add('open'); });
+    if (mx) {
+      mx.addEventListener('click', () => { mob.classList.remove('open'); });
+    }
     mob.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => { mob.classList.remove('open'); hb.classList.remove('open'); });
-    });
-    // Sluit bij klik buiten menu
-    document.addEventListener('click', (e) => {
-      if (mob.classList.contains('open') && !mob.contains(e.target) && !hb.contains(e.target)) {
-        mob.classList.remove('open');
-        hb.classList.remove('open');
-      }
+      a.addEventListener('click', () => { mob.classList.remove('open'); });
     });
   }
 

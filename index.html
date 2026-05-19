@@ -565,7 +565,7 @@ nav.s{background:rgba(245,242,236,.97);backdrop-filter:blur(20px);padding:1rem 1
 .mob.open a:nth-child(5){transition-delay:.34s}
 .mob.open a:nth-child(6){transition-delay:.42s}
 .mob a:hover{color:#C04A78}
-.mx{position:absolute;top:1.4rem;right:1.8rem;background:none;border:none;color:rgba(245,240,232,.4);font-size:1.3rem;cursor:none}
+.mx{position:absolute;top:1.4rem;right:1.8rem;background:none;border:none;color:rgba(245,240,232,.85);font-size:1.8rem;cursor:pointer;z-index:110;padding:.5rem;line-height:1;}
 
 /* ── HERO ── */
 .hero{position:relative;height:100vh;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;margin:0;padding:0}
@@ -1395,7 +1395,7 @@ nav.s .nav-logo-icon{width:34px;opacity:1;margin-right:5px;}
 </nav>
 
 <div class="mob" id="mob">
-  <button class="mx" id="mx" onclick="document.getElementById('mob').classList.remove('open')">✕</button>
+  <button class="mx" id="mx">✕</button>
   <img src="images/logo-black.png" alt="Elly Korving" class="mob-logo">
   <a href="producten.html" class="ml">Het werk</a>
   <a href="#wie" class="ml">Wie ik ben</a>
@@ -1706,11 +1706,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const mob = document.getElementById('mob');
   const mx = document.getElementById('mx');
   if (hb && mob) {
-    hb.addEventListener('click', function() { mob.classList.add('open'); });
-    if (mx) mx.addEventListener('click', function() { mob.classList.remove('open'); });
-    mob.querySelectorAll('a').forEach(function(a) {
-      a.addEventListener('click', function() { mob.classList.remove('open'); });
-    });
+    function openMob() { mob.classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeMob() { mob.classList.remove('open'); document.body.style.overflow=''; }
+    hb.addEventListener('click', openMob);
+    if (mx) mx.addEventListener('click', closeMob);
+    mob.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMob); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMob(); });
   }
 
   // ── SCROLL REVEAL

@@ -25,7 +25,7 @@
       overflow-x: hidden;
     }
 
-    /* ─── HERO met foto ─────────────────────────────────── */
+    /* ─── HERO ──────────────────────────────────────────── */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -53,9 +53,9 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(10,7,5,0.52) 0%,
-        rgba(10,7,5,0.42) 50%,
-        rgba(10,7,5,0.75) 100%
+        rgba(10,7,5,0.50) 0%,
+        rgba(10,7,5,0.40) 50%,
+        rgba(10,7,5,0.78) 100%
       );
     }
 
@@ -66,7 +66,6 @@
     }
 
     .eyebrow {
-      font-family: 'Raleway', sans-serif;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.22em;
@@ -79,7 +78,7 @@
 
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(54px, 9vw, 96px);
+      font-size: clamp(54px, 9vw, 100px);
       font-weight: 300;
       line-height: 1.0;
       color: #fff;
@@ -107,7 +106,7 @@
       font-size: clamp(18px, 3vw, 24px);
       font-weight: 300;
       font-style: italic;
-      color: rgba(255,255,255,0.78);
+      color: rgba(255,255,255,0.80);
       line-height: 1.65;
       max-width: 520px;
       margin: 0 auto;
@@ -143,14 +142,7 @@
       animation: scrollPulse 2s ease-in-out infinite;
     }
 
-    /* ─── WELKOM ────────────────────────────────────────── */
-    .section-welcome {
-      padding: 100px 24px;
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
+    /* ─── GEDEELDE STIJLEN ──────────────────────────────── */
     .label {
       font-size: 11px;
       letter-spacing: 0.22em;
@@ -160,9 +152,17 @@
       display: block;
     }
 
+    /* ─── WELKOM ────────────────────────────────────────── */
+    .section-welcome {
+      padding: 100px 24px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
     .section-welcome h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(32px, 5vw, 50px);
+      font-size: clamp(32px, 5vw, 52px);
       font-weight: 400;
       line-height: 1.2;
       margin-bottom: 32px;
@@ -177,7 +177,7 @@
     .section-welcome p {
       font-size: 16px;
       line-height: 1.9;
-      color: rgba(26,22,20,0.72);
+      color: rgba(26,22,20,0.70);
       margin-bottom: 20px;
     }
 
@@ -188,9 +188,9 @@
 
     .italic-note {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 19px;
+      font-size: 20px;
       font-style: italic;
-      color: rgba(26,22,20,0.5);
+      color: rgba(26,22,20,0.50);
       line-height: 1.65;
       margin-top: 12px;
     }
@@ -205,12 +205,11 @@
     .gate-inner {
       max-width: 620px;
       margin: 0 auto;
-      padding-bottom: 0;
     }
 
     .gate-section h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(28px, 4.5vw, 42px);
+      font-size: clamp(28px, 4.5vw, 44px);
       font-weight: 400;
       color: var(--brown);
       margin-bottom: 10px;
@@ -220,7 +219,7 @@
       font-size: 12px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(26,22,20,0.38);
+      color: rgba(26,22,20,0.35);
       margin-bottom: 48px;
     }
 
@@ -274,7 +273,7 @@
       position: absolute;
       top: -50px; right: -50px;
       width: 180px; height: 180px;
-      border: 1px solid rgba(184,154,106,0.1);
+      border: 1px solid rgba(184,154,106,0.10);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -284,7 +283,7 @@
       position: absolute;
       bottom: -40px; left: -40px;
       width: 140px; height: 140px;
-      border: 1px solid rgba(184,154,106,0.08);
+      border: 1px solid rgba(184,154,106,0.07);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -312,7 +311,7 @@
     /* ─── GEOMETRY FOTO ─────────────────────────────────── */
     .geometry-section {
       width: 100%;
-      height: 480px;
+      height: 500px;
       overflow: hidden;
       position: relative;
       display: block;
@@ -322,16 +321,15 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 30%;
+      object-position: center 25%;
       display: block;
     }
 
-    /* fade overlays */
     .geometry-section::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 100px;
+      height: 120px;
       background: linear-gradient(to bottom, var(--brown), transparent);
       z-index: 1;
       pointer-events: none;
@@ -341,7 +339,7 @@
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 100px;
+      height: 120px;
       background: linear-gradient(to top, var(--cream2), transparent);
       z-index: 1;
       pointer-events: none;
@@ -362,8 +360,6 @@
       text-align: center;
       margin-bottom: 52px;
     }
-
-    .themas-header .label { color: var(--gold); }
 
     .themas-header h2 {
       font-family: 'Cormorant Garamond', serif;
@@ -440,10 +436,7 @@
       margin-bottom: 52px;
     }
 
-    .steps-list {
-      text-align: left;
-      margin-bottom: 60px;
-    }
+    .steps-list { text-align: left; margin-bottom: 60px; }
 
     .step-row {
       display: grid;
@@ -502,7 +495,7 @@
 
     .cta-section p {
       font-size: 15px;
-      color: rgba(245,242,236,0.5);
+      color: rgba(245,242,236,0.50);
       margin-bottom: 40px;
       max-width: 440px;
       margin-left: auto;
@@ -524,10 +517,7 @@
       transition: background 0.25s ease, transform 0.2s ease;
     }
 
-    .btn-primary:hover {
-      background: #a83d67;
-      transform: translateY(-2px);
-    }
+    .btn-primary:hover { background: #a83d67; transform: translateY(-2px); }
 
     .btn-ghost {
       display: inline-block;
@@ -544,10 +534,7 @@
       transition: border-color 0.25s, color 0.25s;
     }
 
-    .btn-ghost:hover {
-      border-color: rgba(245,242,236,0.55);
-      color: var(--cream);
-    }
+    .btn-ghost:hover { border-color: rgba(245,242,236,0.55); color: var(--cream); }
 
     /* ─── FOOTER ────────────────────────────────────────── */
     footer {
@@ -574,11 +561,7 @@
       color: rgba(26,22,20,0.38);
     }
 
-    footer a {
-      font-size: 12px;
-      color: var(--pink);
-      text-decoration: none;
-    }
+    footer a { font-size: 12px; color: var(--pink); text-decoration: none; }
 
     /* ─── ANIMATIES ─────────────────────────────────────── */
     @keyframes fadeUp {
@@ -597,10 +580,7 @@
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ─── RESPONSIVE ────────────────────────────────────── */
     @media (max-width: 600px) {
@@ -613,30 +593,25 @@
 </head>
 <body>
 
-  <!-- ═══ HERO met foto ════════════════════════════════════ -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
-
     <div class="hero-content">
       <p class="eyebrow">365 Gates of Awareness</p>
-      <h1 class="hero-title">
-        Welkom.<br /><em>Je bent er.</em>
-      </h1>
+      <h1 class="hero-title">Welkom.<br /><em>Je bent er.</em></h1>
       <div class="hero-divider"></div>
       <p class="hero-subtitle">
         Luister… en je zult je herinneren wie je was,<br />
         voordat de wereld je vertelde wie je moest zijn.
       </p>
     </div>
-
     <div class="scroll-cue">
       <span>Lees verder</span>
       <div class="scroll-arrow"></div>
     </div>
   </section>
 
-
-  <!-- ═══ WELKOM BERICHT ════════════════════════════════════ -->
+  <!-- WELKOM -->
   <section class="section-welcome">
     <span class="label reveal">Jouw bevestiging</span>
     <h2 class="reveal">Wat mooi dat je <em>ja</em> hebt gezegd.</h2>
@@ -651,8 +626,7 @@
     </p>
   </section>
 
-
-  <!-- ═══ GATE 1 ════════════════════════════════════════════ -->
+  <!-- GATE 1 -->
   <section class="gate-section">
     <div class="gate-inner">
       <span class="label reveal">Jouw cadeau · Alvast vandaag</span>
@@ -687,21 +661,18 @@
     </div>
   </section>
 
-
-  <!-- ═══ GEOMETRY FOTO direct onder de vraag ═════════════ -->
+  <!-- GEOMETRY FOTO -->
   <div class="geometry-section">
     <img src="images/365-geometry.jpg" alt="Sacred Geometry – Gate 1" loading="lazy" />
   </div>
 
-
-  <!-- ═══ 12 THEMA'S ════════════════════════════════════════ -->
+  <!-- 12 THEMA'S -->
   <section class="themas-section">
     <div class="themas-inner">
       <div class="themas-header">
         <span class="label reveal">Het komende jaar</span>
         <h2 class="reveal">12 maanden · 12 thema's · 365 Gates</h2>
       </div>
-
       <div class="themas-grid reveal">
         <div class="thema-item"><span class="thema-num">01</span><span class="thema-text">Bewust Denken</span></div>
         <div class="thema-item"><span class="thema-num">02</span><span class="thema-text">Emoties &amp; Schaduw</span></div>
@@ -720,12 +691,10 @@
     </div>
   </section>
 
-
-  <!-- ═══ VOLGENDE STAPPEN ══════════════════════════════════ -->
+  <!-- VOLGENDE STAPPEN -->
   <section class="nextsteps-section">
     <span class="label reveal">Volgende stappen</span>
     <h2 class="reveal">Zo werkt het vanaf hier</h2>
-
     <div class="steps-list">
       <div class="step-row reveal">
         <span class="num">1</span>
@@ -758,10 +727,9 @@
     </div>
   </section>
 
-
-  <!-- ═══ CTA ═══════════════════════════════════════════════ -->
+  <!-- CTA -->
   <section class="cta-section">
-    <span class="label reveal" style="color: var(--gold);">Elly Elizabeth Korving</span>
+    <span class="label reveal" style="color:var(--gold);">Elly Elizabeth Korving</span>
     <h2 class="reveal">Dankjewel dat je dit pad kiest.</h2>
     <p class="reveal">
       Je eerste stap is gezet. De rest ontvouwt vanzelf —<br />
@@ -773,14 +741,12 @@
     </div>
   </section>
 
-
-  <!-- ═══ FOOTER ════════════════════════════════════════════ -->
+  <!-- FOOTER -->
   <footer>
     <span class="footer-name">Elly Elizabeth Korving</span>
     <span class="footer-sub">Life Coach · Business Coach · Spiritual Guide</span>
     <a href="https://ellykorving.com">ellykorving.com</a>
   </footer>
-
 
   <script>
     const reveals = document.querySelectorAll('.reveal');

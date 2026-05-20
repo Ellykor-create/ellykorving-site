@@ -1104,6 +1104,7 @@ footer{padding:2.5rem 1.8rem;background:#1A1410;display:flex;flex-direction:colu
 }
 .life-h2 em{font-style:italic;color:var(--fl)}
 .life-h2 strong{font-weight:400;color:var(--sl)}
+.life-h2{color:#FFFFFF !important;}
 .life-grid{
   display:flex;flex-direction:column;gap:0;
   border-top:.5px solid rgba(245,240,232,.12);
@@ -1118,8 +1119,9 @@ footer{padding:2.5rem 1.8rem;background:#1A1410;display:flex;flex-direction:colu
   font-weight:500;
 }
 .lc-body{
-  font-size:1rem;line-height:1.9;color:rgba(245,240,232,.92);font-weight:300;
+  font-size:1rem;line-height:1.9;color:rgba(245,240,232,1);font-weight:300;
   font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,2.5vw,1.1rem);
 }
 
 @media(min-width:768px){
@@ -1141,9 +1143,14 @@ footer{padding:2.5rem 1.8rem;background:#1A1410;display:flex;flex-direction:colu
   .hero-sub{font-size:clamp(1rem,4vw,1.2rem) !important;}
   .her-p{font-size:clamp(1.15rem,4.5vw,1.6rem) !important;}
   .rumi-quote{font-size:clamp(1.8rem,5vw,3rem) !important;}
-  .pad-sub,.wie-sub,.bio-intro,.prd-p,.dbody,.wi-body,.lc-body{
+  .pad-sub,.wie-sub,.bio-intro,.prd-p,.dbody,.wi-body{
     font-size:max(.74rem,12px) !important;
     line-height:1.85 !important;
+  }
+  .lc-body{
+    font-size:max(1rem,16px) !important;
+    line-height:1.85 !important;
+    color:rgba(245,240,232,1) !important;
   }
 }
 

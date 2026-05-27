@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Creator — Elly Korving</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Poppins:wght@300;400;500&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #F5F0E8;
+      min-height: 100vh;
+    }
+
+    .ek-wrap {
+      font-family: 'Poppins', sans-serif;
+      background: #F5F0E8;
+      min-height: 100vh;
+      max-width: 680px;
+      margin: 0 auto;
+      color: #2C2420;
+    }
+
+    .ek-header {
+      background: #F5F0E8;
+      border-bottom: 0.5px solid rgba(44,36,32,0.15);
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .ek-logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: #2C2420;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ek-logo-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(44,36,32,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+    }
+
+    .ek-step-indicator {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: rgba(44,36,32,0.45);
+    }
+
+    .ek-body { padding: 40px 32px 60px; }
+
+    .ek-section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: #8B3A52;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .ek-section-label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: #8B3A52;
+    }
+
+    .ek-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 1.15;
+      color: #2C2420;
+      margin-bottom: 8px;
+    }
+
+    .ek-title em {
+      font-style: italic;
+      color: #8B3A52;
+    }
+
+    .ek-subtitle {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(44,36,32,0.6);
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .ek-divider {
+      height: 0.5px;
+      background: rgba(44,36,32,0.12);
+      margin: 28px 0;
+    }
+
+    .ek-field-group { margin-bottom: 24px; }
+
+    .ek-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(44,36,32,0.5);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .ek-input, .ek-textarea, .ek-select {
+      width: 100%;
+      background: rgba(255,255,255,0.6);
+      border: 0.5px solid rgba(44,36,32,0.2);
+      border-radius: 2px;
+      padding: 12px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: #2C2420;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .ek-input:focus, .ek-textarea:focus, .ek-select:focus {
+      border-color: #8B3A52;
+      background: rgba(255,255,255,0.85);
+    }
+
+    .ek-textarea { resize: vertical; line-height: 1.7; }
+
+    .ek-title-input {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      padding: 14px;
+      background: rgba(255,255,255,0.6);
+      border: 0.5px solid rgba(44,36,32,0.2);
+      border-radius: 2px;
+      width: 100%;
+      color: #2C2420;
+      outline: none;
+    }
+
+    .ek-title-input:focus { border-color: #8B3A52; background: rgba(255,255,255,0.85); }
+
+    .ek-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .ek-voice-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      background: transparent;
+      border: 0.5px solid rgba(44,36,32,0.25);
+      border-radius: 2px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: #2C2420;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 12px;
+      width: 100%;
+    }
+
+    .ek-voice-btn:hover { border-color: #8B3A52; color: #8B3A52; }
+    .ek-voice-btn.recording { border-color: #8B3A52; background: rgba(139,58,82,0.06); color: #8B3A52; }
+
+    .ek-voice-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #8B3A52;
+      flex-shrink: 0;
+    }
+
+    .ek-voice-dot.pulse { animation: pulse 1s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+
+    .ek-image-zone {
+      border: 0.5px dashed rgba(44,36,32,0.25);
+      border-radius: 2px;
+      padding: 28px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: rgba(255,255,255,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ek-image-zone:hover { border-color: #8B3A52; background: rgba(139,58,82,0.03); }
+    .ek-image-zone.has-image { padding: 0; }
+
+    .ek-image-preview {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+      border-radius: 2px;
+    }
+
+    .ek-image-text {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: rgba(44,36,32,0.45);
+    }
+
+    .ek-image-icon {
+      font-size: 28px;
+      color: rgba(44,36,32,0.2);
+      margin-bottom: 8px;
+    }
+
+    .ek-quote-input {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .ek-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 0.5px solid rgba(44,36,32,0.15);
+      margin-bottom: 28px;
+    }
+
+    .ek-tab {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      cursor: pointer;
+      color: rgba(44,36,32,0.45);
+      border-bottom: 1.5px solid transparent;
+      margin-bottom: -0.5px;
+      transition: all 0.2s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .ek-tab.active { color: #2C2420; border-bottom-color: #8B3A52; }
+
+    .ek-panel { display: none; }
+    .ek-panel.active { display: block; }
+
+    .ek-preview-wrap {
+      background: #F5F0E8;
+      border: 0.5px solid rgba(44,36,32,0.12);
+      border-radius: 2px;
+      padding: 36px 28px;
+    }
+
+    .ek-preview-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 300;
+      color: rgba(44,36,32,0.15);
+      margin-bottom: 4px;
+    }
+
+    .ek-preview-cat {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #8B3A52;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ek-preview-cat::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: #8B3A52;
+    }
+
+    .ek-preview-date {
+      font-size: 12px;
+      color: rgba(44,36,32,0.45);
+      margin-bottom: 10px;
+    }
+
+    .ek-preview-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: #2C2420;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .ek-preview-intro {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(44,36,32,0.7);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .ek-preview-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: rgba(44,36,32,0.55);
+      border-left: 1px solid rgba(139,58,82,0.4);
+      padding-left: 14px;
+      margin: 16px 0;
+    }
+
+    .ek-preview-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+
+    .ek-preview-divider {
+      height: 0.5px;
+      background: rgba(44,36,32,0.12);
+      margin: 20px 0;
+    }
+
+    .ek-plus-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 0.5px solid rgba(44,36,32,0.3);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: rgba(44,36,32,0.4);
+      cursor: pointer;
+      float: right;
+    }
+
+    .ek-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .ek-btn-primary {
+      flex: 1;
+      padding: 14px;
+      background: #2C2420;
+      color: #F5F0E8;
+      border: none;
+      border-radius: 2px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .ek-btn-primary:hover { background: #8B3A52; }
+
+    .ek-btn-secondary {
+      padding: 14px 20px;
+      background: transparent;
+      color: #2C2420;
+      border: 0.5px solid rgba(44,36,32,0.25);
+      border-radius: 2px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .ek-btn-secondary:hover { border-color: #8B3A52; color: #8B3A52; }
+
+    .ek-export-box {
+      background: #2C2420;
+      border-radius: 2px;
+      padding: 20px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .ek-export-box.visible { display: block; }
+
+    .ek-export-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.5);
+      margin-bottom: 10px;
+    }
+
+    .ek-export-code {
+      font-family: monospace;
+      font-size: 11px;
+      color: rgba(245,240,232,0.8);
+      white-space: pre-wrap;
+      word-break: break-all;
+      max-height: 160px;
+      overflow-y: auto;
+      line-height: 1.6;
+    }
+
+    .ek-copy-btn {
+      margin-top: 12px;
+      padding: 8px 16px;
+      background: rgba(245,240,232,0.1);
+      border: 0.5px solid rgba(245,240,232,0.2);
+      color: rgba(245,240,232,0.8);
+      border-radius: 2px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .ek-copy-btn:hover { background: rgba(245,240,232,0.2); }
+
+    .ek-char-count {
+      font-size: 11px;
+      color: rgba(44,36,32,0.35);
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    input[type="file"] { display: none; }
+
+    @media (max-width: 480px) {
+      .ek-body { padding: 28px 20px 60px; }
+      .ek-header { padding: 16px 20px; }
+      .ek-title { font-size: 28px; }
+      .ek-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ek-wrap">
+  <div class="ek-header">
+    <div class="ek-logo">
+      <div class="ek-logo-dot">EK</div>
+      ELLY KORVING
+    </div>
+    <div class="ek-step-indicator">BLOG CREATOR</div>
+  </div>
+
+  <div class="ek-body">
+    <div class="ek-section-label">Nieuw bericht</div>
+    <h1 class="ek-title">Schrijf wat <em>activeert.</em></h1>
+    <p class="ek-subtitle">Spreek in of typ — jouw blog krijgt automatisch jouw vaste opmaak.</p>
+
+    <div class="ek-tabs">
+      <button class="ek-tab active" onclick="switchTab('schrijven')">Schrijven</button>
+      <button class="ek-tab" onclick="switchTab('preview')">Preview</button>
+      <button class="ek-tab" onclick="switchTab('exporteren')">Exporteren</button>
+    </div>
+
+    <div class="ek-panel active" id="panel-schrijven">
+
+      <div class="ek-field-group">
+        <span class="ek-label">Jouw gedachten — spreek of typ</span>
+        <button class="ek-voice-btn" id="voiceBtn" onclick="toggleVoice()">
+          <div class="ek-voice-dot" id="voiceDot"></div>
+          <span id="voiceLabel">Druk om in te spreken</span>
+        </button>
+        <textarea class="ek-textarea" id="bodyText" rows="7" placeholder="Of typ hier je blog tekst direct..." oninput="updateCount(this,'bodyCount');syncPreview()"></textarea>
+        <div class="ek-char-count"><span id="bodyCount">0</span> tekens</div>
+      </div>
+
+      <div class="ek-divider"></div>
+
+      <div class="ek-field-group">
+        <span class="ek-label">Blogtitel</span>
+        <input type="text" class="ek-title-input" id="blogTitle" placeholder="De titel van jouw blog..." oninput="syncPreview()" />
+      </div>
+
+      <div class="ek-row">
+        <div class="ek-field-group">
+          <span class="ek-label">Categorie</span>
+          <select class="ek-select" id="blogCat" onchange="syncPreview()">
+            <option value="Bewustzijn">Bewustzijn</option>
+            <option value="Stilte &amp; aanwezigheid">Stilte &amp; aanwezigheid</option>
+            <option value="De spiegel">De spiegel</option>
+            <option value="Identiteit">Identiteit</option>
+            <option value="Ademwerk">Ademwerk</option>
+            <option value="Mind &amp; patronen">Mind &amp; patronen</option>
+            <option value="Loslaten &amp; vergeving">Loslaten &amp; vergeving</option>
+            <option value="Mind &amp; leiderschap">Mind &amp; leiderschap</option>
+            <option value="Authenticiteit">Authenticiteit</option>
+          </select>
+        </div>
+        <div class="ek-field-group">
+          <span class="ek-label">Datum</span>
+          <input type="date" class="ek-input" id="blogDate" oninput="syncPreview()" />
+        </div>
+      </div>
+
+      <div class="ek-field-group">
+        <span class="ek-label">Activerende quote (optioneel)</span>
+        <input type="text" class="ek-input ek-quote-input" id="blogQuote" placeholder='"Woorden die raken..."' oninput="syncPreview()" />
+        <input type="text" class="ek-input" id="blogQuoteAuthor" placeholder="— Auteur" style="margin-top:8px;" oninput="syncPreview()" />
+      </div>
+
+      <div class="ek-field-group">
+        <span class="ek-label">Afbeelding</span>
+        <div class="ek-image-zone" id="imageZone" onclick="document.getElementById('imageInput').click()">
+          <div id="imagePlaceholder">
+            <div class="ek-image-icon">+</div>
+            <div class="ek-image-text">Tik om foto te kiezen</div>
+          </div>
+          <img class="ek-image-preview" id="imagePreview" style="display:none;" />
+        </div>
+        <input type="file" id="imageInput" accept="image/*" onchange="handleImage(event)" />
+      </div>
+
+    </div>
+
+    <div class="ek-panel" id="panel-preview">
+      <div class="ek-preview-wrap">
+        <div class="ek-preview-number" id="prev-number">11</div>
+        <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+          <div>
+            <div class="ek-preview-cat" id="prev-cat">Bewustzijn</div>
+            <div class="ek-preview-date" id="prev-date">27 mei 2026</div>
+          </div>
+          <button class="ek-plus-btn">+</button>
+        </div>
+        <h2 class="ek-preview-title" id="prev-title">Jouw blogtitel verschijnt hier</h2>
+        <img class="ek-preview-img" id="prev-img" style="display:none;" />
+        <p class="ek-preview-intro" id="prev-intro">Jouw tekst verschijnt hier als intro...</p>
+        <div class="ek-preview-divider"></div>
+        <div class="ek-preview-quote" id="prev-quote" style="display:none;"></div>
+      </div>
+    </div>
+
+    <div class="ek-panel" id="panel-exporteren">
+      <p style="font-size:13px; font-weight:300; color:rgba(44,36,32,0.65); line-height:1.7; margin-bottom:20px;">
+        Kopieer de HTML-code hieronder en plak hem in jouw blog.html bestand op precies de plek waar je de nieuwe post wilt toevoegen.
+      </p>
+      <div class="ek-export-box visible" id="exportBox">
+        <div class="ek-export-label">HTML — klaar voor jouw site</div>
+        <div class="ek-export-code" id="exportCode">Vul eerst titel en tekst in...</div>
+        <button class="ek-copy-btn" onclick="copyCode()">Kopiëren</button>
+      </div>
+    </div>
+
+    <div class="ek-actions">
+      <button class="ek-btn-secondary" onclick="clearAll()">Wissen</button>
+      <button class="ek-btn-primary" onclick="generateExport()">Genereer HTML →</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  var isRecording = false;
+  var recognition = null;
+  var postNumber = 11;
+
+  var months = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    var d = new Date(dateStr);
+    return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+  }
+
+  document.getElementById('blogDate').value = new Date().toISOString().split('T')[0];
+
+  function switchTab(name) {
+    document.querySelectorAll('.ek-tab').forEach(function(t,i){
+      t.classList.toggle('active', ['schrijven','preview','exporteren'][i] === name);
+    });
+    document.querySelectorAll('.ek-panel').forEach(function(p,i){
+      p.classList.toggle('active', ['schrijven','preview','exporteren'][i] === name);
+    });
+    if (name === 'preview') syncPreview();
+    if (name === 'exporteren') generateExport();
+  }
+
+  function syncPreview() {
+    var title = document.getElementById('blogTitle').value || 'Jouw blogtitel verschijnt hier';
+    var cat = document.getElementById('blogCat').value;
+    var date = formatDate(document.getElementById('blogDate').value);
+    var body = document.getElementById('bodyText').value;
+    var quote = document.getElementById('blogQuote').value;
+    var author = document.getElementById('blogQuoteAuthor').value;
+    var imgSrc = document.getElementById('imagePreview').src;
+    var imgVisible = document.getElementById('imagePreview').style.display !== 'none';
+
+    document.getElementById('prev-title').textContent = title;
+    document.getElementById('prev-cat').textContent = cat;
+    document.getElementById('prev-date').textContent = date;
+    document.getElementById('prev-intro').textContent = body.substring(0,220) + (body.length > 220 ? '...' : '');
+
+    var qEl = document.getElementById('prev-quote');
+    if (quote) {
+      qEl.style.display = 'block';
+      qEl.textContent = '"' + quote + '"' + (author ? ' ' + author : '');
+    } else {
+      qEl.style.display = 'none';
+    }
+
+    var prevImg = document.getElementById('prev-img');
+    if (imgVisible && imgSrc) {
+      prevImg.src = imgSrc;
+      prevImg.style.display = 'block';
+    } else {
+      prevImg.style.display = 'none';
+    }
+  }
+
+  function updateCount(el, counterId) {
+    document.getElementById(counterId).textContent = el.value.length;
+  }
+
+  function handleImage(e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      var img = document.getElementById('imagePreview');
+      img.src = ev.target.result;
+      img.style.display = 'block';
+      document.getElementById('imagePlaceholder').style.display = 'none';
+      document.getElementById('imageZone').classList.add('has-image');
+      syncPreview();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function toggleVoice() {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+      alert('Spraakherkenning werkt in Safari op iPhone. Open deze pagina in Safari voor spraakinvoer.');
+      return;
+    }
+    if (isRecording) {
+      stopRecording();
+    } else {
+      startRecording();
+    }
+  }
+
+  function startRecording() {
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SR();
+    recognition.lang = 'nl-NL';
+    recognition.continuous = true;
+    recognition.interimResults = true;
+
+    recognition.onresult = function(e) {
+      var transcript = '';
+      for (var i = 0; i < e.results.length; i++) {
+        transcript += e.results[i][0].transcript;
+      }
+      document.getElementById('bodyText').value = transcript;
+      updateCount(document.getElementById('bodyText'), 'bodyCount');
+    };
+
+    recognition.onend = function() { stopRecording(); };
+    recognition.start();
+    isRecording = true;
+    document.getElementById('voiceLabel').textContent = 'Opname bezig — tik om te stoppen';
+    document.getElementById('voiceBtn').classList.add('recording');
+    document.getElementById('voiceDot').classList.add('pulse');
+  }
+
+  function stopRecording() {
+    if (recognition) recognition.stop();
+    isRecording = false;
+    document.getElementById('voiceLabel').textContent = 'Druk om in te spreken';
+    document.getElementById('voiceBtn').classList.remove('recording');
+    document.getElementById('voiceDot').classList.remove('pulse');
+    syncPreview();
+  }
+
+  function generateExport() {
+    var title = document.getElementById('blogTitle').value || 'Nieuwe blog';
+    var cat = document.getElementById('blogCat').value;
+    var date = formatDate(document.getElementById('blogDate').value);
+    var body = document.getElementById('bodyText').value || '';
+    var quote = document.getElementById('blogQuote').value;
+    var author = document.getElementById('blogQuoteAuthor').value;
+    var numStr = postNumber < 10 ? '0' + postNumber : '' + postNumber;
+
+    var intro = body.substring(0, 200) + (body.length > 200 ? '...' : '');
+    var full = body;
+
+    var quoteHtml = quote ? '\n"' + quote + (author ? ' — ' + author : '') + '"' : '';
+
+    var html = '<div class="blog-item">\n' +
+      '  <span class="number">' + numStr + '</span>\n' +
+      '  <div class="cat">' + cat.toUpperCase() + '</div>\n' +
+      '  <div class="date">' + date + '</div>\n' +
+      '  <h2>' + title + '</h2>\n' +
+      '  <p class="intro">' + intro + '</p>\n' +
+      (quoteHtml ? '  <blockquote>' + quoteHtml + '\n  </blockquote>\n' : '') +
+      '  <div class="full-text" style="display:none;">\n' +
+      '    <p>' + full.replace(/\n/g,'</p>\n    <p>') + '</p>\n' +
+      '  </div>\n' +
+      '</div>';
+
+    document.getElementById('exportCode').textContent = html;
+    switchTab('exporteren');
+  }
+
+  function copyCode() {
+    var code = document.getElementById('exportCode').textContent;
+    navigator.clipboard.writeText(code).then(function() {
+      var btn = document.querySelector('.ek-copy-btn');
+      btn.textContent = 'Gekopieerd ✓';
+      setTimeout(function(){ btn.textContent = 'Kopiëren'; }, 2000);
+    });
+  }
+
+  function clearAll() {
+    document.getElementById('blogTitle').value = '';
+    document.getElementById('bodyText').value = '';
+    document.getElementById('blogQuote').value = '';
+    document.getElementById('blogQuoteAuthor').value = '';
+    document.getElementById('bodyCount').textContent = '0';
+    document.getElementById('imagePreview').style.display = 'none';
+    document.getElementById('imagePlaceholder').style.display = 'block';
+    document.getElementById('imageZone').classList.remove('has-image');
+    syncPreview();
+  }
+</script>
+
+</body>
+</html>

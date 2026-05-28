@@ -239,53 +239,23 @@ footer{padding:1.8rem;background:var(--dark);display:flex;flex-direction:column;
 </section>
 
 <section class="sec-blogs">
-<!-- 
-════════════════════════════════════════════════════════
-  NIEUW BLOG TOEVOEGEN — kopieer dit blok en plak het
-  BOVEN de bestaande blogs. Verander het nummer (11, 12…)
-  en pas de tekst aan. Klaar!
-════════════════════════════════════════════════════════
+<!--
+  ╔══════════════════════════════════════════════════════╗
+  ║  NIEUW BLOG TOEVOEGEN                                ║
+  ║  Kopieer onderstaand blok, plak het BOVEN blog-01,  ║
+  ║  pas nummer + tekst aan en voeg src van foto in.     ║
+  ╚══════════════════════════════════════════════════════╝
 
-  <div class="blog-item" id="blog-11">
-    <div class="bi-hero-img-wrap">
-      <!-- Vervang src door pad naar jouw afbeelding, bv: src="images/blog-11.jpg" -->
-      <img class="bi-hero-img" src="" alt="Omschrijving van de afbeelding" 
-           loading="lazy" onload="this.classList.add('loaded')"
-           style="background:rgba(192,74,120,.08);min-height:160px;">
-    </div>
-    <div class="bi-header" onclick="toggleBlog('11')">
-      <div class="bi-left">
-        <span class="bi-num" style="color:#C04A78">11</span>
-        <div class="bi-meta">
-          <span class="bi-tag" style="color:#C04A78;border-color:rgba(192,74,120,.15)">Categorie</span>
-          <span class="bi-date">1 januari 2027</span>
-          <h2 class="bi-title">Jouw blogtitel hier</h2>
-          <p class="bi-preview">Korte intro / preview van de blog (1-2 zinnen).</p>
-        </div>
-      </div>
-      <div class="bi-toggle" id="toggle-11">
-        <span class="toggle-icon">+</span>
-      </div>
-    </div>
-    <div class="bi-body" id="body-11">
-      <div class="bi-quote">"Jouw quote of kernzin hier."</div>
-      <div class="bi-content">
-        <p>Eerste alinea van je blog.</p>
-        <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--dark);margin:1.5rem 0 .5rem">Subtitel</h3>
-        <p>Tweede alinea hier.</p>
-        <p><em>Afsluitende gedachte of uitnodiging.</em></p>
-      </div>
-      <button class="bi-close" onclick="toggleBlog('11')">Sluiten ↑</button>
-    </div>
-  </div>
+  STAP 1: Kopieer dit blok
+  STAP 2: Plak het voor de eerste blog-item div
+  STAP 3: Verander 11 naar het volgende nummer
+  STAP 4: Vul je tekst in
+  STAP 5: Zet src="images/jouw-foto.jpg" in de img tag
 
-════════════════════════════════════════════════════════
   KLEUR SCHEMA:
-  Odd blogs (01,03,05…):  color:#8A6A3A  border:rgba(138,106,58,.12)
-  Even blogs (02,04,06…): color:#C04A78  border:rgba(192,74,120,.15)
-════════════════════════════════════════════════════════
+  Oneven (01,03,05...): color:#8A6A3A | border:rgba(138,106,58,.12)
+  Even   (02,04,06...): color:#C04A78 | border:rgba(192,74,120,.15)
 -->
-
 
     <div class="blog-item" id="blog-01">
   <div class="bi-hero-img-wrap">
@@ -323,8 +293,9 @@ footer{padding:1.8rem;background:var(--dark);display:flex;flex-direction:column;
     </div>
 
     <div class="blog-item" id="blog-02">
-  <div class="bi-hero-img-wrap">
-    <!-- AFBEELDING BLOG 02: vervang src="" door je afbeeldingspath of URL -->
+  <div class="bi-hero-img-wrap" style="display:none" data-blog="02">
+    <!-- AFBEELDING BLOG 02: verwijder style="display:none" en vul src in met jouw foto -->
+    <!-- Voorbeeld: src="images/blog-02.jpg" of src="https://jouw-url/foto.jpg" -->
     <img class="bi-hero-img" src="" alt="Bewustzijn — eendagsvlieg of robot, aanwezig zijn" loading="lazy" 
          style="background:rgba(138,106,58,.08);opacity:1;"
          onerror="this.style.background='rgba(138,106,58,.08)';this.style.minHeight='160px'"
@@ -361,8 +332,9 @@ footer{padding:1.8rem;background:var(--dark);display:flex;flex-direction:column;
     </div>
 
     <div class="blog-item" id="blog-03">
-  <div class="bi-hero-img-wrap">
-    <!-- AFBEELDING BLOG 03: vervang src="" door je afbeeldingspath of URL -->
+  <div class="bi-hero-img-wrap" style="display:none" data-blog="03">
+    <!-- AFBEELDING BLOG 03: verwijder style="display:none" en vul src in met jouw foto -->
+    <!-- Voorbeeld: src="images/blog-03.jpg" of src="https://jouw-url/foto.jpg" -->
     <img class="bi-hero-img" src="" alt="Through the looking glass — de spiegel als bewustzijn" loading="lazy" 
          style="background:rgba(192,74,120,.08);opacity:1;"
          onerror="this.style.background='rgba(192,74,120,.08)';this.style.minHeight='160px'"
@@ -398,8 +370,9 @@ footer{padding:1.8rem;background:var(--dark);display:flex;flex-direction:column;
     </div>
 
     <div class="blog-item" id="blog-04">
-  <div class="bi-hero-img-wrap">
-    <!-- AFBEELDING BLOG 04: vervang src="" door je afbeeldingspath of URL -->
+  <div class="bi-hero-img-wrap" style="display:none" data-blog="04">
+    <!-- AFBEELDING BLOG 04: verwijder style="display:none" en vul src in met jouw foto -->
+    <!-- Voorbeeld: src="images/blog-04.jpg" of src="https://jouw-url/foto.jpg" -->
     <img class="bi-hero-img" src="" alt="Ademwerk — vrij ademen of in patronen" loading="lazy" 
          style="background:rgba(138,106,58,.08);opacity:1;"
          onerror="this.style.background='rgba(138,106,58,.08)';this.style.minHeight='160px'"
@@ -439,8 +412,9 @@ footer{padding:1.8rem;background:var(--dark);display:flex;flex-direction:column;
     </div>
 
     <div class="blog-item" id="blog-05">
-  <div class="bi-hero-img-wrap">
-    <!-- AFBEELDING BLOG 05: vervang src="" door je afbeeldingspath of URL -->
+  <div class="bi-hero-img-wrap" style="display:none" data-blog="05">
+    <!-- AFBEELDING BLOG 05: verwijder style="display:none" en vul src in met jouw foto -->
+    <!-- Voorbeeld: src="images/blog-05.jpg" of src="https://jouw-url/foto.jpg" -->
     <img class="bi-hero-img" src="" alt="7 weetjes die je terughalen naar het moment" loading="lazy" 
          style="background:rgba(192,74,120,.08);opacity:1;"
          onerror="this.style.background='rgba(192,74,120,.08)';this.style.minHeight='160px'"
@@ -479,8 +453,9 @@ footer{padding:1.8rem;background:var(--dark);display:flex;flex-direction:column;
     </div>
 
     <div class="blog-item" id="blog-06">
-  <div class="bi-hero-img-wrap">
-    <!-- AFBEELDING BLOG 06: vervang src="" door je afbeeldingspath of URL -->
+  <div class="bi-hero-img-wrap" style="display:none" data-blog="06">
+    <!-- AFBEELDING BLOG 06: verwijder style="display:none" en vul src in met jouw foto -->
+    <!-- Voorbeeld: src="images/blog-06.jpg" of src="https://jouw-url/foto.jpg" -->
     <img class="bi-hero-img" src="" alt="7 integratie tips om gedachten te herkennen" loading="lazy" 
          style="background:rgba(138,106,58,.08);opacity:1;"
          onerror="this.style.background='rgba(138,106,58,.08)';this.style.minHeight='160px'"
@@ -519,8 +494,9 @@ footer{padding:1.8rem;background:var(--dark);display:flex;flex-direction:column;
     </div>
 
     <div class="blog-item" id="blog-07">
-  <div class="bi-hero-img-wrap">
-    <!-- AFBEELDING BLOG 07: vervang src="" door je afbeeldingspath of URL -->
+  <div class="bi-hero-img-wrap" style="display:none" data-blog="07">
+    <!-- AFBEELDING BLOG 07: verwijder style="display:none" en vul src in met jouw foto -->
+    <!-- Voorbeeld: src="images/blog-07.jpg" of src="https://jouw-url/foto.jpg" -->
     <img class="bi-hero-img" src="" alt="Leef jij jouw authentieke zelf" loading="lazy" 
          style="background:rgba(192,74,120,.08);opacity:1;"
          onerror="this.style.background='rgba(192,74,120,.08)';this.style.minHeight='160px'"
@@ -558,8 +534,9 @@ footer{padding:1.8rem;background:var(--dark);display:flex;flex-direction:column;
     </div>
 
     <div class="blog-item" id="blog-08">
-  <div class="bi-hero-img-wrap">
-    <!-- AFBEELDING BLOG 08: vervang src="" door je afbeeldingspath of URL -->
+  <div class="bi-hero-img-wrap" style="display:none" data-blog="08">
+    <!-- AFBEELDING BLOG 08: verwijder style="display:none" en vul src in met jouw foto -->
+    <!-- Voorbeeld: src="images/blog-08.jpg" of src="https://jouw-url/foto.jpg" -->
     <img class="bi-hero-img" src="" alt="Loslaten is zo gemakkelijk, toch" loading="lazy" 
          style="background:rgba(138,106,58,.08);opacity:1;"
          onerror="this.style.background='rgba(138,106,58,.08)';this.style.minHeight='160px'"
@@ -598,8 +575,9 @@ footer{padding:1.8rem;background:var(--dark);display:flex;flex-direction:column;
     </div>
 
     <div class="blog-item" id="blog-09">
-  <div class="bi-hero-img-wrap">
-    <!-- AFBEELDING BLOG 09: vervang src="" door je afbeeldingspath of URL -->
+  <div class="bi-hero-img-wrap" style="display:none" data-blog="09">
+    <!-- AFBEELDING BLOG 09: verwijder style="display:none" en vul src in met jouw foto -->
+    <!-- Voorbeeld: src="images/blog-09.jpg" of src="https://jouw-url/foto.jpg" -->
     <img class="bi-hero-img" src="" alt="Van FM naar DAB — bewustzijn als decoder" loading="lazy" 
          style="background:rgba(192,74,120,.08);opacity:1;"
          onerror="this.style.background='rgba(192,74,120,.08)';this.style.minHeight='160px'"
@@ -637,8 +615,9 @@ footer{padding:1.8rem;background:var(--dark);display:flex;flex-direction:column;
     </div>
 
     <div class="blog-item" id="blog-10">
-  <div class="bi-hero-img-wrap">
-    <!-- AFBEELDING BLOG 10: vervang src="" door je afbeeldingspath of URL -->
+  <div class="bi-hero-img-wrap" style="display:none" data-blog="10">
+    <!-- AFBEELDING BLOG 10: verwijder style="display:none" en vul src in met jouw foto -->
+    <!-- Voorbeeld: src="images/blog-10.jpg" of src="https://jouw-url/foto.jpg" -->
     <img class="bi-hero-img" src="" alt="Gebruik je mind als kompas, niet als commandant" loading="lazy" 
          style="background:rgba(138,106,58,.08);opacity:1;"
          onerror="this.style.background='rgba(138,106,58,.08)';this.style.minHeight='160px'"

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blogs & Inspiratie | Elly Elizabeth Korving</title>
+<meta name="description" content="Reflecties, inzichten en praktische tools voor ondernemers die vanuit hun kern willen leiden. Door Elly Elizabeth Korving.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f5f0;
+    --bg-card: #ffffff;
+    --bg-mid: #f0ece4;
+    --text: #2a2520;
+    --text-mid: #6b6055;
+    --gold: #b8945a;
+    --gold-light: #d4a96a;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; overflow-x: hidden; line-height: 1.7; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.4rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(248,245,240,0.97);
+    border-bottom: 1px solid rgba(184,148,90,0.12);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(42,37,32,0.07); }
+  .nav-logo {
+    font-family: var(--serif); font-size: 1.1rem; letter-spacing: 0.1em;
+    color: var(--text); text-decoration: none; font-weight: 400;
+    display: flex; align-items: baseline; gap: 0.35rem;
+  }
+  .nav-logo em { font-style: italic; color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+  .nav-links a {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-mid); text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--gold); padding: 0.5rem 1.2rem;
+    text-decoration: none; transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--gold); color: #fff; }
+
+  /* HERO */
+  .hero {
+    padding: 7rem 4rem 0;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 4rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    align-items: end;
+    min-height: 85vh;
+  }
+  .hero-text { padding-bottom: 5rem; }
+  .hero-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .hero-title {
+    font-family: var(--serif); font-size: clamp(3rem, 5.5vw, 5rem);
+    font-weight: 300; line-height: 1.0; color: var(--text); margin-bottom: 1.75rem;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-subtitle {
+    font-size: 1rem; color: var(--text-mid); line-height: 1.8;
+    max-width: 460px; margin-bottom: 2.5rem;
+  }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3rem; }
+  .hero-tag {
+    font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+    border: 1px solid rgba(184,148,90,0.3); color: var(--text-mid);
+    padding: 0.35rem 0.85rem; cursor: pointer; transition: all 0.25s;
+    background: transparent;
+    font-family: var(--sans);
+  }
+  .hero-tag:hover, .hero-tag.active { border-color: var(--gold); color: var(--gold); background: rgba(184,148,90,0.06); }
+  .hero-scroll {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--text-mid); opacity: 0.6;
+  }
+  .hero-scroll-line { width: 40px; height: 1px; background: var(--text-mid); }
+
+  /* HERO PHOTO */
+  .hero-photo {
+    position: relative; align-self: end;
+  }
+  .hero-photo-img {
+    width: 100%; height: 580px; object-fit: cover; object-position: center top;
+    display: block;
+  }
+  .hero-photo-caption {
+    position: absolute; bottom: 2rem; left: 2rem;
+    background: rgba(248,245,240,0.93);
+    padding: 1rem 1.5rem;
+    max-width: 240px;
+  }
+  .hero-photo-caption-name {
+    font-family: var(--serif); font-size: 1.1rem; color: var(--text); margin-bottom: 0.2rem;
+  }
+  .hero-photo-caption-role {
+    font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+  }
+
+  /* GOLD LINE */
+  .gold-rule {
+    max-width: 1280px; margin: 0 auto;
+    padding: 0 4rem;
+  }
+  .gold-rule hr {
+    border: none; border-top: 1px solid rgba(184,148,90,0.2); margin: 0;
+  }
+
+  /* CATEGORIES STRIP */
+  .cat-strip {
+    padding: 4rem 4rem 0;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .cat-strip-label {
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--text-mid); margin-bottom: 1.5rem; opacity: 0.7;
+  }
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.75rem;
+  }
+  .cat-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(184,148,90,0.12);
+    padding: 1.25rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cat-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+  }
+  .cat-card:hover, .cat-card.active { border-color: rgba(184,148,90,0.4); box-shadow: 0 4px 16px rgba(42,37,32,0.06); }
+  .cat-card:hover::after, .cat-card.active::after { transform: scaleX(1); }
+  .cat-card.active { background: rgba(184,148,90,0.05); }
+  .cat-icon { font-size: 1.4rem; margin-bottom: 0.5rem; line-height: 1; }
+  .cat-name {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-mid); display: block; margin-bottom: 0.2rem;
+    transition: color 0.3s;
+  }
+  .cat-card:hover .cat-name, .cat-card.active .cat-name { color: var(--gold); }
+  .cat-count {
+    font-family: var(--serif); font-size: 1.3rem; color: rgba(184,148,90,0.4);
+    display: block; line-height: 1;
+  }
+
+  /* BLOG GRID */
+  .blog-section {
+    padding: 3rem 4rem 6rem;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .blog-grid-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+  .blog-grid-title {
+    font-family: var(--serif); font-size: 1.5rem; font-weight: 300;
+    color: var(--text);
+  }
+  .blog-grid-title span { font-style: italic; color: var(--gold); }
+  .blog-count {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-mid); opacity: 0.6;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  /* BLOG CARD */
+  .blog-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(184,148,90,0.12);
+    box-shadow: 0 2px 12px rgba(42,37,32,0.05);
+    cursor: pointer; text-decoration: none; color: inherit;
+    display: flex; flex-direction: column;
+    transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+    position: relative; overflow: hidden;
+  }
+  .blog-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    transform: scaleX(0); transition: transform 0.35s;
+  }
+  .blog-card:hover { border-color: rgba(184,148,90,0.35); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(42,37,32,0.1); }
+  .blog-card:hover::after { transform: scaleX(1); }
+
+  .card-image { width: 100%; aspect-ratio: 3/2; overflow: hidden; position: relative; }
+  .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+  .blog-card:hover .card-image img { transform: scale(1.05); }
+  .card-image-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(42,37,32,0.2) 100%); }
+
+  .card-tag {
+    position: absolute; top: 1rem; left: 1rem;
+    font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #fff; padding: 0.28rem 0.65rem;
+  }
+  .card-tag[data-cat="bewustzijn"]   { background: rgba(80,100,130,0.82); }
+  .card-tag[data-cat="transformatie"]{ background: rgba(139,58,82,0.82); }
+  .card-tag[data-cat="adem"]         { background: rgba(60,115,100,0.82); }
+  .card-tag[data-cat="business"]     { background: rgba(100,80,50,0.82); }
+  .card-tag[data-cat="ai"]           { background: rgba(70,70,110,0.82); }
+  .card-tag[data-cat="identiteit"]   { background: rgba(130,90,60,0.82); }
+
+  .card-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; gap: 0.6rem; }
+  .card-meta { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(184,148,90,0.65); }
+  .card-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; line-height: 1.25; color: var(--text); }
+  .card-excerpt { font-size: 0.78rem; color: var(--text-mid); line-height: 1.75; flex: 1; }
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 0.9rem; border-top: 1px solid rgba(184,148,90,0.1); margin-top: auto;
+  }
+  .card-read-time { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(184,148,90,0.5); }
+  .card-arrow {
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); display: flex; align-items: center; gap: 0.4rem; transition: gap 0.3s;
+  }
+  .blog-card:hover .card-arrow { gap: 0.75rem; }
+  .card-arrow svg { width: 11px; height: 11px; }
+
+  /* FEATURED - spans 2 cols */
+  .blog-card.featured { grid-column: 1 / 3; flex-direction: row; }
+  .blog-card.featured .card-image { width: 52%; aspect-ratio: unset; flex-shrink: 0; }
+  .blog-card.featured .card-title { font-size: 1.55rem; }
+  .blog-card.featured .card-excerpt { font-size: 0.82rem; }
+
+  /* QUOTE CARD */
+  .quote-card {
+    background: var(--bg-mid); border: 1px solid rgba(184,148,90,0.18);
+    box-shadow: none; padding: 2rem;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center; gap: 1rem;
+    cursor: default;
+  }
+  .quote-card:hover { transform: none; box-shadow: none; }
+  .quote-card::after { display: none; }
+  .quote-mark { font-family: var(--serif); font-size: 3.5rem; line-height: 0.6; color: var(--gold); opacity: 0.35; }
+  .quote-text { font-family: var(--serif); font-size: 1.05rem; font-style: italic; color: var(--text-mid); line-height: 1.6; }
+  .quote-author { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.7; }
+
+  /* NO RESULTS */
+  .no-results {
+    grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;
+    display: none;
+  }
+  .no-results.visible { display: block; }
+  .no-results p { font-family: var(--serif); font-size: 1.4rem; font-style: italic; color: var(--text-mid); margin-bottom: 0.75rem; }
+  .no-results span { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(184,148,90,0.6); }
+
+  /* LOAD MORE */
+  .load-more { text-align: center; padding: 3rem 0 1rem; }
+
+  /* BTN */
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    padding: 0.9rem 2rem; background: transparent;
+    border: 1px solid var(--gold); color: var(--gold);
+    font-family: var(--sans); font-size: 0.7rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .btn-outline::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--gold); transform: translateX(-101%);
+    transition: transform 0.3s; z-index: 0;
+  }
+  .btn-outline span, .btn-outline svg { position: relative; z-index: 1; }
+  .btn-outline:hover { color: #fff; }
+  .btn-outline:hover::before { transform: translateX(0); }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    background: var(--bg-mid);
+    border-top: 1px solid rgba(184,148,90,0.15);
+    border-bottom: 1px solid rgba(184,148,90,0.15);
+  }
+  .about-inner {
+    max-width: 1280px; margin: 0 auto;
+    padding: 5rem 4rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .about-photo-wrap { position: relative; }
+  .about-photo { width: 100%; height: 420px; object-fit: cover; object-position: center top; display: block; }
+  .about-photo-tag {
+    position: absolute; bottom: 1.5rem; right: 1.5rem;
+    background: rgba(248,245,240,0.93); padding: 0.75rem 1.25rem;
+    font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+  }
+  .about-eyebrow { font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+  .about-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.1; color: var(--text); margin-bottom: 1.25rem; }
+  .about-title em { font-style: italic; color: var(--gold); }
+  .about-divider { width: 50px; height: 1px; background: linear-gradient(to right, var(--gold), transparent); margin-bottom: 1.5rem; opacity: 0.5; }
+  .about-body { font-size: 0.88rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 2rem; }
+  .about-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  /* NEWSLETTER */
+  .newsletter {
+    max-width: 1280px; margin: 0 auto;
+    padding: 5rem 4rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .newsletter-title { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 300; line-height: 1.15; color: var(--text); margin-bottom: 0.75rem; }
+  .newsletter-title em { font-style: italic; color: var(--gold); }
+  .newsletter-sub { font-size: 0.85rem; color: var(--text-mid); line-height: 1.7; }
+  .newsletter-form { display: flex; gap: 0; }
+  .newsletter-input {
+    flex: 1; padding: 0.9rem 1.25rem; background: var(--bg-card);
+    border: 1px solid rgba(184,148,90,0.25); border-right: none;
+    font-family: var(--sans); font-size: 0.85rem; color: var(--text);
+    outline: none; transition: border-color 0.3s;
+  }
+  .newsletter-input:focus { border-color: var(--gold); }
+  .newsletter-input::placeholder { color: rgba(107,96,85,0.45); font-size: 0.8rem; }
+  .newsletter-btn {
+    padding: 0.9rem 1.5rem; background: var(--gold); border: 1px solid var(--gold);
+    color: #fff; font-family: var(--sans); font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.3s; white-space: nowrap;
+  }
+  .newsletter-btn:hover { background: #a07840; }
+  .newsletter-note { font-size: 0.65rem; color: rgba(107,96,85,0.5); margin-top: 0.75rem; }
+
+  /* FOOTER */
+  footer { background: var(--bg); padding: 2.5rem 4rem; border-top: 1px solid rgba(184,148,90,0.12); }
+  .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-brand { font-family: var(--serif); font-size: 1rem; color: var(--text-mid); }
+  .footer-brand em { font-style: italic; color: var(--gold); }
+  .footer-copy { font-size: 0.65rem; color: rgba(107,96,85,0.5); }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .blog-card { opacity: 0; animation: fadeUp 0.55s ease forwards; }
+  .blog-card:nth-child(1){animation-delay:0.05s} .blog-card:nth-child(2){animation-delay:0.12s}
+  .blog-card:nth-child(3){animation-delay:0.19s} .blog-card:nth-child(4){animation-delay:0.26s}
+  .blog-card:nth-child(5){animation-delay:0.33s} .blog-card:nth-child(6){animation-delay:0.40s}
+  .blog-card:nth-child(7){animation-delay:0.47s} .blog-card:nth-child(8){animation-delay:0.54s}
+  .blog-card:nth-child(9){animation-delay:0.61s} .blog-card:nth-child(10){animation-delay:0.68s}
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .hero { grid-template-columns: 1fr 380px; gap: 3rem; }
+    .cat-grid { grid-template-columns: repeat(3, 1fr); }
+    .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-photo { height: 340px; }
+    .newsletter { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 2rem; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 2rem 0; min-height: auto; }
+    .hero-photo-img { height: 420px; }
+    .hero-text { padding-bottom: 2rem; }
+    .cat-strip, .blog-section { padding: 3rem 2rem; }
+    .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    .blog-card.featured { grid-column: auto; flex-direction: column; }
+    .blog-card.featured .card-image { width: 100%; aspect-ratio: 3/2; }
+    .about-inner, .newsletter { padding: 3rem 2rem; }
+    footer { padding: 2rem; }
+    .gold-rule { padding: 0 2rem; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .cat-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero { padding: 5.5rem 1.5rem 0; }
+    .cat-strip, .blog-section { padding: 2rem 1.5rem; }
+    .newsletter-form { flex-direction: column; }
+    .newsletter-input { border-right: 1px solid rgba(184,148,90,0.25); border-bottom: none; }
+    footer { padding: 1.5rem; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="ellykorving-blog.html" class="nav-logo">Elly <em>Elizabeth</em> Korving</a>
+  <ul class="nav-links">
+    <li><a href="#blogs" class="active">Blog</a></li>
+    <li><a href="#over">Over Elly</a></li>
+    <li><a href="entering-transformation-ellykorving.html">Entering Transformation</a></li>
+    <li><a href="https://calendar.app.google/vvMcqg4ewtL68pVU6" class="nav-cta">Plan gesprek</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Reflectie &amp; Inzicht</div>
+    <h1 class="hero-title">Woorden die<br><em>bewegen.</em><br>Gedachten die<br>bevrijden.</h1>
+    <p class="hero-subtitle">Inspiratie voor ondernemers die vanuit hun kern willen leiden. Over bewustzijn, identiteit, transformatie en het ondernemen dat écht bij je past.</p>
+
+    <div class="hero-tags">
+      <button class="hero-tag active" onclick="filterCat('all', this)">Alles</button>
+      <button class="hero-tag" onclick="filterCat('bewustzijn', this)">Bewustzijn</button>
+      <button class="hero-tag" onclick="filterCat('transformatie', this)">Transformatie</button>
+      <button class="hero-tag" onclick="filterCat('adem', this)">Ademwerk</button>
+      <button class="hero-tag" onclick="filterCat('business', this)">Business</button>
+      <button class="hero-tag" onclick="filterCat('ai', this)">Versnel met AI</button>
+    </div>
+
+    <div class="hero-scroll">
+      <span class="hero-scroll-line"></span>
+      scroll naar blogs
+    </div>
+  </div>
+
+  <div class="hero-photo">
+    <img
+      class="hero-photo-img"
+      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80&auto=format&fit=crop&crop=face"
+      alt="Elly Elizabeth Korving"
+      onerror="this.src='https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=900&q=80&auto=format&fit=crop'"
+    >
+    <div class="hero-photo-caption">
+      <div class="hero-photo-caption-name">Elly Elizabeth Korving</div>
+      <div class="hero-photo-caption-role">Business Coach &amp; Spiritual Guide</div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"><hr></div>
+
+<!-- CATEGORIE KAARTEN -->
+<div class="cat-strip" id="blogs">
+  <div class="cat-strip-label">Ontdek per thema</div>
+  <div class="cat-grid">
+    <div class="cat-card active" onclick="filterCat('all', this, true)">
+      <div class="cat-icon">✦</div>
+      <span class="cat-name">Alles</span>
+      <span class="cat-count">9</span>
+    </div>
+    <div class="cat-card" onclick="filterCat('bewustzijn', this, true)">
+      <div class="cat-icon">◯</div>
+      <span class="cat-name">Bewustzijn</span>
+      <span class="cat-count">3</span>
+    </div>
+    <div class="cat-card" onclick="filterCat('transformatie', this, true)">
+      <div class="cat-icon">◈</div>
+      <span class="cat-name">Transformatie</span>
+      <span class="cat-count">3</span>
+    </div>
+    <div class="cat-card" onclick="filterCat('adem', this, true)">
+      <div class="cat-icon">∼</div>
+      <span class="cat-name">Ademwerk</span>
+      <span class="cat-count">1</span>
+    </div>
+    <div class="cat-card" onclick="filterCat('business', this, true)">
+      <div class="cat-icon">◇</div>
+      <span class="cat-name">Business</span>
+      <span class="cat-count">1</span>
+    </div>
+    <div class="cat-card" onclick="filterCat('ai', this, true)">
+      <div class="cat-icon">⬡</div>
+      <span class="cat-name">Versnel met AI</span>
+      <span class="cat-count">1</span>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG GRID -->
+<section class="blog-section">
+  <div class="blog-grid-header">
+    <h2 class="blog-grid-title">Alle <span id="active-cat-label">blogs</span></h2>
+    <span class="blog-count" id="blog-count">9 artikelen</span>
+  </div>
+
+  <div class="blog-grid" id="blogGrid">
+
+    <!-- 1 FEATURED -->
+    <a href="blog-stilte-en-rust.html" class="blog-card featured" data-cat="bewustzijn">
+      <div class="card-image">
+        <img
+          src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=900&q=75&auto=format&fit=crop"
+          alt="Stilte bij zonsondergang"
+          loading="lazy">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag" data-cat="bewustzijn">Bewustzijn</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">10 maart 2026</span>
+        <h2 class="card-title">Stilte en rust, de plek waar het echte werk gebeurt</h2>
+        <p class="card-excerpt">Durf ik stil te worden en te luisteren naar wat er dan verschijnt? Stilte en rust zijn zo ingewikkeld in onze samenleving — maar het creëren vanuit rust zit hem niet in minder doen. Het gaat veel dieper.</p>
+        <div class="card-footer">
+          <span class="card-read-time">8 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 2 -->
+    <a href="blog-eendagsvlieg-of-robot.html" class="blog-card" data-cat="bewustzijn">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=700&q=75&auto=format&fit=crop" alt="Robot en mens" loading="lazy">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag" data-cat="bewustzijn">Bewustzijn</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">24 februari 2026</span>
+        <h2 class="card-title">Ben jij een eendagsvlieg of een robot?</h2>
+        <p class="card-excerpt">"Until you make the unconscious conscious, it will direct your life and you will call it fate." — Carl Jung</p>
+        <div class="card-footer">
+          <span class="card-read-time">6 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 3 QUOTE -->
+    <div class="blog-card quote-card" data-cat="all">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">Going from being in the scenery to becoming the seer.</p>
+      <span class="quote-author">Sri Sri Ravi Shankar</span>
+    </div>
+
+    <!-- 4 -->
+    <a href="blog-adem-vrij-of-patronen.html" class="blog-card" data-cat="adem">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=700&q=75&auto=format&fit=crop" alt="Natuur en adem" loading="lazy">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag" data-cat="adem">Ademwerk</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">18 januari 2026</span>
+        <h2 class="card-title">Adem jij vrij? 7 manieren om patronen in je adem te herkennen</h2>
+        <p class="card-excerpt">"Breath is the bridge which connects life to consciousness, which unites your body to your thoughts." — Thich Nhật Hạnh</p>
+        <div class="card-footer">
+          <span class="card-read-time">7 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 5 -->
+    <a href="blog-leven-naar-het-moment.html" class="blog-card" data-cat="bewustzijn">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=75&auto=format&fit=crop" alt="Samen aanwezig zijn" loading="lazy">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag" data-cat="bewustzijn">Bewustzijn</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">5 januari 2026</span>
+        <h2 class="card-title">7 weetjes die je leven direct terughalen naar het moment</h2>
+        <p class="card-excerpt">Elke emotie is verbonden met de adem. Verander je adem, verander je ritme — en je verandert de emotie. Sri Sri Ravi Shankar</p>
+        <div class="card-footer">
+          <span class="card-read-time">5 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 6 -->
+    <a href="blog-integratie-tips-gedachten.html" class="blog-card" data-cat="transformatie">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700&q=75&auto=format&fit=crop" alt="Licht door bomen" loading="lazy">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag" data-cat="transformatie">Transformatie</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">20 december 2025</span>
+        <h2 class="card-title">7 integratie tips om je gedachten te herkennen, te sturen en terug te keren naar jezelf</h2>
+        <p class="card-excerpt">"You can better become Master of your own mind — then Master of a thousand armies."</p>
+        <div class="card-footer">
+          <span class="card-read-time">9 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 7 -->
+    <a href="blog-leef-jouw-authentieke-zelf.html" class="blog-card" data-cat="transformatie">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?w=700&q=75&auto=format&fit=crop" alt="Vrouw kijkt omhoog" loading="lazy">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag" data-cat="transformatie">Transformatie</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">8 december 2025</span>
+        <h2 class="card-title">Leef jij jouw authentieke zelf</h2>
+        <p class="card-excerpt">Welk deel wil vandaag gehoord worden? Elk OORdeel is er één naar jezelf. Durf jij eerlijk te kijken, horen, te reflecteren en te voelen?</p>
+        <div class="card-footer">
+          <span class="card-read-time">6 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 8 -->
+    <a href="blog-loslaten-gemakkelijk.html" class="blog-card" data-cat="transformatie">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=700&q=75&auto=format&fit=crop" alt="Open handen loslaten" loading="lazy">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag" data-cat="transformatie">Transformatie</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">1 december 2025</span>
+        <h2 class="card-title">Loslaten is zo gemakkelijk, toch?</h2>
+        <p class="card-excerpt">Vergeving is geen daad van zwakte. Het is de moed om je eigen hart te bevrijden. — Mahatma Gandhi</p>
+        <div class="card-footer">
+          <span class="card-read-time">5 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 9 -->
+    <a href="blog-van-fm-naar-dab-bewustzijn.html" class="blog-card" data-cat="ai">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&q=75&auto=format&fit=crop" alt="Aarde vanuit de ruimte" loading="lazy">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag" data-cat="ai">Versnel met AI</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">18 november 2025</span>
+        <h2 class="card-title">Van FM naar DAB — waarom je bewustzijn een nieuwe decoder nodig heeft</h2>
+        <p class="card-excerpt">De zoektocht naar helderheid, zonder ruis. Hoe verander je je manier van ontvangen?</p>
+        <div class="card-footer">
+          <span class="card-read-time">7 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- NO RESULTS -->
+    <div class="no-results" id="noResults">
+      <p>Geen blogs in deze categorie.</p>
+      <span>Kies een andere categorie of bekijk alle blogs</span>
+    </div>
+
+  </div>
+
+  <div class="load-more" id="loadMoreWrap">
+    <button class="btn-outline" id="loadMoreBtn" onclick="this.textContent='Alle blogs zijn geladen';this.disabled=true;this.style.opacity='0.4'">
+      <span>Meer blogs laden</span>
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- OVER ELLY -->
+<section class="about-strip" id="over">
+  <div class="about-inner">
+    <div class="about-photo-wrap">
+      <img
+        class="about-photo"
+        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80&auto=format&fit=crop&crop=face"
+        alt="Elly Elizabeth Korving"
+        onerror="this.src='https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&q=80&auto=format&fit=crop'"
+      >
+      <div class="about-photo-tag">Business Coach &amp; Spiritual Guide</div>
+    </div>
+    <div>
+      <div class="about-eyebrow">Over de schrijver</div>
+      <h2 class="about-title">Elly Elizabeth<br><em>Korving</em></h2>
+      <div class="about-divider"></div>
+      <p class="about-body">Als business coach, spiritual guide en life coach begeleid ik ondernemers om vanuit hun ware identiteit te ondernemen. Na 25 jaar merkervaring weet ik dat de sterkste merken van binnenuit worden gebouwd — niet van buitenaf.</p>
+      <p class="about-body">In deze blogs deel ik de inzichten, tools en reflecties die ik zelf gebruik én met mijn klanten werk. Eerlijk, diep en direct toepasbaar.</p>
+      <div class="about-links">
+        <a href="entering-transformation-ellykorving.html" class="btn-outline">
+          <span>Entering Transformation</span>
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://calendar.app.google/vvMcqg4ewtL68pVU6" class="btn-outline">
+          <span>Plan een gesprek</span>
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NIEUWSBRIEF -->
+<div class="newsletter">
+  <div>
+    <h2 class="newsletter-title">Blogs direct<br>in je <em>inbox</em></h2>
+    <p class="newsletter-sub">Nieuwe inzichten, praktische tools en activerende quotes — zodra ze er zijn. Geen spam, alleen wat echt raakt.</p>
+  </div>
+  <div>
+    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+      <input class="newsletter-input" type="email" placeholder="jouw@emailadres.nl" required id="emailInput">
+      <button class="newsletter-btn" type="submit">Aanmelden</button>
+    </form>
+    <p class="newsletter-note" id="newsletterMsg">Geen spam. Afmelden kan altijd in één klik.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Elly <em>Elizabeth</em> Korving</div>
+      <div class="footer-copy" style="margin-top:0.3rem;">© 2026 Alterego B.V. · KVK nr 27252605 · Alle rechten voorbehouden</div>
+    </div>
+    <div class="footer-links">
+      <a href="ellykorving-blog.html">Blog</a>
+      <a href="entering-transformation-ellykorving.html">Programma</a>
+      <a href="https://www.110lifeandbusiness.com/">110 Life &amp; Business</a>
+      <a href="https://calendar.app.google/vvMcqg4ewtL68pVU6">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+
+  // Category filter — works for both hero tags AND cat cards
+  function filterCat(cat, el, fromCard) {
+    // Update hero tags
+    document.querySelectorAll('.hero-tag').forEach(b => {
+      b.classList.toggle('active', b.textContent.toLowerCase().replace(/\s+/g,'') === cat ||
+        (cat === 'all' && b.textContent === 'Alles') ||
+        (cat === 'bewustzijn' && b.textContent === 'Bewustzijn') ||
+        (cat === 'transformatie' && b.textContent === 'Transformatie') ||
+        (cat === 'adem' && b.textContent === 'Ademwerk') ||
+        (cat === 'business' && b.textContent === 'Business') ||
+        (cat === 'ai' && b.textContent === 'Versnel met AI')
+      );
+    });
+    // Update cat cards
+    document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+    if (fromCard && el) el.classList.add('active');
+
+    // Filter blogs
+    const cards = document.querySelectorAll('#blogGrid .blog-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const cardCat = card.getAttribute('data-cat');
+      const show = cat === 'all' || cardCat === cat || cardCat === 'all';
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    // Update header
+    const labels = { all:'blogs', bewustzijn:'bewustzijn blogs', transformatie:'transformatie blogs', adem:'ademwerk blogs', business:'business blogs', ai:'AI blogs' };
+    document.getElementById('active-cat-label').textContent = labels[cat] || 'blogs';
+    document.getElementById('blog-count').textContent = visible + ' artikel' + (visible !== 1 ? 'en' : '');
+
+    // No results
+    document.getElementById('noResults').classList.toggle('visible', visible === 0);
+
+    // Scroll to blogs
+    if (fromCard) document.getElementById('blogs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Newsletter
+  function handleNewsletter(e) {
+    e.preventDefault();
+    document.getElementById('newsletterMsg').textContent = 'Bedankt! Je bent aangemeld.';
+    document.getElementById('newsletterMsg').style.color = '#b8945a';
+    document.getElementById('emailInput').value = '';
+  }
+</script>
+
+</body>
+</html>

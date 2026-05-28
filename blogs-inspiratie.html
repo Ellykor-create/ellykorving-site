@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blogs & Inspiratie | 110 Life & Business Awareness</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f5f0;
+    --bg-card: #ffffff;
+    --bg-mid: #f0ece4;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --text: #2a2520;
+    --text-mid: #6b6055;
+    --gold: #b8945a;
+    --gold-light: #d4a96a;
+    --gold-dim: rgba(184, 148, 90, 0.15);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(248,245,240,0.97), rgba(248,245,240,0));
+    transition: background 0.4s;
+  }
+  nav.scrolled { background: rgba(248,245,240,0.98); border-bottom: 1px solid rgba(184,148,90,0.15); }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .nav-logo img {
+    width: 24px; height: 24px;
+    object-fit: contain;
+    filter: sepia(1) saturate(1.5) hue-rotate(5deg) brightness(0.75);
+    opacity: 0.9;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+  /* HERO */
+  .page-hero {
+    padding: 10rem 4rem 6rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center top, rgba(184,148,90,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+  .page-title {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  .page-title em { font-style: italic; color: var(--gold-light); }
+  .gold-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 1.5rem;
+  }
+  .page-intro {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* FILTER BAR */
+  .filter-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0 4rem 3rem;
+  }
+  .filter-btn {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    background: transparent;
+    border: 1px solid rgba(184,148,90,0.3);
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .filter-btn:hover,
+  .filter-btn.active {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: rgba(184,148,90,0.06);
+  }
+
+  /* BLOG GRID */
+  .blog-section {
+    padding: 0 4rem 8rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  /* BLOG CARD */
+  .blog-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(184,148,90,0.15);
+    box-shadow: 0 2px 16px rgba(42,37,32,0.06);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .blog-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+  .blog-card:hover {
+    border-color: rgba(184,148,90,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(42,37,32,0.1);
+  }
+  .blog-card:hover::after { transform: scaleX(1); }
+
+  .card-image {
+    width: 100%;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    position: relative;
+  }
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+  }
+  .blog-card:hover .card-image img { transform: scale(1.05); }
+  .card-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(42,37,32,0.25) 100%);
+  }
+
+  .card-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(184,148,90,0.85);
+    padding: 0.25rem 0.6rem;
+  }
+
+  .card-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.75rem;
+  }
+  .card-meta {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(184,148,90,0.7);
+  }
+  .card-title {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--text);
+  }
+  .card-excerpt {
+    font-size: 0.8rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    flex: 1;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(184,148,90,0.12);
+    margin-top: auto;
+  }
+  .card-read-time {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(184,148,90,0.55);
+  }
+  .card-arrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.3s;
+  }
+  .blog-card:hover .card-arrow { gap: 0.75rem; }
+  .card-arrow svg { width: 12px; height: 12px; }
+
+  /* FEATURED (first card spans 2 cols) */
+  .blog-card.featured {
+    grid-column: 1 / 3;
+    flex-direction: row;
+  }
+  .blog-card.featured .card-image {
+    width: 55%;
+    aspect-ratio: unset;
+    flex-shrink: 0;
+  }
+  .blog-card.featured .card-title {
+    font-size: 1.7rem;
+  }
+
+  /* QUOTE CARD */
+  .quote-card {
+    background: var(--bg-mid);
+    border: 1px solid rgba(184,148,90,0.2);
+    box-shadow: none;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .quote-mark {
+    font-family: var(--serif);
+    font-size: 4rem;
+    line-height: 0.5;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+  .quote-text {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+  .quote-author {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+
+  /* CTA STRIP */
+  .cta-strip {
+    background: var(--bg-mid);
+    border-top: 1px solid rgba(184,148,90,0.15);
+    border-bottom: 1px solid rgba(184,148,90,0.15);
+    padding: 5rem 4rem;
+    text-align: center;
+  }
+  .cta-strip h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+  .cta-strip h2 em { font-style: italic; color: var(--gold-light); }
+  .cta-strip p {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    max-width: 440px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+  }
+
+  /* BUTTON */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateX(-101%);
+    transition: transform 0.35s ease;
+    z-index: 0;
+  }
+  .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
+  .btn-primary:hover { color: #fff; }
+  .btn-primary:hover::before { transform: translateX(0); }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg);
+    padding: 2rem 4rem;
+    border-top: 1px solid rgba(184,148,90,0.12);
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-copy {
+    font-size: 0.7rem;
+    color: rgba(107,96,85,0.6);
+    letter-spacing: 0.05em;
+  }
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+  .footer-links a {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* LOAD MORE */
+  .load-more-wrap {
+    text-align: center;
+    padding: 3rem 0 5rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .blog-card {
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .blog-card:nth-child(1) { animation-delay: 0.05s; }
+  .blog-card:nth-child(2) { animation-delay: 0.15s; }
+  .blog-card:nth-child(3) { animation-delay: 0.25s; }
+  .blog-card:nth-child(4) { animation-delay: 0.35s; }
+  .blog-card:nth-child(5) { animation-delay: 0.45s; }
+  .blog-card:nth-child(6) { animation-delay: 0.55s; }
+  .blog-card:nth-child(7) { animation-delay: 0.65s; }
+  .blog-card:nth-child(8) { animation-delay: 0.75s; }
+  .blog-card:nth-child(9) { animation-delay: 0.85s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 1.25rem 2rem; }
+    .blog-section { padding: 0 2rem 6rem; }
+    .filter-bar { padding: 0 2rem 2.5rem; }
+    .page-hero { padding: 9rem 2rem 4rem; }
+    .blog-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .blog-card.featured { grid-column: 1 / 3; }
+    .cta-strip { padding: 4rem 2rem; }
+    footer { padding: 2rem; }
+  }
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .blog-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .blog-card.featured { grid-column: auto; flex-direction: column; }
+    .blog-card.featured .card-image { width: 100%; aspect-ratio: 16/10; }
+    .blog-section { padding: 0 1.5rem 5rem; }
+    .filter-bar { padding: 0 1.5rem 2rem; }
+    .page-hero { padding: 8rem 1.5rem 3.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="https://www.110lifeandbusiness.com" class="nav-logo">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AADZr0lEqkAAAAASUVORK5CYII=" alt="110 logo"
+      onerror="this.style.display='none'"
+      style="width:24px;height:24px;object-fit:contain;filter:invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(0.9);opacity:0.85;">
+    110 Life &amp; Business
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://www.110lifeandbusiness.com/">Home</a></li>
+    <li><a href="https://www.110lifeandbusiness.com/ontmoet-de-mensen">Ontmoet de mensen</a></li>
+    <li><a href="https://www.110lifeandbusiness.com/entering-transformation">Programma</a></li>
+    <li><a href="https://www.110lifeandbusiness.com/blogs-inspiratie" class="active">Blog</a></li>
+    <li><a href="https://calendar.app.google/vvMcqg4ewtL68pVU6">Plan gesprek</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="section-label">Reflectie &amp; Inzicht</div>
+  <h1 class="page-title">Blogs &amp; <em>Inspiratie</em></h1>
+  <div class="gold-divider"></div>
+  <p class="page-intro">
+    Woorden die bewegen. Gedachten die bevrijden. Inzichten die je dichter bij jezelf brengen — en bij de ondernemer die je wil zijn.
+  </p>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">Alles</button>
+  <button class="filter-btn" data-filter="bewustzijn">Bewustzijn</button>
+  <button class="filter-btn" data-filter="business">Business</button>
+  <button class="filter-btn" data-filter="transformatie">Transformatie</button>
+  <button class="filter-btn" data-filter="adem">Ademwerk</button>
+  <button class="filter-btn" data-filter="ai">Versnel met AI</button>
+</div>
+
+<!-- BLOG GRID -->
+<section class="blog-section">
+  <div class="blog-grid">
+
+    <!-- FEATURED card -->
+    <a href="blog-stilte-en-rust.html" class="blog-card featured" data-cat="bewustzijn">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=900&q=75&auto=format&fit=crop" alt="Stilte en rust">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag">Bewustzijn</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">10 maart 2026</span>
+        <h2 class="card-title">Stilte en rust, de plek waar het echte werk gebeurt</h2>
+        <p class="card-excerpt">Durf ik stil te worden en te luisteren naar wat er dan verschijnt? Stilte en rust zijn zo ingewikkeld in onze samenleving — maar het creëren vanuit rust en ontspannenheid zit hem niet in minder doen. Het gaat veel dieper.</p>
+        <div class="card-footer">
+          <span class="card-read-time">8 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 2 -->
+    <a href="blog-eendagsvlieg-of-robot.html" class="blog-card" data-cat="bewustzijn">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=70&auto=format&fit=crop" alt="Robot of mens">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag">Bewustzijn</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">24 februari 2026</span>
+        <h2 class="card-title">Ben jij een eendagsvlieg of een robot?</h2>
+        <p class="card-excerpt">"Until you make the unconscious conscious, it will direct your life and you will call it fate." — Carl Jung</p>
+        <div class="card-footer">
+          <span class="card-read-time">6 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 3 - Quote card -->
+    <div class="blog-card quote-card">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">Going from being in the scenery to becoming the seer.</p>
+      <span class="quote-author">Sri Sri Ravi Shankar</span>
+    </div>
+
+    <!-- Card 4 -->
+    <a href="blog-adem-vrij-of-patronen.html" class="blog-card" data-cat="adem">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=70&auto=format&fit=crop" alt="Ademhaling">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag">Ademwerk</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">18 januari 2026</span>
+        <h2 class="card-title">Adem jij vrij? 7 manieren om patronen in je adem te herkennen</h2>
+        <p class="card-excerpt">"Breath is the bridge which connects life to consciousness, which unites your body to your thoughts." — Thich Nhật Hạnh</p>
+        <div class="card-footer">
+          <span class="card-read-time">7 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 5 -->
+    <a href="blog-leven-naar-het-moment.html" class="blog-card" data-cat="bewustzijn">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70&auto=format&fit=crop" alt="Aanwezig zijn">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag">Bewustzijn</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">5 januari 2026</span>
+        <h2 class="card-title">7 weetjes die je leven direct terughalen naar het moment</h2>
+        <p class="card-excerpt">Every emotion is connected with the breath. If you change the breath, change the rhythm, you can change the emotion. — Sri Sri Ravi Shankar</p>
+        <div class="card-footer">
+          <span class="card-read-time">5 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 6 -->
+    <a href="blog-integratie-tips-gedachten.html" class="blog-card" data-cat="transformatie">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=70&auto=format&fit=crop" alt="Integratie">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag">Transformatie</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">20 december 2025</span>
+        <h2 class="card-title">7 integratie tips om je gedachten te herkennen, te sturen en terug te keren naar jezelf</h2>
+        <p class="card-excerpt">"You can better become Master of your own mind — then Master of a thousand armies."</p>
+        <div class="card-footer">
+          <span class="card-read-time">9 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 7 -->
+    <a href="blog-leef-jouw-authentieke-zelf.html" class="blog-card" data-cat="transformatie">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?w=600&q=70&auto=format&fit=crop" alt="Authentiek zelf">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag">Transformatie</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">8 december 2025</span>
+        <h2 class="card-title">Leef jij jouw authentieke zelf</h2>
+        <p class="card-excerpt">Welk deel wil vandaag gehoord worden? Elk OORdeel is er één naar jezelf. Durf jij eerlijk te kijken, horen, te reflecteren en te voelen en te vergeven?</p>
+        <div class="card-footer">
+          <span class="card-read-time">6 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 8 -->
+    <a href="blog-loslaten-gemakkelijk.html" class="blog-card" data-cat="transformatie">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=600&q=70&auto=format&fit=crop" alt="Loslaten">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag">Transformatie</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">1 december 2025</span>
+        <h2 class="card-title">Loslaten is zo gemakkelijk, toch?</h2>
+        <p class="card-excerpt">Vergeving is geen daad van zwakte. Het is de moed om je eigen hart te bevrijden. — Mahatma Gandhi</p>
+        <div class="card-footer">
+          <span class="card-read-time">5 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 9 -->
+    <a href="blog-van-fm-naar-dab-bewustzijn.html" class="blog-card" data-cat="ai">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=70&auto=format&fit=crop" alt="Bewustzijn decoder">
+        <div class="card-image-overlay"></div>
+        <span class="card-tag">Versnel met AI</span>
+      </div>
+      <div class="card-body">
+        <span class="card-meta">18 november 2025</span>
+        <h2 class="card-title">Van FM naar DAB — waarom je bewustzijn een nieuwe decoder nodig heeft</h2>
+        <p class="card-excerpt">De zoektocht naar helderheid, zonder ruis. Hoe verander je je manier van ontvangen?</p>
+        <div class="card-footer">
+          <span class="card-read-time">7 min lezen</span>
+          <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="load-more-wrap">
+    <button class="btn-primary" id="loadMoreBtn">
+      <span>Meer blogs laden</span>
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <div class="section-label">Volgende stap</div>
+  <h2>Klaar om jouw verhaal te<br><em>verbinden</em> met je business?</h2>
+  <p>Plan een vrijblijvend strategiegesprek van 30 minuten. We kijken samen waar jij staat, wat je wilt bouwen — eerlijk, zonder druk.</p>
+  <a href="https://calendar.app.google/vvMcqg4ewtL68pVU6" class="btn-primary">
+    <span>Plan een strategiesessie</span>
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-copy">© 2026 Alterego B.V. · KVK nr 27252605 · Alle rechten voorbehouden</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.110lifeandbusiness.com/">Home</a>
+      <a href="https://www.110lifeandbusiness.com/ontmoet-de-mensen">Team</a>
+      <a href="https://www.110lifeandbusiness.com/blogs-inspiratie">Blog</a>
+      <a href="https://calendar.app.google/vvMcqg4ewtL68pVU6">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Filter buttons
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.blog-card[data-cat]');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        if (filter === 'all' || card.dataset.cat === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Load more (placeholder)
+  document.getElementById('loadMoreBtn').addEventListener('click', function() {
+    this.textContent = 'Alle blogs zijn geladen';
+    this.disabled = true;
+    this.style.opacity = '0.5';
+    this.style.cursor = 'default';
+  });
+</script>
+</body>
+</html>

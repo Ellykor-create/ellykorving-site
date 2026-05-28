@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Creator — Elly Korving</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Poppins:wght@300;400;500&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body { background: #F5F0E8; min-height: 100vh; }
+
+    .ek-wrap {
+      font-family: 'Poppins', sans-serif;
+      background: #F5F0E8;
+      min-height: 100vh;
+      max-width: 680px;
+      margin: 0 auto;
+      color: #2C2420;
+    }
+
+    .ek-header {
+      background: #F5F0E8;
+      border-bottom: 0.5px solid rgba(44,36,32,0.15);
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .ek-logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: #2C2420;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ek-logo-dot {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(44,36,32,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px;
+    }
+
+    .ek-step-indicator { font-size: 11px; letter-spacing: 0.1em; color: rgba(44,36,32,0.45); }
+
+    .ek-body { padding: 40px 32px 80px; }
+
+    .ek-section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+      color: #8B3A52; margin-bottom: 16px; text-transform: uppercase;
+    }
+    .ek-section-label::before { content: ''; display: block; width: 28px; height: 1px; background: #8B3A52; }
+
+    .ek-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 400; line-height: 1.15; color: #2C2420; margin-bottom: 8px; }
+    .ek-title em { font-style: italic; color: #8B3A52; }
+    .ek-subtitle { font-size: 13px; font-weight: 300; color: rgba(44,36,32,0.6); margin-bottom: 36px; line-height: 1.6; }
+
+    .ek-divider { height: 0.5px; background: rgba(44,36,32,0.12); margin: 28px 0; }
+    .ek-field-group { margin-bottom: 24px; }
+
+    .ek-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(44,36,32,0.5); margin-bottom: 8px; display: block;
+    }
+
+    .ek-input, .ek-textarea, .ek-select {
+      width: 100%; background: rgba(255,255,255,0.6);
+      border: 0.5px solid rgba(44,36,32,0.2); border-radius: 2px;
+      padding: 12px 14px; font-family: 'Poppins', sans-serif;
+      font-size: 13px; font-weight: 300; color: #2C2420;
+      outline: none; transition: border-color 0.2s; -webkit-appearance: none;
+    }
+    .ek-input:focus, .ek-textarea:focus, .ek-select:focus {
+      border-color: #8B3A52; background: rgba(255,255,255,0.85);
+    }
+    .ek-textarea { resize: vertical; line-height: 1.7; }
+
+    .ek-title-input {
+      font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400;
+      padding: 14px; background: rgba(255,255,255,0.6);
+      border: 0.5px solid rgba(44,36,32,0.2); border-radius: 2px;
+      width: 100%; color: #2C2420; outline: none;
+    }
+    .ek-title-input:focus { border-color: #8B3A52; background: rgba(255,255,255,0.85); }
+
+    .ek-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .ek-voice-btn {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 20px; background: transparent;
+      border: 0.5px solid rgba(44,36,32,0.25); border-radius: 2px;
+      font-family: 'Poppins', sans-serif; font-size: 12px;
+      font-weight: 400; letter-spacing: 0.06em; color: #2C2420;
+      cursor: pointer; transition: all 0.2s; margin-bottom: 12px; width: 100%;
+    }
+    .ek-voice-btn:hover { border-color: #8B3A52; color: #8B3A52; }
+    .ek-voice-btn.recording { border-color: #8B3A52; background: rgba(139,58,82,0.06); color: #8B3A52; }
+
+    .ek-voice-dot { width: 8px; height: 8px; border-radius: 50%; background: #8B3A52; flex-shrink: 0; }
+    .ek-voice-dot.pulse { animation: pulse 1s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+
+    .ek-image-zone {
+      border: 0.5px dashed rgba(44,36,32,0.25); border-radius: 2px;
+      padding: 28px; text-align: center; cursor: pointer;
+      transition: all 0.2s; background: rgba(255,255,255,0.3);
+      position: relative; overflow: hidden;
+    }
+    .ek-image-zone:hover { border-color: #8B3A52; background: rgba(139,58,82,0.03); }
+    .ek-image-zone.has-image { padding: 0; }
+    .ek-image-preview { width: 100%; height: 160px; object-fit: cover; display: block; border-radius: 2px; }
+    .ek-image-text { font-size: 11px; letter-spacing: 0.08em; color: rgba(44,36,32,0.45); }
+    .ek-image-icon { font-size: 28px; color: rgba(44,36,32,0.2); margin-bottom: 8px; }
+
+    .ek-quote-input { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; font-weight: 400; }
+
+    .ek-tabs {
+      display: flex; gap: 0;
+      border-bottom: 0.5px solid rgba(44,36,32,0.15); margin-bottom: 28px;
+    }
+    .ek-tab {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 10px 20px; cursor: pointer; color: rgba(44,36,32,0.45);
+      border-bottom: 1.5px solid transparent; margin-bottom: -0.5px;
+      transition: all 0.2s; background: none;
+      border-top: none; border-left: none; border-right: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    .ek-tab.active { color: #2C2420; border-bottom-color: #8B3A52; }
+
+    .ek-panel { display: none; }
+    .ek-panel.active { display: block; }
+
+    /* PREVIEW */
+    .ek-preview-wrap {
+      background: #fff; border: 0.5px solid rgba(44,36,32,0.12);
+      border-radius: 2px; padding: 36px 28px;
+    }
+    .ek-preview-cat {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+      color: #8B3A52; margin-bottom: 8px; display: inline-block;
+      background: #8B3A52; color: #fff; padding: 3px 8px;
+    }
+    .ek-preview-date { font-size: 12px; color: rgba(44,36,32,0.45); margin-bottom: 10px; }
+    .ek-preview-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: #2C2420; margin-bottom: 12px; line-height: 1.25; }
+    .ek-preview-intro { font-size: 13px; font-weight: 300; color: rgba(44,36,32,0.7); line-height: 1.75; margin-bottom: 16px; }
+    .ek-preview-quote { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: rgba(44,36,32,0.55); border-left: 2px solid #8B3A52; padding-left: 14px; margin: 16px 0; }
+    .ek-preview-img { width: 100%; height: 180px; object-fit: cover; border-radius: 2px; margin-bottom: 16px; }
+    .ek-preview-divider { height: 0.5px; background: rgba(44,36,32,0.12); margin: 20px 0; }
+    .ek-preview-body { font-size: 13px; font-weight: 300; color: rgba(44,36,32,0.75); line-height: 1.8; white-space: pre-wrap; }
+
+    /* EXPORT / DOWNLOAD TAB */
+    .ek-actions {
+      display: flex; gap: 12px; margin-top: 28px;
+    }
+
+    .ek-btn-primary {
+      flex: 1; padding: 14px; background: #2C2420; color: #F5F0E8;
+      border: none; border-radius: 2px; font-family: 'Poppins', sans-serif;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+    }
+    .ek-btn-primary:hover { background: #8B3A52; }
+
+    .ek-btn-secondary {
+      padding: 14px 20px; background: transparent; color: #2C2420;
+      border: 0.5px solid rgba(44,36,32,0.25); border-radius: 2px;
+      font-family: 'Poppins', sans-serif; font-size: 11px;
+      font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .ek-btn-secondary:hover { border-color: #8B3A52; color: #8B3A52; }
+
+    .ek-download-block {
+      background: #2C2420; border-radius: 2px; padding: 22px; margin-bottom: 16px;
+    }
+    .ek-download-block + .ek-download-block { background: rgba(44,36,32,0.08); border: 0.5px solid rgba(44,36,32,0.15); }
+    .ek-download-block + .ek-download-block .ek-export-label { color: rgba(44,36,32,0.5); }
+    .ek-download-block + .ek-download-block .ek-export-code { color: rgba(44,36,32,0.75); }
+    .ek-download-block + .ek-download-block .ek-copy-btn { background: rgba(44,36,32,0.07); border-color: rgba(44,36,32,0.2); color: rgba(44,36,32,0.6); }
+
+    .ek-export-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.5); margin-bottom: 6px; }
+    .ek-export-sublabel { font-size: 11px; color: rgba(245,240,232,0.35); margin-bottom: 12px; font-weight: 300; }
+
+    .ek-export-code {
+      font-family: monospace; font-size: 11px; color: rgba(245,240,232,0.8);
+      white-space: pre-wrap; word-break: break-all;
+      max-height: 120px; overflow-y: auto; line-height: 1.6;
+    }
+
+    .ek-copy-btn {
+      margin-top: 12px; padding: 8px 16px;
+      background: rgba(245,240,232,0.1); border: 0.5px solid rgba(245,240,232,0.2);
+      color: rgba(245,240,232,0.8); border-radius: 2px;
+      font-family: 'Poppins', sans-serif; font-size: 10px;
+      letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+    }
+    .ek-copy-btn:hover { background: rgba(245,240,232,0.2); }
+
+    .ek-download-btn {
+      margin-top: 8px; margin-left: 8px; padding: 8px 16px;
+      background: #8B3A52; border: none;
+      color: #fff; border-radius: 2px;
+      font-family: 'Poppins', sans-serif; font-size: 10px;
+      letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+    }
+    .ek-download-btn:hover { background: #6d2d40; }
+
+    .ek-steps {
+      background: rgba(139,58,82,0.06); border: 0.5px solid rgba(139,58,82,0.2);
+      border-radius: 2px; padding: 18px 20px; margin-bottom: 20px;
+    }
+    .ek-steps-title { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: #8B3A52; margin-bottom: 12px; }
+    .ek-step-row { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
+    .ek-step-row:last-child { margin-bottom: 0; }
+    .ek-step-num {
+      width: 20px; height: 20px; min-width: 20px; border-radius: 50%;
+      background: #8B3A52; color: #fff; font-size: 10px; font-weight: 500;
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+    .ek-step-text { font-size: 12px; font-weight: 300; color: rgba(44,36,32,0.7); line-height: 1.5; }
+    .ek-step-text strong { font-weight: 500; color: #2C2420; }
+
+    .ek-char-count { font-size: 11px; color: rgba(44,36,32,0.35); text-align: right; margin-top: 4px; }
+    input[type="file"] { display: none; }
+
+    @media (max-width: 480px) {
+      .ek-body { padding: 28px 20px 80px; }
+      .ek-header { padding: 16px 20px; }
+      .ek-title { font-size: 28px; }
+      .ek-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ek-wrap">
+  <div class="ek-header">
+    <div class="ek-logo">
+      <div class="ek-logo-dot">EK</div>
+      ELLY KORVING
+    </div>
+    <div class="ek-step-indicator">BLOG CREATOR</div>
+  </div>
+
+  <div class="ek-body">
+    <div class="ek-section-label">Nieuw bericht</div>
+    <h1 class="ek-title">Schrijf wat <em>activeert.</em></h1>
+    <p class="ek-subtitle">Spreek in of typ — download daarna één klik je complete blogpagina. Geen GitHub nodig.</p>
+
+    <div class="ek-tabs">
+      <button class="ek-tab active" onclick="switchTab('schrijven')">Schrijven</button>
+      <button class="ek-tab" onclick="switchTab('preview')">Preview</button>
+      <button class="ek-tab" onclick="switchTab('publiceren')">Publiceren</button>
+    </div>
+
+    <!-- TAB 1: SCHRIJVEN -->
+    <div class="ek-panel active" id="panel-schrijven">
+
+      <div class="ek-field-group">
+        <span class="ek-label">Jouw gedachten — spreek of typ</span>
+        <button class="ek-voice-btn" id="voiceBtn" onclick="toggleVoice()">
+          <div class="ek-voice-dot" id="voiceDot"></div>
+          <span id="voiceLabel">Druk om in te spreken</span>
+        </button>
+        <textarea class="ek-textarea" id="bodyText" rows="9"
+          placeholder="Of typ hier je blogtekst... Gebruik een lege regel tussen alinea's. Je kunt ook koppen maken door een regel te beginnen met ## (bijv: ## Waarom dit zo belangrijk is)"
+          oninput="updateCount(this,'bodyCount');syncPreview()"></textarea>
+        <div class="ek-char-count"><span id="bodyCount">0</span> tekens</div>
+      </div>
+
+      <div class="ek-divider"></div>
+
+      <div class="ek-field-group">
+        <span class="ek-label">Blogtitel</span>
+        <input type="text" class="ek-title-input" id="blogTitle" placeholder="De titel van jouw blog..." oninput="syncPreview()" />
+      </div>
+
+      <div class="ek-row">
+        <div class="ek-field-group">
+          <span class="ek-label">Categorie</span>
+          <select class="ek-select" id="blogCat" onchange="syncPreview()">
+            <option value="Bewustzijn">Bewustzijn</option>
+            <option value="Stilte &amp; aanwezigheid">Stilte &amp; aanwezigheid</option>
+            <option value="De spiegel">De spiegel</option>
+            <option value="Identiteit">Identiteit</option>
+            <option value="Ademwerk">Ademwerk</option>
+            <option value="Mind &amp; patronen">Mind &amp; patronen</option>
+            <option value="Loslaten &amp; vergeving">Loslaten &amp; vergeving</option>
+            <option value="Business">Business</option>
+            <option value="Transformatie">Transformatie</option>
+            <option value="Versnel met AI">Versnel met AI</option>
+          </select>
+        </div>
+        <div class="ek-field-group">
+          <span class="ek-label">Datum</span>
+          <input type="date" class="ek-input" id="blogDate" oninput="syncPreview()" />
+        </div>
+      </div>
+
+      <div class="ek-field-group">
+        <span class="ek-label">Activerende quote (optioneel)</span>
+        <input type="text" class="ek-input ek-quote-input" id="blogQuote" placeholder='"Woorden die raken..."' oninput="syncPreview()" />
+        <input type="text" class="ek-input" id="blogQuoteAuthor" placeholder="— Auteur" style="margin-top:8px;" oninput="syncPreview()" />
+      </div>
+
+      <div class="ek-field-group">
+        <span class="ek-label">Headerafbeelding</span>
+        <div class="ek-image-zone" id="imageZone" onclick="document.getElementById('imageInput').click()">
+          <div id="imagePlaceholder">
+            <div class="ek-image-icon">+</div>
+            <div class="ek-image-text">Tik om foto te kiezen</div>
+          </div>
+          <img class="ek-image-preview" id="imagePreview" style="display:none;" />
+        </div>
+        <input type="file" id="imageInput" accept="image/*" onchange="handleImage(event)" />
+      </div>
+
+      <div class="ek-actions">
+        <button class="ek-btn-secondary" onclick="clearAll()">Wissen</button>
+        <button class="ek-btn-primary" onclick="switchTab('preview')">Bekijk preview →</button>
+      </div>
+
+    </div>
+
+    <!-- TAB 2: PREVIEW -->
+    <div class="ek-panel" id="panel-preview">
+      <p style="font-size:11px;color:rgba(44,36,32,0.45);margin-bottom:16px;letter-spacing:0.05em;">Zo ziet jouw blog eruit op de website</p>
+      <div class="ek-preview-wrap">
+        <span class="ek-preview-cat" id="prev-cat">Bewustzijn</span>
+        <div class="ek-preview-date" id="prev-date" style="margin-top:10px;">27 mei 2026</div>
+        <h2 class="ek-preview-title" id="prev-title">Jouw blogtitel verschijnt hier</h2>
+        <img class="ek-preview-img" id="prev-img" style="display:none;" />
+        <div class="ek-preview-quote" id="prev-quote" style="display:none;"></div>
+        <p class="ek-preview-intro" id="prev-intro">Jouw tekst verschijnt hier als intro...</p>
+        <div class="ek-preview-divider"></div>
+        <div class="ek-preview-body" id="prev-body"></div>
+      </div>
+      <div class="ek-actions">
+        <button class="ek-btn-secondary" onclick="switchTab('schrijven')">← Aanpassen</button>
+        <button class="ek-btn-primary" onclick="switchTab('publiceren')">Publiceren →</button>
+      </div>
+    </div>
+
+    <!-- TAB 3: PUBLICEREN -->
+    <div class="ek-panel" id="panel-publiceren">
+
+      <div class="ek-steps">
+        <div class="ek-steps-title">Zo publiceer je in 3 stappen</div>
+        <div class="ek-step-row">
+          <div class="ek-step-num">1</div>
+          <div class="ek-step-text"><strong>Download de blogpagina</strong> — een complete HTML-pagina klaar om te uploaden.</div>
+        </div>
+        <div class="ek-step-row">
+          <div class="ek-step-num">2</div>
+          <div class="ek-step-text"><strong>Kopieer de kaartcode</strong> en plak hem in <code style="background:rgba(44,36,32,0.08);padding:1px 5px;border-radius:2px;">blogs-inspiratie.html</code> in de blog-grid, boven de eerste kaart.</div>
+        </div>
+        <div class="ek-step-row">
+          <div class="ek-step-num">3</div>
+          <div class="ek-step-text"><strong>Sleep beide bestanden</strong> naar je Netlify dashboard — klaar. Geen GitHub, geen code.</div>
+        </div>
+      </div>
+
+      <!-- DOWNLOAD KNOP -->
+      <div class="ek-download-block">
+        <div class="ek-export-label">Stap 1 — Complete blogpagina</div>
+        <div class="ek-export-sublabel" id="dl-filename">blog-jouw-titel.html</div>
+        <button class="ek-download-btn" onclick="downloadPage()" style="margin-left:0;margin-top:0;">
+          ↓ Download blogpagina
+        </button>
+      </div>
+
+      <!-- KAART SNIPPET -->
+      <div class="ek-download-block">
+        <div class="ek-export-label" style="color:rgba(44,36,32,0.5);">Stap 2 — Kaartcode voor overzichtspagina</div>
+        <div class="ek-export-sublabel" style="color:rgba(44,36,32,0.4);">Plak dit in blogs-inspiratie.html in de blog-grid</div>
+        <div class="ek-export-code" id="cardSnippet" style="color:rgba(44,36,32,0.7);">Vul eerst titel en tekst in...</div>
+        <button class="ek-copy-btn" style="background:rgba(44,36,32,0.07);border-color:rgba(44,36,32,0.2);color:rgba(44,36,32,0.6);" onclick="copyCard()">Kopiëren</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+var isRecording = false;
+var recognition = null;
+var imageDataUrl = '';
+
+var months = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  var d = new Date(dateStr + 'T12:00:00');
+  return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+}
+
+document.getElementById('blogDate').value = new Date().toISOString().split('T')[0];
+
+function switchTab(name) {
+  var tabs = ['schrijven','preview','publiceren'];
+  document.querySelectorAll('.ek-tab').forEach(function(t,i){ t.classList.toggle('active', tabs[i] === name); });
+  document.querySelectorAll('.ek-panel').forEach(function(p,i){ p.classList.toggle('active', tabs[i] === name); });
+  if (name === 'preview') syncPreview();
+  if (name === 'publiceren') buildAll();
+}
+
+function syncPreview() {
+  var title = document.getElementById('blogTitle').value || 'Jouw blogtitel verschijnt hier';
+  var cat   = document.getElementById('blogCat').value;
+  var date  = formatDate(document.getElementById('blogDate').value);
+  var body  = document.getElementById('bodyText').value;
+  var quote = document.getElementById('blogQuote').value;
+  var author= document.getElementById('blogQuoteAuthor').value;
+
+  document.getElementById('prev-title').textContent = title;
+  document.getElementById('prev-cat').textContent = cat;
+  document.getElementById('prev-date').textContent = date;
+  document.getElementById('prev-intro').textContent = body.substring(0,220) + (body.length > 220 ? '...' : '');
+  document.getElementById('prev-body').textContent = body.substring(220);
+
+  var qEl = document.getElementById('prev-quote');
+  if (quote) {
+    qEl.style.display = 'block';
+    qEl.textContent = '"' + quote + '"' + (author ? ' — ' + author : '');
+  } else { qEl.style.display = 'none'; }
+
+  var prevImg = document.getElementById('prev-img');
+  if (imageDataUrl) { prevImg.src = imageDataUrl; prevImg.style.display = 'block'; }
+  else { prevImg.style.display = 'none'; }
+}
+
+function slugify(str) {
+  return str.toLowerCase()
+    .replace(/[àáâãäå]/g,'a').replace(/[èéêë]/g,'e').replace(/[ìíîï]/g,'i')
+    .replace(/[òóôõö]/g,'o').replace(/[ùúûü]/g,'u').replace(/[ñ]/g,'n')
+    .replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-')
+    .replace(/^-|-$/g,'').substring(0,60);
+}
+
+function parseBody(raw) {
+  var paras = raw.split(/\n\n+/);
+  var html = '';
+  paras.forEach(function(p) {
+    p = p.trim();
+    if (!p) return;
+    if (p.startsWith('## ')) {
+      html += '\n    <h2>' + esc(p.slice(3)) + '</h2>';
+    } else if (p.startsWith('### ')) {
+      html += '\n    <h3>' + esc(p.slice(4)) + '</h3>';
+    } else if (p.startsWith('> ')) {
+      html += '\n    <blockquote>' + esc(p.slice(2)) + '</blockquote>';
+    } else {
+      var lines = p.split('\n').map(function(l){ return esc(l.trim()); }).join('<br>');
+      html += '\n    <p>' + lines + '</p>';
+    }
+  });
+  return html;
+}
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function readTime(text) {
+  var words = text.trim().split(/\s+/).length;
+  return Math.max(2, Math.round(words / 200)) + ' min lezen';
+}
+
+function buildAll() {
+  var title  = document.getElementById('blogTitle').value || 'Nieuwe blog';
+  var cat    = document.getElementById('blogCat').value;
+  var date   = formatDate(document.getElementById('blogDate').value);
+  var body   = document.getElementById('bodyText').value || '';
+  var quote  = document.getElementById('blogQuote').value;
+  var author = document.getElementById('blogQuoteAuthor').value;
+  var slug   = slugify(title);
+  var fname  = 'blog-' + slug + '.html';
+  var rt     = readTime(body);
+  var intro  = body.substring(0,200).replace(/\n/g,' ') + (body.length > 200 ? '...' : '');
+
+  document.getElementById('dl-filename').textContent = fname;
+
+  // Card snippet for overview page
+  var catSlug = cat.toLowerCase().replace(/[^a-z]/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+  var cardHtml =
+'<!-- ' + title + ' -->\n' +
+'<a href="' + fname + '" class="blog-card" data-cat="' + catSlug + '">\n' +
+'  <div class="card-image">\n' +
+(imageDataUrl
+  ? '    <img src="' + fname.replace('.html','') + '-header.jpg" alt="' + esc(title) + '">\n'
+  : '    <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&q=70&auto=format&fit=crop" alt="' + esc(title) + '">\n') +
+'    <div class="card-image-overlay"></div>\n' +
+'    <span class="card-tag">' + esc(cat) + '</span>\n' +
+'  </div>\n' +
+'  <div class="card-body">\n' +
+'    <span class="card-meta">' + date + '</span>\n' +
+'    <h2 class="card-title">' + esc(title) + '</h2>\n' +
+'    <p class="card-excerpt">' + esc(intro) + '</p>\n' +
+'    <div class="card-footer">\n' +
+'      <span class="card-read-time">' + rt + '</span>\n' +
+'      <span class="card-arrow">Lees meer <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>\n' +
+'    </div>\n' +
+'  </div>\n' +
+'</a>';
+
+  document.getElementById('cardSnippet').textContent = cardHtml;
+
+  // Store for download
+  window._blogFilename = fname;
+  window._blogTitle = title;
+  window._blogCat = cat;
+  window._blogDate = date;
+  window._blogBody = body;
+  window._blogQuote = quote;
+  window._blogQuoteAuthor = author;
+  window._blogReadTime = rt;
+  window._blogIntro = intro;
+}
+
+function downloadPage() {
+  buildAll();
+  var title  = window._blogTitle;
+  var cat    = window._blogCat;
+  var date   = window._blogDate;
+  var body   = window._blogBody;
+  var quote  = window._blogQuote;
+  var quotea = window._blogQuoteAuthor;
+  var rt     = window._blogReadTime;
+
+  var imgTag = imageDataUrl
+    ? '<img src="' + imageDataUrl + '" alt="' + esc(title) + '">'
+    : '<img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=1200&q=80&auto=format&fit=crop" alt="' + esc(title) + '">';
+
+  var quoteSection = quote
+    ? '<blockquote>\n        ' + esc(quote) + (quotea ? '<cite>' + esc(quotea) + '</cite>' : '') + '\n      </blockquote>'
+    : '';
+
+  var bodyHtml = parseBody(body);
+
+  var page = '<!DOCTYPE html>\n<html lang="nl">\n<head>\n' +
+'<meta charset="UTF-8">\n' +
+'<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
+'<title>' + esc(title) + ' | 110 Life &amp; Business</title>\n' +
+'<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">\n' +
+'<style>\n' +
+'  :root {\n' +
+'    --bg:#f8f5f0;--bg-card:#ffffff;--bg-mid:#f0ece4;\n' +
+'    --text:#2a2520;--text-mid:#6b6055;\n' +
+'    --gold:#b8945a;--gold-light:#d4a96a;\n' +
+'    --serif:"Cormorant Garamond",Georgia,serif;\n' +
+'    --sans:"DM Sans",sans-serif;\n' +
+'  }\n' +
+'  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}\n' +
+'  html{scroll-behavior:smooth}\n' +
+'  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;overflow-x:hidden;line-height:1.7}\n' +
+'  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 4rem;display:flex;align-items:center;justify-content:space-between;background:rgba(248,245,240,0.97);border-bottom:1px solid rgba(184,148,90,0.12)}\n' +
+'  .nav-logo{font-family:var(--serif);font-size:1.15rem;letter-spacing:0.12em;color:var(--gold);text-decoration:none;font-weight:400}\n' +
+'  .nav-links{display:flex;gap:2.5rem;list-style:none}\n' +
+'  .nav-links a{font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color 0.3s}\n' +
+'  .nav-links a:hover,.nav-links a.active{color:var(--gold)}\n' +
+'  .breadcrumb{padding:7rem 4rem 0;display:flex;align-items:center;gap:0.5rem;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mid)}\n' +
+'  .breadcrumb a{color:var(--gold);text-decoration:none}\n' +
+'  .article-hero{padding:2.5rem 4rem 0;max-width:860px;margin:0 auto}\n' +
+'  .article-tag{display:inline-block;font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:#fff;background:var(--gold);padding:0.3rem 0.75rem;margin-bottom:1.5rem}\n' +
+'  .article-title{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:300;line-height:1.1;color:var(--text);margin-bottom:1.5rem}\n' +
+'  .article-meta{display:flex;align-items:center;gap:1.5rem;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mid);margin-bottom:2.5rem;flex-wrap:wrap}\n' +
+'  .dot{width:3px;height:3px;background:var(--gold);border-radius:50%;opacity:0.5}\n' +
+'  .gold-line{width:100%;height:1px;background:linear-gradient(to right,var(--gold),transparent);margin-bottom:3rem;opacity:0.3}\n' +
+'  .article-cover{max-width:1100px;margin:0 auto 4rem;padding:0 4rem}\n' +
+'  .article-cover img{width:100%;height:420px;object-fit:cover;display:block}\n' +
+'  .article-layout{max-width:1100px;margin:0 auto;padding:0 4rem 6rem;display:grid;grid-template-columns:1fr 280px;gap:5rem;align-items:start}\n' +
+'  .article-body{font-size:1.05rem;line-height:1.9;color:var(--text)}\n' +
+'  .article-body p{margin-bottom:1.5rem}\n' +
+'  .article-body h2{font-family:var(--serif);font-size:1.8rem;font-weight:400;color:var(--text);margin:2.5rem 0 1rem;line-height:1.2}\n' +
+'  .article-body h3{font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--text);margin:2rem 0 0.75rem}\n' +
+'  .article-body blockquote{border-left:2px solid var(--gold);padding:1rem 0 1rem 2rem;margin:2rem 0;font-family:var(--serif);font-size:1.3rem;font-style:italic;color:var(--text-mid);line-height:1.5}\n' +
+'  .article-body blockquote cite{display:block;font-family:var(--sans);font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;font-style:normal;color:var(--gold);margin-top:0.75rem}\n' +
+'  .article-sidebar{position:sticky;top:6rem}\n' +
+'  .sidebar-author,.sidebar-box{background:var(--bg-card);border:1px solid rgba(184,148,90,0.15);padding:1.75rem;margin-bottom:1.5rem;box-shadow:0 2px 12px rgba(42,37,32,0.05)}\n' +
+'  .sidebar-box{background:var(--bg-mid)}\n' +
+'  .sidebar-author-name{font-family:var(--serif);font-size:1.1rem;color:var(--text);margin-bottom:0.25rem}\n' +
+'  .sidebar-author-role{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}\n' +
+'  .sidebar-author-bio{font-size:0.78rem;color:var(--text-mid);line-height:1.7}\n' +
+'  .sidebar-box-label{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}\n' +
+'  .sidebar-box p{font-size:0.8rem;color:var(--text-mid);line-height:1.6;margin-bottom:1rem}\n' +
+'  .btn-primary{display:inline-flex;align-items:center;gap:0.75rem;padding:0.85rem 1.75rem;background:transparent;border:1px solid var(--gold);color:var(--gold);font-family:var(--sans);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all 0.3s ease;width:100%;justify-content:center}\n' +
+'  .btn-primary:hover{background:var(--gold);color:#fff}\n' +
+'  .article-footer-nav{max-width:1100px;margin:0 auto;padding:3rem 4rem 5rem;display:flex;justify-content:space-between;gap:2rem;border-top:1px solid rgba(184,148,90,0.15)}\n' +
+'  .nav-article-link{flex:1;text-decoration:none;color:inherit;padding:1.5rem;border:1px solid rgba(184,148,90,0.15);background:var(--bg-card);transition:border-color 0.3s,transform 0.3s}\n' +
+'  .nav-article-link:hover{border-color:rgba(184,148,90,0.4);transform:translateY(-2px)}\n' +
+'  .nav-article-dir{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem}\n' +
+'  .nav-article-title{font-family:var(--serif);font-size:1rem;color:var(--text);line-height:1.3}\n' +
+'  footer{background:var(--bg);padding:2rem 4rem;border-top:1px solid rgba(184,148,90,0.12)}\n' +
+'  .footer-inner{display:flex;align-items:center;justify-content:space-between}\n' +
+'  .footer-copy{font-size:0.7rem;color:rgba(107,96,85,0.6)}\n' +
+'  .footer-links{display:flex;gap:2rem}\n' +
+'  .footer-links a{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color 0.3s}\n' +
+'  .footer-links a:hover{color:var(--gold)}\n' +
+'  @media(max-width:1024px){.article-layout{grid-template-columns:1fr;gap:3rem;padding:0 2rem 5rem}.article-sidebar{position:static}.article-hero,.article-cover{padding:2rem 2rem 0}.breadcrumb{padding:7rem 2rem 0}.article-footer-nav{padding:2.5rem 2rem 4rem}footer{padding:2rem}}\n' +
+'  @media(max-width:700px){nav{padding:1rem 1.5rem}.nav-links{display:none}.article-hero{padding:2rem 1.5rem 0}.article-cover{padding:0 1.5rem}.article-cover img{height:240px}.article-layout{padding:0 1.5rem 4rem}.article-footer-nav{flex-direction:column;padding:2rem 1.5rem 3rem}.breadcrumb{padding:7rem 1.5rem 0}footer{padding:1.5rem}}\n' +
+'</style>\n' +
+'</head>\n<body>\n\n' +
+'<nav>\n' +
+'  <a href="index.html" class="nav-logo">110 Life &amp; Business</a>\n' +
+'  <ul class="nav-links">\n' +
+'    <li><a href="index.html">Home</a></li>\n' +
+'    <li><a href="ontmoet-de-mensen.html">Ontmoet de mensen</a></li>\n' +
+'    <li><a href="entering-transformation-ellykorving.html">Programma</a></li>\n' +
+'    <li><a href="blogs-inspiratie.html" class="active">Blog</a></li>\n' +
+'    <li><a href="https://calendar.app.google/vvMcqg4ewtL68pVU6">Plan gesprek</a></li>\n' +
+'  </ul>\n' +
+'</nav>\n\n' +
+'<div class="breadcrumb">\n' +
+'  <a href="blogs-inspiratie.html">Blog</a>\n' +
+'  <span style="opacity:0.4">/</span>\n' +
+'  ' + esc(cat) + '\n' +
+'</div>\n\n' +
+'<header class="article-hero">\n' +
+'  <span class="article-tag">' + esc(cat) + '</span>\n' +
+'  <h1 class="article-title">' + esc(title) + '</h1>\n' +
+'  <div class="article-meta">\n' +
+'    <span>Elly Elizabeth Korving</span>\n' +
+'    <span class="dot"></span>\n' +
+'    <span>' + date + '</span>\n' +
+'    <span class="dot"></span>\n' +
+'    <span>' + rt + '</span>\n' +
+'  </div>\n' +
+'  <div class="gold-line"></div>\n' +
+'</header>\n\n' +
+'<div class="article-cover">\n  ' + imgTag + '\n</div>\n\n' +
+'<div class="article-layout">\n' +
+'  <article class="article-body">' + bodyHtml + '\n  </article>\n\n' +
+'  <aside class="article-sidebar">\n' +
+'    <div class="sidebar-author">\n' +
+'      <p class="sidebar-author-name">Elly Elizabeth Korving</p>\n' +
+'      <p class="sidebar-author-role">Business Coach &amp; Spiritual Guide</p>\n' +
+'      <p class="sidebar-author-bio">Elly begeleidt ondernemers om vanuit hun ware identiteit te ondernemen. Ze combineert 25 jaar merkervaring met diepgaande persoonlijke ontwikkeling.</p>\n' +
+'    </div>\n' +
+'    <div class="sidebar-box">\n' +
+'      <p class="sidebar-box-label">Klaar voor verdieping?</p>\n' +
+'      <p>In het Entering Transformation traject werk je 12 stappen lang aan wie je bent — en hoe dat zichtbaar wordt in je business.</p>\n' +
+'      <a href="entering-transformation-ellykorving.html" class="btn-primary">Bekijk het traject &rarr;</a>\n' +
+'    </div>\n' +
+'  </aside>\n' +
+'</div>\n\n' +
+'<nav class="article-footer-nav">\n' +
+'  <a href="blogs-inspiratie.html" class="nav-article-link">\n' +
+'    <p class="nav-article-dir">&larr; Terug naar overzicht</p>\n' +
+'    <p class="nav-article-title">Alle blogs &amp; inspiratie</p>\n' +
+'  </a>\n' +
+'</nav>\n\n' +
+'<footer>\n' +
+'  <div class="footer-inner">\n' +
+'    <div class="footer-copy">&copy; 2026 Alterego B.V. &middot; KVK nr 27252605 &middot; Alle rechten voorbehouden</div>\n' +
+'    <div class="footer-links">\n' +
+'      <a href="index.html">Home</a>\n' +
+'      <a href="blogs-inspiratie.html">Blog</a>\n' +
+'      <a href="https://calendar.app.google/vvMcqg4ewtL68pVU6">Contact</a>\n' +
+'    </div>\n' +
+'  </div>\n' +
+'</footer>\n\n</body>\n</html>';
+
+  var blob = new Blob([page], { type: 'text/html;charset=utf-8' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = window._blogFilename;
+  a.click();
+}
+
+function copyCard() {
+  var code = document.getElementById('cardSnippet').textContent;
+  navigator.clipboard.writeText(code).then(function() {
+    var btn = document.querySelectorAll('.ek-copy-btn')[0];
+    var orig = btn.textContent;
+    btn.textContent = 'Gekopieerd ✓';
+    setTimeout(function(){ btn.textContent = orig; }, 2000);
+  });
+}
+
+function updateCount(el, counterId) {
+  document.getElementById(counterId).textContent = el.value.length;
+}
+
+function handleImage(e) {
+  var file = e.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(ev) {
+    imageDataUrl = ev.target.result;
+    var img = document.getElementById('imagePreview');
+    img.src = imageDataUrl;
+    img.style.display = 'block';
+    document.getElementById('imagePlaceholder').style.display = 'none';
+    document.getElementById('imageZone').classList.add('has-image');
+    syncPreview();
+  };
+  reader.readAsDataURL(file);
+}
+
+function toggleVoice() {
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    alert('Spraakherkenning werkt in Safari op iPhone. Open deze pagina in Safari voor spraakinvoer.');
+    return;
+  }
+  if (isRecording) { stopRecording(); } else { startRecording(); }
+}
+
+function startRecording() {
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SR();
+  recognition.lang = 'nl-NL';
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.onresult = function(e) {
+    var transcript = '';
+    for (var i = 0; i < e.results.length; i++) transcript += e.results[i][0].transcript;
+    document.getElementById('bodyText').value = transcript;
+    updateCount(document.getElementById('bodyText'), 'bodyCount');
+  };
+  recognition.onend = function() { stopRecording(); };
+  recognition.start();
+  isRecording = true;
+  document.getElementById('voiceLabel').textContent = 'Opname bezig — tik om te stoppen';
+  document.getElementById('voiceBtn').classList.add('recording');
+  document.getElementById('voiceDot').classList.add('pulse');
+}
+
+function stopRecording() {
+  if (recognition) recognition.stop();
+  isRecording = false;
+  document.getElementById('voiceLabel').textContent = 'Druk om in te spreken';
+  document.getElementById('voiceBtn').classList.remove('recording');
+  document.getElementById('voiceDot').classList.remove('pulse');
+  syncPreview();
+}
+
+function clearAll() {
+  document.getElementById('blogTitle').value = '';
+  document.getElementById('bodyText').value = '';
+  document.getElementById('blogQuote').value = '';
+  document.getElementById('blogQuoteAuthor').value = '';
+  document.getElementById('bodyCount').textContent = '0';
+  imageDataUrl = '';
+  document.getElementById('imagePreview').style.display = 'none';
+  document.getElementById('imagePlaceholder').style.display = 'block';
+  document.getElementById('imageZone').classList.remove('has-image');
+  syncPreview();
+}
+</script>
+
+</body>
+</html>

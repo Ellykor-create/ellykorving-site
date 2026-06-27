@@ -567,12 +567,12 @@ body:hover #cursor{opacity:1}
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 1.8rem;display:flex;justify-content:space-between;align-items:center;transition:all .5s}
 nav.s{background:rgba(245,242,236,.97);backdrop-filter:blur(20px);padding:1rem 1.8rem;border-bottom:.5px solid rgba(245,240,232,.1)}
-.logo{font-family:var(--serif);font-size:.85rem;font-weight:300;letter-spacing:.25em;color:var(--w);text-transform:uppercase;text-decoration:none;position:relative;z-index:1}
-.nl{display:none;gap:2.5rem;list-style:none}
-.nl a{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,232,.65);text-decoration:none;font-weight:300;transition:color .3s;position:relative}
+.logo{font-family:var(--serif);font-size:1rem;font-weight:300;letter-spacing:.25em;color:var(--w);text-transform:uppercase;text-decoration:none;position:relative;z-index:1}
+.nl{display:none;gap:1.8rem;list-style:none}
+.nl a{font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,1);text-decoration:none;font-weight:400;transition:color .3s;position:relative}
 .nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:.5px;background:rgba(192,74,120,.6);transition:width .3s}
 .nl a:hover{color:#ECA0C8}.nl a:hover::after{width:100%}
-.ncta{display:none;padding:.5rem 1.2rem;border:.5px solid rgba(192,74,120,.5);color:#C04A78;font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:all .4s;position:relative;overflow:hidden}
+.ncta{display:none;padding:.6rem 1.4rem;border:.5px solid rgba(192,74,120,.5);color:#C04A78;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:all .4s;position:relative;overflow:hidden}
 .ncta::before{content:'';position:absolute;inset:0;background:var(--s);transform:scaleX(0);transform-origin:left;transition:transform .4s;z-index:-1}
 .ncta:hover{color:var(--z)}.ncta:hover::before{transform:scaleX(1)}
 .hb{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px}
@@ -1235,7 +1235,7 @@ section, .sec-her, .sec-wie, .sec-pad, .sec-s, .sec-r, .sec-bio, .sec-cta, .sec-
 
 
 /* Nav gescrold — donkere tekst op lichte achtergrond */
-nav.s .nl a{color:rgba(26,22,20,.6) !important;}
+nav.s .nl a{color:rgba(26,22,20,.9) !important;}
 nav.s .nl a:hover{color:#C04A78 !important;}
 nav.s .logo{color:#1A1614 !important;}
 
@@ -1483,12 +1483,17 @@ nav.s .nav-logo-icon{width:34px;opacity:1;margin-right:5px;}
 /* language switch */
 .nl li.lang{display:flex;gap:.35rem;align-items:center;}
 .nl li.lang a.on{color:#ECA0C8;}
-.nl li.lang span{opacity:.35;font-size:.5rem;}
+.nl li.lang span{opacity:.35;font-size:.76rem;}
 nav.s .nl li.lang a{color:rgba(26,22,20,.6);}
 nav.s .nl li.lang a.on{color:var(--s);}
 .mob-lang{margin-top:1.6rem;display:flex;gap:.55rem;align-items:center;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;}
 .mob-lang a{color:rgba(26,22,20,.55);text-decoration:none;transition:color .3s;}
 .mob-lang a.on{color:var(--s);}.mob-lang a:hover{color:var(--s);}
+/* keep big desktop nav only when there is room; hamburger below 900px */
+@media(max-width:899px){
+  #nav .nl, #nav .ncta{display:none !important;}
+  #nav .hb{display:flex !important;}
+}
 </style>
 </head>
 <body>

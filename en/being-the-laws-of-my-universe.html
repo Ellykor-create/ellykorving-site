@@ -107,6 +107,23 @@
   .geo-caption{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--ink-soft);max-width:660px;margin:3.25rem auto 0;line-height:1.55;}
   .geo-intro{font-family:var(--sans);font-size:1.02rem;color:var(--ink-soft);max-width:690px;margin:0 auto;line-height:1.78;}
   .geo-intro em{font-style:italic;color:var(--gold-deep);}
+  /* what we explore */
+  .explore{background:var(--cream-3);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;}
+  .explore .section-label{justify-content:center;}
+  .explore .gold-divider{margin-left:auto;margin-right:auto;}
+  .explore-intro{font-family:var(--sans);font-size:1.02rem;color:var(--ink-soft);max-width:680px;margin:0 auto 2.4rem;line-height:1.8;}
+  .explore-intro em{font-style:italic;color:var(--gold-deep);}
+  .layer-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem;max-width:720px;margin:0 auto 3.4rem;}
+  .layer-chips span{font-family:var(--sans);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);border:1px solid var(--line);border-radius:40px;padding:.5rem 1.05rem;background:rgba(255,255,255,.45);}
+  .rhythm{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem;max-width:840px;margin:0 auto;}
+  .rhythm-step{display:flex;flex-direction:column;align-items:center;}
+  .rhythm-num{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--gold-deep);opacity:.7;margin-bottom:.35rem;}
+  .rhythm-name{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin-bottom:.65rem;}
+  .rhythm-desc{font-family:var(--sans);font-size:.9rem;color:var(--ink-soft);line-height:1.7;max-width:230px;}
+  @media(max-width:767px){
+    .rhythm{grid-template-columns:1fr;gap:1.8rem;}
+    .layer-chips{margin-bottom:2.4rem;}
+  }
   @media(max-width:1024px){.solids-row{grid-template-columns:repeat(3,1fr);}}
   @media(max-width:620px){.solids-row{grid-template-columns:repeat(2,1fr);}}
 
@@ -262,7 +279,7 @@
     <h2 class="section-title">This is not theory.<br>It is <em>remembering.</em></h2>
     <div class="gold-divider"></div>
     <p class="invitation-body">
-      Over eight weeks, one hour each week, you see how your patterns, your emotions and your choices connect to timeless universal principles. Through clear insight, honest reflection and real practice, you learn to work with the natural laws that shape your reality, your relationships and your growth. Not as something to study, but as something you recognise, because it is already true of you.
+      Over eight weeks, ninety minutes each week, you see how your patterns, your emotions and your choices connect to timeless universal principles. Through clear insight, honest reflection and real practice, you learn to work with the natural laws that shape your reality, your relationships and your growth. Not as something to study, but as something you recognise, because it is already true of you.
     </p>
     <p class="invitation-body">
       Why? Because <em>the world is your mirror</em>. This is the law of correspondence, and becoming aware of it, through the integration and remembrance of these laws, will help you far more in how you navigate through your life.
@@ -315,7 +332,7 @@
     <div class="img-break-text">
       <span class="img-break-label">Live &middot; Online &middot; At your own pace</span>
       <h2 class="img-break-heading">Every Thursday.<br>In your <em>own space.</em></h2>
-      <p class="img-break-sub">Eight live sessions of one hour. You follow the program fully online, wherever you are, and you begin the moment you enrol.</p>
+      <p class="img-break-sub">Eight live sessions of ninety minutes. You follow the program fully online, wherever you are, and you begin the moment you enrol.</p>
     </div>
   </div>
 </div>
@@ -390,6 +407,42 @@
   </div>
 </section>
 
+<!-- WHAT WE EXPLORE -->
+<section class="explore">
+  <div class="container">
+    <div class="section-label">How each week unfolds</div>
+    <h2 class="section-title">One rhythm.<br>Every <em>week.</em></h2>
+    <div class="gold-divider"></div>
+    <p class="explore-intro">Week one opens the journey with a gentle introduction. From there, each week brings one of the seven laws to life, woven together with the layers below. Not to study, but to feel which one <em>resonates</em>, and where you want to go deeper.</p>
+    <div class="layer-chips">
+      <span>A law</span>
+      <span>A chakra</span>
+      <span>A frequency</span>
+      <span>A colour</span>
+      <span>Sacred geometry</span>
+      <span>Water</span>
+      <span>Deepening</span>
+    </div>
+    <div class="rhythm">
+      <div class="rhythm-step">
+        <div class="rhythm-num">I</div>
+        <h3 class="rhythm-name">Recognition</h3>
+        <p class="rhythm-desc">You recognise the pattern, the law already moving within you.</p>
+      </div>
+      <div class="rhythm-step">
+        <div class="rhythm-num">II</div>
+        <h3 class="rhythm-name">Clarity</h3>
+        <p class="rhythm-desc">It becomes clear how it shapes your choices, your body and your life.</p>
+      </div>
+      <div class="rhythm-step">
+        <div class="rhythm-num">III</div>
+        <h3 class="rhythm-name">Integration</h3>
+        <p class="rhythm-desc">You bring it into daily life, in your own way and your own rhythm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- DETAILS + POSTER -->
 <section class="details" id="program">
   <div class="container">
@@ -405,7 +458,7 @@
           <div class="detail-row"><span class="detail-label">Start date</span><span class="detail-value">21 August 2026</span></div>
           <div class="detail-row"><span class="detail-label">Duration</span><span class="detail-value">8 weeks</span></div>
           <div class="detail-row"><span class="detail-label">Live sessions</span><span class="detail-value">Every Thursday</span></div>
-          <div class="detail-row"><span class="detail-label">Time</span><span class="detail-value">20:00 to 21:00 CET</span></div>
+          <div class="detail-row"><span class="detail-label">Time</span><span class="detail-value">20:00 to 21:30 CET</span></div>
           <div class="detail-row"><span class="detail-label">Format</span><span class="detail-value">Live, fully online</span></div>
         </div>
       </div>

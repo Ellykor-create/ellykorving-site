@@ -637,21 +637,59 @@
     air:[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]],
     fire:[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]],
     water:[[0,1,PHI],[0,1,-PHI],[0,-1,PHI],[0,-1,-PHI],[1,PHI,0],[1,-PHI,0],[-1,PHI,0],[-1,-PHI,0],[PHI,0,1],[PHI,0,-1],[-PHI,0,1],[-PHI,0,-1]],
-    aether:[[1,1,1],[1,1,-1],[1,-1,1],[1,-1,-1],[-1,1,1],[-1,1,-1],[-1,-1,1],[-1,-1,-1],[0,IP,PHI],[0,IP,-PHI],[0,-IP,PHI],[0,-IP,-PHI],[IP,PHI,0],[IP,-PHI,0],[-IP,PHI,0],[-IP,-PHI,0],[PHI,0,IP],[PHI,0,-IP],[-PHI,0,IP],[-PHI,0,-IP]],
-    metatron:[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1],[-1,-1,-1],[1,1,-1],[1,-1,1],[-1,1,1]],
-    fruit:[[1,1,0],[1,-1,0],[-1,1,0],[-1,-1,0],[1,0,1],[1,0,-1],[-1,0,1],[-1,0,-1],[0,1,1],[0,1,-1],[0,-1,1],[0,-1,-1]]
+    aether:[[1,1,1],[1,1,-1],[1,-1,1],[1,-1,-1],[-1,1,1],[-1,1,-1],[-1,-1,1],[-1,-1,-1],[0,IP,PHI],[0,IP,-PHI],[0,-IP,PHI],[0,-IP,-PHI],[IP,PHI,0],[IP,-PHI,0],[-IP,PHI,0],[-IP,-PHI,0],[PHI,0,IP],[PHI,0,-IP],[-PHI,0,IP],[-PHI,0,-IP]]
   };
-  // explicit edges for the star tetrahedron (two interlocking tetrahedra)
-  const E_METATRON=[[0,1],[0,2],[0,3],[1,2],[1,3],[2,3],[4,5],[4,6],[4,7],[5,6],[5,7],[6,7]];
   addSolid('s-earth',SOLIDS.earth,0.0040);
   addSolid('s-air',SOLIDS.air,0.0050);
   addSolid('s-fire',SOLIDS.fire,0.0046);
   addSolid('s-water',SOLIDS.water,0.0034);
   addSolid('s-aether',SOLIDS.aether,0.0030);
-  addSolid('s-metatron',SOLIDS.metatron,0.0042,E_METATRON);
-  addSolid('s-fruit',SOLIDS.fruit,0.0038);
-  if(reduce){ reg.forEach(render); }
-  else { (function tick(){ reg.forEach(s=>{ s.ax+=s.speed*0.6; s.ay+=s.speed; render(s); }); requestAnimationFrame(tick); })(); }
+
+  // 13 points of the Fruit of Life in 3D: a central sphere with 12 around it
+  // (cuboctahedron / vector equilibrium). Connecting all 13 centres gives Metatron's Cube.
+  const P13=normalize([[0,0,0],
+    [1,1,0],[1,-1,0],[-1,1,0],[-1,-1,0],
+    [1,0,1],[1,0,-1],[-1,0,1],[-1,0,-1],
+    [0,1,1],[0,1,-1],[0,-1,1],[0,-1,-1]]);
+  function project(V,ax,ay,cx,S){
+    const ca=Math.cos(ay),sa=Math.sin(ay),cb=Math.cos(ax),sb=Math.sin(ax);
+    return V.map(([x,y,z])=>{let X=x*ca-z*sa,Z=x*sa+z*ca,Y=y;let Y2=Y*cb-Z*sb,Z2=Y*sb+Z*cb;const f=3/(3+Z2);return [cx+X*S*f,cx+Y2*S*f,Z2,f];});
+  }
+
+  // FRUIT OF LIFE: 13 rotating spheres, drawn as circles, back to front
+  function buildFruit(id,speed){
+    const svg=document.getElementById(id); if(!svg)return;
+    const cx=64,S=26,CR=0.50;
+    const circles=P13.map(()=>{const c=document.createElementNS(NS,'circle');c.setAttribute('fill','none');c.setAttribute('stroke','currentColor');c.setAttribute('stroke-width','1.4');c.setAttribute('vector-effect','non-scaling-stroke');svg.appendChild(c);return c;});
+    const ent={speed,ax:0.6,ay:0.35,draw(){
+      const pr=project(P13,ent.ax,ent.ay,cx,S);
+      const order=pr.map((p,i)=>i).sort((a,b)=>pr[b][2]-pr[a][2]); // far first
+      order.forEach(i=>{const c=circles[i],p=pr[i];svg.appendChild(c);c.setAttribute('cx',p[0].toFixed(2));c.setAttribute('cy',p[1].toFixed(2));c.setAttribute('r',(CR*S*p[3]).toFixed(2));c.setAttribute('opacity',(0.5+0.5*Math.min(1,Math.max(0,(p[3]-0.75)/0.6))).toFixed(2));});
+    }};
+    reg.push(ent);
+  }
+
+  // METATRON'S CUBE: 13 nodes with every centre connected, plus node rings
+  function buildMetatron(id,speed){
+    const svg=document.getElementById(id); if(!svg)return;
+    const cx=64,S=30,NR=0.15;
+    const E=[];for(let i=0;i<13;i++)for(let j=i+1;j<13;j++)E.push([i,j]);
+    const lines=E.map(()=>{const l=document.createElementNS(NS,'line');l.setAttribute('stroke','currentColor');l.setAttribute('stroke-width','0.6');l.setAttribute('stroke-linecap','round');l.setAttribute('vector-effect','non-scaling-stroke');l.setAttribute('opacity','0.55');svg.appendChild(l);return l;});
+    const nodes=P13.map(()=>{const c=document.createElementNS(NS,'circle');c.setAttribute('fill','none');c.setAttribute('stroke','currentColor');c.setAttribute('stroke-width','1');c.setAttribute('vector-effect','non-scaling-stroke');svg.appendChild(c);return c;});
+    const ent={speed,ax:0.6,ay:0.35,draw(){
+      const pr=project(P13,ent.ax,ent.ay,cx,S);
+      E.forEach((e,i)=>{const l=lines[i];l.setAttribute('x1',pr[e[0]][0].toFixed(2));l.setAttribute('y1',pr[e[0]][1].toFixed(2));l.setAttribute('x2',pr[e[1]][0].toFixed(2));l.setAttribute('y2',pr[e[1]][1].toFixed(2));});
+      pr.forEach((p,i)=>{const c=nodes[i];c.setAttribute('cx',p[0].toFixed(2));c.setAttribute('cy',p[1].toFixed(2));c.setAttribute('r',(NR*S*p[3]).toFixed(2));});
+    }};
+    reg.push(ent);
+  }
+
+  buildMetatron('s-metatron',0.0034);
+  buildFruit('s-fruit',0.0030);
+
+  function step(s){ if(s.draw){ s.draw(); } else { render(s); } }
+  if(reduce){ reg.forEach(step); }
+  else { (function tick(){ reg.forEach(s=>{ s.ax+=s.speed*0.6; s.ay+=s.speed; step(s); }); requestAnimationFrame(tick); })(); }
 </script>
 </body>
 </html>

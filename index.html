@@ -1479,6 +1479,16 @@ nav.s .nav-logo-icon{width:34px;opacity:1;margin-right:5px;}
 }
 .ndm-cta-btn:hover { background: #a03560; }
 
+
+/* language switch */
+.nl li.lang{display:flex;gap:.35rem;align-items:center;}
+.nl li.lang a.on{color:#ECA0C8;}
+.nl li.lang span{opacity:.35;font-size:.5rem;}
+nav.s .nl li.lang a{color:rgba(26,22,20,.6);}
+nav.s .nl li.lang a.on{color:var(--s);}
+.mob-lang{margin-top:1.6rem;display:flex;gap:.55rem;align-items:center;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;}
+.mob-lang a{color:rgba(26,22,20,.55);text-decoration:none;transition:color .3s;}
+.mob-lang a.on{color:var(--s);}.mob-lang a:hover{color:var(--s);}
 </style>
 </head>
 <body>
@@ -1536,6 +1546,7 @@ nav.s .nav-logo-icon{width:34px;opacity:1;margin-right:5px;}
     <li><a href="#reviews">Ervaringen</a></li>
     <li><a href="ellykorving-blog.html">Blog</a></li>
     <li><a href="samenwerkingen.html">Samenwerkingen</a></li>
+    <li class="lang"><a href="index.html" class="on">NL</a><span>·</span><a href="en/index.html">EN</a></li>
   </ul>
   <a href="https://calendar.app.google/i1XXp48q3C2p34ef7" target="_blank" class="ncta">Laten we praten</a>
   <button class="hb" id="hb"><span></span><span></span><span></span></button>
@@ -1550,6 +1561,7 @@ nav.s .nav-logo-icon{width:34px;opacity:1;margin-right:5px;}
   <a href="ellykorving-blog.html" class="ml">Blog</a>
   <a href="samenwerkingen.html" class="ml">Samenwerkingen</a>
   <a href="#contact" class="ml">Laten we praten</a>
+  <div class="mob-lang"><a href="index.html" class="on">NL</a> · <a href="en/index.html">EN</a></div>
 </div>
 
 <section class="hero" style="background:#1A1614;">

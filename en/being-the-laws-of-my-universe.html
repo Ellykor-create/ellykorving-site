@@ -99,13 +99,14 @@
   .solid-3d{position:relative;width:100%;height:100%;overflow:visible;}
   .solid-name{font-family:var(--serif);font-size:1.18rem;color:var(--ink);line-height:1.1;}
   .solid-el{font-size:0.6rem;letter-spacing:0.26em;text-transform:uppercase;color:currentColor;}
-  .el-earth{color:#7c8c4e;}
-  .el-air{color:#5fa1a6;}
-  .el-fire{color:#c0653f;}
-  .el-water{color:#5b7fa6;}
-  .el-aether{color:#9a7aa0;}
-  .el-metatron{color:#8b6f47;}
-  .el-fruit{color:#a57b6e;}
+  /* chakra spectrum: root to crown */
+  .el-earth{color:#b8473d;}     /* root - red */
+  .el-air{color:#c67b3c;}       /* sacral - orange */
+  .el-fire{color:#cba43a;}      /* solar plexus - yellow */
+  .el-water{color:#5d9468;}     /* heart - green */
+  .el-aether{color:#4684a6;}    /* throat - blue */
+  .el-metatron{color:#4a4e96;}  /* third eye - indigo */
+  .el-fruit{color:#875aa0;}     /* crown - violet */
   .geo-caption{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--ink-soft);max-width:660px;margin:3.25rem auto 0;line-height:1.55;}
   .geo-intro{font-family:var(--sans);font-size:1.02rem;color:var(--ink-soft);max-width:690px;margin:0 auto;line-height:1.78;}
   .geo-intro em{font-style:italic;color:var(--gold-deep);}
@@ -127,7 +128,8 @@
     .layer-chips{margin-bottom:2.4rem;}
   }
   @media(max-width:1024px){.solids-row{grid-template-columns:repeat(4,1fr);}}
-  @media(max-width:620px){.solids-row{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:768px){.solids-row{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.solids-row{grid-template-columns:1fr;}}
 
   /* IMAGE BREAK */
   .img-break{position:relative;height:78vh;min-height:480px;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
@@ -619,9 +621,9 @@
   function normalize(V){let m=0;V.forEach(v=>{const r=Math.hypot(v[0],v[1],v[2]);if(r>m)m=r;});return V.map(v=>[v[0]/m,v[1]/m,v[2]/m]);}
   function edgesOf(V){const d=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);let mn=Infinity;for(let i=0;i<V.length;i++)for(let j=i+1;j<V.length;j++){const dd=d(V[i],V[j]);if(dd<mn)mn=dd;}const E=[];for(let i=0;i<V.length;i++)for(let j=i+1;j<V.length;j++){if(Math.abs(d(V[i],V[j])-mn)<1e-3)E.push([i,j]);}return E;}
   const reg=[];
-  function addSolid(id,verts,speed){
+  function addSolid(id,verts,speed,edges){
     const svg=document.getElementById(id); if(!svg)return;
-    const V=normalize(verts), E=edgesOf(verts), R=64,S=R*0.6;
+    const V=normalize(verts), E=edges||edgesOf(verts), R=64,S=R*0.6;
     const lines=E.map(()=>{const l=document.createElementNS(NS,'line');l.setAttribute('stroke','currentColor');l.setAttribute('stroke-width','1.2');l.setAttribute('stroke-linecap','round');l.setAttribute('vector-effect','non-scaling-stroke');svg.appendChild(l);return l;});
     reg.push({V,E,lines,speed,ax:0.6,ay:0.35,cx:R,cy:R,S});
   }
@@ -636,15 +638,17 @@
     fire:[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]],
     water:[[0,1,PHI],[0,1,-PHI],[0,-1,PHI],[0,-1,-PHI],[1,PHI,0],[1,-PHI,0],[-1,PHI,0],[-1,-PHI,0],[PHI,0,1],[PHI,0,-1],[-PHI,0,1],[-PHI,0,-1]],
     aether:[[1,1,1],[1,1,-1],[1,-1,1],[1,-1,-1],[-1,1,1],[-1,1,-1],[-1,-1,1],[-1,-1,-1],[0,IP,PHI],[0,IP,-PHI],[0,-IP,PHI],[0,-IP,-PHI],[IP,PHI,0],[IP,-PHI,0],[-IP,PHI,0],[-IP,-PHI,0],[PHI,0,IP],[PHI,0,-IP],[-PHI,0,IP],[-PHI,0,-IP]],
-    metatron:[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0.7,0.7,0.7],[0.7,-0.7,0.7],[-0.7,0.7,0.7],[-0.7,-0.7,0.7],[0.7,0.7,-0.7],[0.7,-0.7,-0.7],[-0.7,0.7,-0.7],[-0.7,-0.7,-0.7],[0,0,1]],
-    fruit:[[0,1,PHI],[0,1,-PHI],[0,-1,PHI],[0,-1,-PHI],[1,PHI,0],[1,-PHI,0],[-1,PHI,0],[-1,-PHI,0],[PHI,0,1],[PHI,0,-1],[-PHI,0,1],[-PHI,0,-1],[0,0,0]]
+    metatron:[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1],[-1,-1,-1],[1,1,-1],[1,-1,1],[-1,1,1]],
+    fruit:[[1,1,0],[1,-1,0],[-1,1,0],[-1,-1,0],[1,0,1],[1,0,-1],[-1,0,1],[-1,0,-1],[0,1,1],[0,1,-1],[0,-1,1],[0,-1,-1]]
   };
+  // explicit edges for the star tetrahedron (two interlocking tetrahedra)
+  const E_METATRON=[[0,1],[0,2],[0,3],[1,2],[1,3],[2,3],[4,5],[4,6],[4,7],[5,6],[5,7],[6,7]];
   addSolid('s-earth',SOLIDS.earth,0.0040);
   addSolid('s-air',SOLIDS.air,0.0050);
   addSolid('s-fire',SOLIDS.fire,0.0046);
   addSolid('s-water',SOLIDS.water,0.0034);
   addSolid('s-aether',SOLIDS.aether,0.0030);
-  addSolid('s-metatron',SOLIDS.metatron,0.0042);
+  addSolid('s-metatron',SOLIDS.metatron,0.0042,E_METATRON);
   addSolid('s-fruit',SOLIDS.fruit,0.0038);
   if(reduce){ reg.forEach(render); }
   else { (function tick(){ reg.forEach(s=>{ s.ax+=s.speed*0.6; s.ay+=s.speed; render(s); }); requestAnimationFrame(tick); })(); }

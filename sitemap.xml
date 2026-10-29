@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.ellykorving.com/</loc>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ellykorving.com/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.ellykorving.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ellykorving.com/"/>
   </url>
   <url>
     <loc>https://www.ellykorving.com/nl/</loc>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ellykorving.com/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.ellykorving.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ellykorving.com/"/>
   </url>
   <url>
     <loc>https://www.ellykorving.com/blog.html</loc>
@@ -24,5 +32,10 @@
     <loc>https://www.ellykorving.com/masterclass-van-binnen-naar-beeld.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.ellykorving.com/en/being-the-laws-of-my-universe.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
